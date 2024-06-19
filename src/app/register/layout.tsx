@@ -2,7 +2,7 @@ import React from 'react'
 import { metadata } from '../layout'
 import SideBar from './components/SideBar'
 
-metadata.title= "Enoverlab - Internship Registration Page"
+metadata.title= "Enoverlab - Internship Registration"
 
 export default function Layout({ children }: {
     children?: React.ReactNode
