@@ -7,7 +7,7 @@ import FormCTAButton from '../register/components/FormCTAButton'
 
 export default function page() {
     return (
-        <div className='w-full h-screen bg-white overflow-hidden px-5 pt-[87px] flex justify-center items-center flex-col font-plus-jakarta-sans'>
+        <div className='w-full min-h-screen bg-white overflow-hidden px-5 pt-10 sm:pt-[87px] flex justify-center items-center flex-col gap-10 font-plus-jakarta-sans'>
             <Link
                 href={"/"}
             >
@@ -19,12 +19,12 @@ export default function page() {
                 />
             </Link>
 
-            <div className='flex-1 flex items-center justify-center'>
-                <div className='w-[660px] h-[411px] rounded-[12px] border border-primary-300 bg-primary-100 flex flex-col items-center justify-center'>
-                    <h1 className='font-semibold text-[32px] text-primary-300'>
+            <div className='w-full flex-1 flex items-center justify-center'>
+                <div className='max-w-[660px] w-full max-h-[411px] rounded-[12px] border border-primary-300 bg-primary-100 flex flex-col items-center justify-center px-5 py-20 text-center'>
+                    <h1 className='font-semibold text-xl sm:text-[32px] text-primary-300'>
                         Welcome
                     </h1>
-                    <h3 className='mt-2 text-primary-300 font-semibold text-2xl'>
+                    <h3 className='mt-2 text-primary-300 font-semibold text-base sm:text-2xl'>
                         To the Opensource Internship
                     </h3>
                     <FormCTAButton

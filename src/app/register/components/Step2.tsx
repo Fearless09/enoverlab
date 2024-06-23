@@ -32,12 +32,12 @@ export default function Step2() {
 
     return (
         <>
-            <h1 className='text-[32px] font-medium text-primary-300'>
+            <h1 className='text-xl md:text-[32px] font-medium text-primary-300'>
                 Lorem ipsum dolor sit amet, adipiscing elit
             </h1>
 
-            <form className='mt-[68px]'>
-                <div className='grid grid-cols-2 gap-[26px]'>
+            <form className='mt-10 sm:mt-[68px] @container/form'>
+                <div className='grid @[360px]/form:grid-cols-2 gap-[26px]'>
                     {internshipArr?.map((item, index) => (
                         <InternshipCard
                             key={index}
@@ -85,8 +85,8 @@ function InternshipCard({ active, onclick, item: {
         >
             <div className='w-[14px] h-[14px] absolute top-[12px] right-[19px] bg-white'></div>
 
-            <h5 className='font-medium text-2xl'>{internship}</h5>
-            <div className='flex items-center gap-1 text-base'>
+            <h5 className='font-medium text-lg sm:text-2xl'>{internship}</h5>
+            <div className='flex items-center gap-1 text-sm sm:text-base'>
                 <span className='w-[43px] font-medium'>Start:</span>
                 <span className='font-light'>{start}</span>
             </div>

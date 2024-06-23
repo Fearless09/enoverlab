@@ -8,10 +8,10 @@ export default function Steps() {
     const { steps } = UseGlobalContext()
 
     return (
-        <div className='flex items-center w-[326px] justify-between relative'>
+        <div className='flex items-center max-w-[326px] w-full justify-between relative'>
             {Array(3).fill("1").map((item, index) => (
                 <button
-                    className={`w-[50px] h-[50px] rounded-full border text-xl font-medium font-plus-jakarta-sans z-[3] cursor-default ${Number(steps) >= (index + 1)
+                    className={`sm:w-[50px] sm:h-[50px] w-10 h-10 rounded-full border text-xl font-medium font-plus-jakarta-sans z-[3] cursor-default ${Number(steps) >= (index + 1)
                         ? "bg-primary-300 border-primary-300 text-white"
                         : "border-[#c5c5c5] bg-white text-[#c5c5c5]"
                         }`}

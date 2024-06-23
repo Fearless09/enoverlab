@@ -12,7 +12,7 @@ export default function Step3() {
 
     return (
         <>
-            <h1 className='font-medium text-[32px] text-primary-300'>
+            <h1 className='font-medium text-xl sm:text-[32px] text-primary-300'>
                 Lorem ipsum dolor sit amet, adipiscing elit
             </h1>
 

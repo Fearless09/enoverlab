@@ -27,7 +27,7 @@ export default function SideBar() {
     const { steps } = UseGlobalContext()
 
     return (
-        <div className='max-w-[619px] w-full bg-primary-300 pt-11 px-[72px] flex flex-col relative'>
+        <div className='max-w-[350px] lg:max-w-[619px] w-full bg-primary-300 pt-11 px-10 lg:px-[72px] hidden md:flex flex-col relative'>
             <Link
                 href={'#'}
             >
@@ -46,7 +46,7 @@ export default function SideBar() {
                     width={390}
                     height={0}
                     alt='Trainees'
-                    className={`${sideBarImage[steps - 1].styles} z-[1]`}
+                    className={`${sideBarImage[steps - 1].styles} z-[1] mx-auto`}
                 />
             </div>
 

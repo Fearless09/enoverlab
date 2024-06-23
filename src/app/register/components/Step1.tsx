@@ -12,7 +12,7 @@ export default function Step1() {
 
     return (
         <>
-            <h1 className='text-primary-300 font-medium text-2xl'>
+            <h1 className='text-primary-300 font-medium text-xl md:text-2xl'>
                 Lorem ipsum dolor sit amet, adipiscing elit dolor sit amet.
             </h1>
 
