@@ -30,7 +30,7 @@ const navLinks: {
 
 export default function Navbar() {
     return (
-        <nav className='px-[70px] mt-[34px] w-full flex items-center justify-between'>
+        <nav className='px-2 sm:px-[70px] mt-[34px] w-full flex items-center justify-between'>
             <Image
                 src={"/enoverlab_logo.png"}
                 width={225}
@@ -40,7 +40,7 @@ export default function Navbar() {
                 className=''
             />
 
-            <span className='flex items-center gap-6'>
+            <span className='hidden lg:flex items-center gap-6'>
                 {navLinks?.map((item, index) => (
                     <Link
                         className='text-xl font-normal flex items-center gap-1.5 text-secondary font-plus-jakarta-sans'

@@ -11,12 +11,12 @@ const questions: string[] = [
 
 export default function FAQ() {
     return (
-        <div className='mt-[87px] px-[70px] py-[37px] font-plus-jakarta-sans text-secondary'>
-            <h4 className='max-w-[641px] w-full leading-[160%] text-3xl font-semibold mx-auto text-center'>
+        <div className='mt-5 sm:mt-[87px] px-4 sm:px-[70px] py-[37px] font-plus-jakarta-sans text-secondary'>
+            <h4 className='max-w-[641px] w-full leading-[160%] text-2xl sm:text-3xl font-semibold mx-auto text-center'>
                 Get quick answers to questions asked by people like you
             </h4>
 
-            <div className='mt-10 w-full max-w-[991px] mx-auto'>
+            <div className='mt-5 sm:mt-10 w-full max-w-[991px] mx-auto'>
                 {questions?.map((item, index) => (
                     <Question
                         key={index}
@@ -34,7 +34,7 @@ function Question({ item }: {
     item: string
 }) {
     return (
-        <div className='text-2xl py-4 font-semibold leading-[160%] border-b border-b-black'>
+        <div className='text-base sm:text-2xl py-4 font-normal sm:font-semibold leading-[160%] border-b border-b-black'>
             <p className='w-full max-w-[763px]'>{item}</p>
         </div>
     )

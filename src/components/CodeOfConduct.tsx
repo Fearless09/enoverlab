@@ -27,22 +27,22 @@ const codes: {
 
 export default function CodeOfConduct() {
     return (
-        <div className='bg-primary-100 px-[70px] py-[71px] text-secondary font-plus-jakarta-sans flex justify-between gap-5'>
-            <div className='flex flex-col gap-[34px] w-full max-w-[489px]'>
-                <h1 className='text-primary-300 font-semibold text-[45px]'>
+        <div className='bg-primary-100 px-4 sm:px-[70px] py-[71px] text-secondary font-plus-jakarta-sans flex flex-col lg:flex-row items-center lg:items-start justify-between gap-y-16 gap-x-5'>
+            <div className='flex flex-col gap-6 sm:gap-[34px] w-full max-w-[489px] text-center lg:text-left'>
+                <h1 className='text-primary-300 font-semibold text-2xl sm:text-[45px] leading-relaxed'>
                     Our Code of Conduct
                 </h1>
-                <p className='font-normal text-xl leading-[160%]'>
+                <p className='font-normal text-base sm:text-xl leading-[160%]'>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                 </p>
                 <RightArrowCTAButton
-                    buttonStyles='bg-transparent border-primary-300 text-primary-300'
+                    buttonStyles='bg-transparent border-primary-300 text-primary-300 mx-auto lg:mx-0'
                     text='Download Rules'
                     arrowColor='#0046FF'
                 />
             </div>
 
-            <div className='grid grid-cols-[repeat(2,359px)] justify-end gap-8'>
+            <div className='flex flex-wrap lg:grid grid-cols-[repeat(2,359px)] justify-around lg:justify-end gap-8'>
                 {codes?.map((item, index) => (
                     <CodeCard
                         key={index}
@@ -66,14 +66,14 @@ function CodeCard({ item: {
     }
 }) {
     return (
-        <div className='h-[175px] flex items-center p-[37px] justify-center bg-white rounded-[10px] border border-primary-200 last:col-start-2'>
+        <div className='max-h-[175px] max-w-[359px] w-full flex items-center p-[37px] justify-center bg-white rounded-[10px] border border-primary-200 lg:last:col-start-2'>
             <div className='flex gap-6'>
                 <div className='w-[30px] h-[30px]'>{svg}</div>
                 <div>
-                    <h4 className='font-medium text-2xl'>
+                    <h4 className='font-medium text-lg sm:text-2xl'>
                         {name}
                     </h4>
-                    <p className='text-xl font-normal leading-[160%] mt-2.5'>
+                    <p className='text-base sm:text-xl font-normal leading-[160%] mt-2.5'>
                         {description}
                     </p>
                 </div>

@@ -29,17 +29,17 @@ const threeSteps: {
 
 export default function InternshipThreeSteps() {
     return (
-        <div className='mt-[49px] px-[70px] py-12 font-plus-jakarta-sans'>
+        <div className='sm:mt-[49px] px-4 sm:px-[70px] py-12 font-plus-jakarta-sans'>
             <div className='max-w-[708px] w-full text-center mx-auto'>
-                <h1 className='text-primary-300 text-4xl font-semibold'>
+                <h1 className='text-primary-300 text-2xl sm:text-4xl leading-relaxed font-semibold'>
                     Your Internship Journey in Three Steps
                 </h1>
-                <p className='mt-4 text-xl text-secondary font-normal leading-[160%]'>
+                <p className='mt-4 text-base sm:text-xl text-secondary font-normal leading-[160%]'>
                     Kickstart your career with an internship that offers hands-on experience, and professional growth opportunities.
                 </p>
             </div>
 
-            <div className='mt-14 grid grid-cols-[repeat(3,402px)] justify-around gap-4'>
+            <div className='mt-7 sm:mt-14 flex flex-wrap justify-around gap-y-8 gap-x-4'>
                 {threeSteps?.map((item, index) => (
                     <InternshipStepsCard
                         key={index}
@@ -63,10 +63,10 @@ function InternshipStepsCard({ otherStyle, step, heading, body }: {
 }) {
 
     return (
-        <div className={`h-[393px] rounded-[10px] px-[32px] py-[72px] ${otherStyle}`}>
-            <h1 className='font-medium text-4xl'>{step}</h1>
+        <div className={`min-h-[300px] sm:min-h-[393px] w-full max-w-[402px] rounded-[10px] px-[32px] py-[72px] ${otherStyle}`}>
+            <h1 className='font-medium text-2xl sm:text-4xl'>{step}</h1>
 
-            <p className='mt-10 text-xl leading-[160%]'>
+            <p className='mt-10 text-base sm:text-base leading-[160%]'>
                 <span className='font-medium'>{heading}:</span>
                 {" "}
                 <span className='font-light'>{body}</span>

@@ -12,7 +12,7 @@ export default function RightArrowCTAButton({ buttonStyles, arrowColor, text, on
             className={`w-[208px] h-[51px] border rounded-[7px] flex items-center justify-center gap-4 active:scale-[0.98] hover:opacity-[0.95] ${buttonStyles}`}
             onClick={onclick}
         >
-            <span>{text}</span>
+            <span className='sm:text-sm text-sm'>{text}</span>
             <RightArrowSVG color={arrowColor} />
         </button>
     )

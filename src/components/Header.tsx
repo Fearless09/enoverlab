@@ -9,13 +9,13 @@ export default function Header() {
     const router = useRouter()
 
     return (
-        <header className='mt-[34px] w-full h-[577px] px-[70px] text-center flex justify-center items-center font-plus-jakarta-sans'>
+        <header className='mt-16 sm:mt-[34px] w-full sm:h-[577px] px-4 sm:px-[70px] text-center flex justify-center items-center font-plus-jakarta-sans'>
             <div className='flex flex-col gap-y-6 items-center'>
-                <h1 className='text-primary-300 font-medium text-[60px] max-w-[813px] w-full'>
+                <h1 className='text-primary-300 font-medium text-2xl sm:text-[60px] leading-relaxed max-w-[813px] w-full'>
                     Give Yourself an Unbeatable Advantage
                 </h1>
 
-                <p className='max-w-[542px] w-full text-secondary font-normal text-xl leading-[160%]'>
+                <p className='max-w-[542px] w-full text-secondary font-normal text-base sm:text-xl leading-[160%]'>
                     Take a  next step that guarantees you real-world work experience in your chosen career.
                 </p>
 

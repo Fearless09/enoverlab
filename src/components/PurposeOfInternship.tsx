@@ -21,12 +21,12 @@ const purposes: {
 
 export default function PurposeOfInternship() {
     return (
-        <div className='px-[70px] py-12 text-center font-plus-jakarta-sans'>
-            <h1 className='font-semibold text-primary-300 text-[40px]'>
+        <div className='px-4 sm:px-[70px] py-12 text-center font-plus-jakarta-sans'>
+            <h1 className='font-semibold text-primary-300 text-2xl sm:text-[40px]'>
                 Purpose of the Internship
             </h1>
 
-            <div className='mt-20 grid grid-cols-[repeat(3,402px)] gap-4 justify-around'>
+            <div className='mt-7 sm:mt-20 flex flex-wrap gap-y-5 gap-x-4 justify-around'>
                 {purposes?.map((item, index) => (
                     <PurposeCard
                         key={index}
@@ -45,8 +45,8 @@ function PurposeCard({ text, otherStyle }: {
     otherStyle: string
 }) {
     return (
-        <div className={`rounded-[10px] h-[201px] flex justify-center items-center ${otherStyle}`}>
-            <span className='w-full max-w-[305px] text-xl'>
+        <div className={`rounded-[10px] w-[402px] h-[201px] px-8 flex justify-center items-center ${otherStyle}`}>
+            <span className='w-full max-w-[305px] text-base sm:text-xl'>
                 {text}
             </span>
         </div>
