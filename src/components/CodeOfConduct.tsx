@@ -11,17 +11,17 @@ const codes: {
         {
             svg: <CultureSVG />,
             name: "Culture",
-            description: "Lorem ipsum dolor sit amet, eiusmod tempor."
+        description: "Respect everyone's different backgrounds and experiences."
         },
         {
             svg: <CommunicationSVG />,
             name: "Communication",
-            description: "Lorem ipsum dolor sit amet, eiusmod tempor."
+            description: "Take part in team meetings and listen to others' ideas."
         },
         {
             svg: <ReadinessSVG />,
             name: "Readiness",
-            description: "Lorem ipsum dolor sit amet, eiusmod tempor."
+            description: "Be creative and resourceful in solving problems."
         },
     ]
 
@@ -73,7 +73,7 @@ function CodeCard({ item: {
                     <h4 className='font-medium text-lg sm:text-2xl'>
                         {name}
                     </h4>
-                    <p className='text-base sm:text-xl font-normal leading-[160%] mt-2.5'>
+                    <p className='text-base font-normal leading-[160%] mt-2.5'>
                         {description}
                     </p>
                 </div>

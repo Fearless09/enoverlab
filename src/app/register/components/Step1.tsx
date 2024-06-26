@@ -13,7 +13,7 @@ export default function Step1() {
     return (
         <>
             <h1 className='text-primary-300 font-medium text-xl md:text-2xl'>
-                Lorem ipsum dolor sit amet, adipiscing elit dolor sit amet.
+                Welcome to your internship! Fill out your details to get started on this exciting journey!
             </h1>
 
             <form className='mt-[26px] text-secondary'>
@@ -74,7 +74,7 @@ export default function Step1() {
 
                 <FormInputText
                     name='your_experience'
-                    label='Share with us  your  training experience'
+                    label='Share your training experience with us'
                     containerStyle='mt-[30px]'
                 />
 

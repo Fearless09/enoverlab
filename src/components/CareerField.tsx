@@ -13,17 +13,17 @@ const careers: {
 }[] = [
         {
             name: "Product Designer",
-            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
+            description: "Understanding what users need and want, signing wireframes for the product,  working with developers understand the design so they can build it correctly.",
             img: "/product_design.png"
         },
         {
             name: "Product Manager",
-            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
+            description: "Working with different teams to make sure everyone is on the same page, ensuring the project stays on schedule and within budget.",
             img: "/product_manager.png"
         },
         {
             name: "Frontend Dev",
-            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
+            description: "Works with designers and back-end developers to bring the product to life. Uses languages like HTML, CSS,React, JavaScript etc to build the product.",
             img: "/frontend_dev.png"
         },
     ]
