@@ -8,7 +8,6 @@ import InternshipThreeSteps from "@/components/InternshipThreeSteps";
 import Navbar from "@/components/Navbar";
 import PurposeOfInternship from "@/components/PurposeOfInternship";
 import StartWithEnoverlab from "@/components/StartWithEnoverlab";
-import Image from "next/image";
 
 export default function Home() {
   return (

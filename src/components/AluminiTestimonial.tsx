@@ -1,75 +1,75 @@
-import { PlayIconSVG } from '@/constant/SVGs'
-import React from 'react'
-
+import { PlayIconSVG } from "@/constant/SVGs";
+import React from "react";
 
 const testimonials: {
-    name: string,
-    role: string,
-    videoSrc: string
+    name: string;
+    role: string;
+    videoSrc: string;
 }[] = [
         {
             name: "Happiness Adaobi",
             role: "Product Designer",
-            videoSrc: ""
+            videoSrc: "",
         },
         {
             name: "Tochi Elebebe",
             role: "Lead Product Manager",
-            videoSrc: ""
+            videoSrc: "",
         },
         {
             name: "Adeolowo Samuel",
             role: "Frontend Developer",
-            videoSrc: ""
+            videoSrc: "",
         },
-    ]
+    ];
 
 export default function AluminiTestimonial() {
     return (
-        <div className='bg-primary-100 px-4 sm:px-[70px] py-[52px] mt-5 sm:mt-[47px] font-plus-jakarta-sans'>
-            <div className='text-center w-full max-w-[641px] mx-auto'>
-                <h1 className='text-primary-300 font-medium text-2xl sm:text-4xl'>
+        <div className="mt-5 bg-primary-100 px-4 py-[52px] font-plus-jakarta-sans sm:mt-[47px] sm:px-[70px]">
+            <div className="mx-auto w-full max-w-[641px] text-center">
+                <h1 className="text-2xl font-medium text-primary-300 sm:text-4xl">
                     Alumini Testmonials
                 </h1>
 
-                <p className='text-secondary text-base sm:text-lg font-normal leading-[160%] mt-4'>
-                    Discover the impact our program has had on past interns, Hear from our alumni about their experience and how this internship shaped their careers.
+                <p className="mt-4 text-base font-normal leading-[160%] text-secondary sm:text-lg">
+                    Discover the impact our program has had on past interns, Hear from our
+                    alumni about their experience and how this internship shaped their
+                    careers.
                 </p>
             </div>
 
-            <div className='container mx-auto mt-10 sm:mt-[54px] flex flex-wrap gap-x-5 gap-y-16 justify-around'>
+            <div className="container mx-auto mt-10 flex flex-wrap justify-around gap-x-5 gap-y-16 sm:mt-[54px]">
                 {testimonials?.map((item, index) => (
-                    <TestimonialCard
-                        key={index}
-                        item={item}
-                    />
+                    <TestimonialCard key={index} item={item} />
                 ))}
             </div>
         </div>
-    )
+    );
 }
 
-
-
-function TestimonialCard({ item: {
-    name, role, videoSrc
-} }: {
+function TestimonialCard({
+    item: { name, role, videoSrc },
+}: {
     item: {
-        name: string,
-        role: string,
-        videoSrc: string
-    }
+        name: string;
+        role: string;
+        videoSrc: string;
+    };
 }) {
     return (
-        <div className='max-h-[467px] w-[413px] bg-primary-300 rounded-[15px] text-white py-9 px-7'>
-            <div className='relative bg-white h-[213px] rounded-[15px]'>
-                <button className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 hover:opacity-[0.95] active:scale-[0.95]'>
-                    <PlayIconSVG color='#C5C5C5' />
+        <div className="max-h-[467px] w-[413px] rounded-[15px] bg-primary-300 px-7 py-9 text-white">
+            <div className="relative h-[213px] rounded-[15px] bg-white">
+                <button className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 hover:opacity-[0.95] active:scale-[0.95]">
+                    <PlayIconSVG color="#C5C5C5" />
                 </button>
             </div>
 
-            <h1 className='mt-8 sm:mt-[71px] font-medium text-xl sm:text-4xl'>{name}</h1>
-            <p className='mt-2 text-base sm:text-xl font-normal leading-[160%]'>{role}</p>
+            <h1 className="mt-8 text-xl font-medium sm:mt-[71px] sm:text-4xl">
+                {name}
+            </h1>
+            <p className="mt-2 text-base font-normal leading-[160%] sm:text-xl">
+                {role}
+            </p>
         </div>
-    )
+    );
 }
