@@ -36,12 +36,12 @@ export default function CareerField() {
                     Our Career Fields
                 </h1>
 
-                <p className='text-base sm:text-xl font-normal leading-[160%] mt-3 sm:mt-2'>
+                <p className='text-base text-white/70 sm:text-lg font-normal leading-[160%] mt-3 sm:mt-2'>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                 </p>
             </div>
 
-            <div className='mt-10 sm:mt-[61px] flex flex-wrap justify-around gap-y-12 gap-x-4'>
+            <div className='container mx-auto mt-10 sm:mt-[61px] flex flex-wrap justify-around gap-y-12 gap-x-4'>
                 {careers?.map((item, index) => (
                     <CareerCard
                         key={index}
@@ -62,7 +62,7 @@ function CareerCard({ img, name, description }: {
     description: string
 }) {
     return (
-        <div className='max-h-[557px] w-[402px] rounded-[15px] bg-white text-secondary py-[22px] px-4'>
+        <div className='max- h-[520px] relative w-[402px] rounded-[15px] bg-white text-secondary py-[22px] px-4'>
             <Image
                 src={img}
                 width={370}
@@ -72,11 +72,11 @@ function CareerCard({ img, name, description }: {
                 className=''
             />
 
-            <h1 className='mt-[34px] font-medium text-xl sm:text-[32px]'>
+            <h1 className='mt-[34px] font-normal text-xl sm:text-[32px]'>
                 {name}
             </h1>
 
-            <p className='mt-[26px] font-normal text-base sm:text-xl leading-[160%]'>
+            <p className='mt-[26px] font-light text-[15px] leading-[160%]'>
                 {description}
             </p>
 
@@ -85,8 +85,8 @@ function CareerCard({ img, name, description }: {
                 target='_blank'
             >
                 <RightArrowCTAButton
-                    text='Apply Here'
-                    buttonStyles='border-primary-300 bg-white text-primary-300 mt-8'
+                    text='Apply Now'
+                    buttonStyles='border-primary-300 bg-white text-primary-30`0 absolute left-4 bottom-10'
                     arrowColor='#0046FF'
                     onclick={() => { }}
                 />

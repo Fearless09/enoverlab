@@ -43,7 +43,7 @@ export default function Navbar() {
             <span className='hidden lg:flex items-center gap-6'>
                 {navLinks?.map((item, index) => (
                     <Link
-                        className='text-xl font-normal flex items-center gap-1.5 text-secondary font-plus-jakarta-sans'
+                        className='text-lg font-normal flex items-center gap-1.5 text-secondary font-plus-jakarta-sans'
                         href={item.href}
                         key={index}
                     >

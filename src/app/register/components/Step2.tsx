@@ -32,8 +32,8 @@ export default function Step2() {
 
     return (
         <>
-            <h1 className='text-xl md:text-[32px] font-medium text-primary-300'>
-                Lorem ipsum dolor sit amet, adipiscing elit
+            <h1 className='text-xl md:text-[26px] leading-9 font-medium text-primary-300'>
+                You are halfway there: select a  time and group that works for you
             </h1>
 
             <form className='mt-10 sm:mt-[68px] @container/form'>

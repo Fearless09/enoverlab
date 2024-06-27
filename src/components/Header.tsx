@@ -11,7 +11,7 @@ export default function Header() {
     return (
         <header className='mt-16 sm:mt-[34px] w-full sm:h-[577px] px-4 sm:px-[70px] text-center flex justify-center items-center font-plus-jakarta-sans'>
             <div className='flex flex-col gap-y-6 items-center'>
-                <h1 className='text-primary-300 font-medium text-2xl sm:text-[60px] leading-relaxed max-w-[813px] w-full'>
+                <h1 className='text-primary-300 font-medium text-2xl sm:text-3xl md:text-[60px] !leading-snug max-w-[813px] w-full'>
                     Give Yourself an Unbeatable Advantage
                 </h1>
 

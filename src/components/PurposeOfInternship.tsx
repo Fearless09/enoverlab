@@ -21,7 +21,7 @@ const purposes: {
 
 export default function PurposeOfInternship() {
     return (
-        <div className='px-4 sm:px-[70px] py-12 text-center font-plus-jakarta-sans'>
+        <div className='px-4 sm:px-[70px] py-12 text-center font-plus-jakarta-sans container mx-auto'>
             <h1 className='font-semibold text-primary-300 text-2xl sm:text-[40px]'>
                 Purpose of the Internship
             </h1>
@@ -45,8 +45,8 @@ function PurposeCard({ text, otherStyle }: {
     otherStyle: string
 }) {
     return (
-        <div className={`rounded-[10px] w-[402px] h-[201px] px-8 flex justify-center items-center ${otherStyle}`}>
-            <span className='w-full max-w-[305px] text-base sm:text-xl'>
+        <div className={`rounded-[10px] sm:min-w-[401px] w-full sm:w-[calc(33.33%-32px)] h-[201px] px-8 flex justify-center items-center ${otherStyle}`}>
+            <span className='w-full sm:max-w-[305px] text-base sm:text-xl'>
                 {text}
             </span>
         </div>

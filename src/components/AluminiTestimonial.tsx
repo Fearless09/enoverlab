@@ -32,12 +32,12 @@ export default function AluminiTestimonial() {
                     Alumini Testmonials
                 </h1>
 
-                <p className='text-secondary text-base sm:text-xl font-normal leading-[160%] mt-2'>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                <p className='text-secondary text-base sm:text-lg font-normal leading-[160%] mt-4'>
+                    Discover the impact our program has had on past interns, Hear from our alumni about their experience and how this internship shaped their careers.
                 </p>
             </div>
 
-            <div className='mt-10 sm:mt-[54px] flex flex-wrap gap-x-5 gap-y-16 justify-around'>
+            <div className='container mx-auto mt-10 sm:mt-[54px] flex flex-wrap gap-x-5 gap-y-16 justify-around'>
                 {testimonials?.map((item, index) => (
                     <TestimonialCard
                         key={index}
@@ -61,8 +61,8 @@ function TestimonialCard({ item: {
     }
 }) {
     return (
-        <div className='max-h-[467px] w-[413px] bg-primary-300 text-white py-9 px-7'>
-            <div className='relative bg-white h-[213px]'>
+        <div className='max-h-[467px] w-[413px] bg-primary-300 rounded-[15px] text-white py-9 px-7'>
+            <div className='relative bg-white h-[213px] rounded-[15px]'>
                 <button className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 hover:opacity-[0.95] active:scale-[0.95]'>
                     <PlayIconSVG color='#C5C5C5' />
                 </button>

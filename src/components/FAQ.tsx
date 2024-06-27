@@ -12,7 +12,7 @@ const questions: string[] = [
 export default function FAQ() {
     return (
         <div className='mt-5 sm:mt-[87px] px-4 sm:px-[70px] py-[37px] font-plus-jakarta-sans text-secondary'>
-            <h4 className='max-w-[641px] w-full leading-[160%] text-2xl sm:text-3xl font-semibold mx-auto text-center'>
+            <h4 className='max-w-[641px] w-full !leading-[160%] text-2xl sm:text-3xl font-semibold mx-auto text-center'>
                 Get quick answers to questions asked by people like you
             </h4>
 
