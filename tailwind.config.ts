@@ -28,6 +28,9 @@ const config: Config = {
           100: '#C5C5C5'
         }
       },
+      scale: {
+        98: "0.98"
+      }
     },
   },
   plugins: [

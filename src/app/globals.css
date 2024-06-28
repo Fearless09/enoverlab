@@ -5,7 +5,7 @@
 @tailwind utilities;
 
 * {
-    transition: all 150ms linear;
+    transition: all 200ms linear;
 }
 
 body {

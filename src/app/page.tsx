@@ -2,6 +2,7 @@ import AluminiTestimonial from "@/components/AluminiTestimonial";
 import CareerField from "@/components/CareerField";
 import CodeOfConduct from "@/components/CodeOfConduct";
 import FAQ from "@/components/FAQ";
+import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import InternshipThreeSteps from "@/components/InternshipThreeSteps";
@@ -22,7 +23,7 @@ export default function Home() {
       <FAQ />
       <AluminiTestimonial />
       <StartWithEnoverlab />
-      {/* Footer */}
+      <Footer />
     </main>
   );
 }

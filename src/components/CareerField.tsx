@@ -32,7 +32,7 @@ const careers: {
 
 export default function CareerField() {
     return (
-        <div className="bg-primary-300 font-plus-jakarta-sans">
+        <section className="bg-primary-300 font-plus-jakarta-sans">
             <div className="container mx-auto px-4 py-[51px]">
                 <div className="mx-auto w-full max-w-[640px] text-center text-white">
                     <h1 className="text-2xl font-medium leading-relaxed sm:text-4xl">
@@ -56,7 +56,7 @@ export default function CareerField() {
                     ))}
                 </div>
             </div>
-        </div>
+        </section>
     );
 }
 

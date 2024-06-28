@@ -25,25 +25,27 @@ const testimonials: {
 
 export default function AluminiTestimonial() {
     return (
-        <div className="mt-5 bg-primary-100 px-4 py-[52px] font-plus-jakarta-sans sm:mt-[47px] sm:px-[70px]">
-            <div className="mx-auto w-full max-w-[641px] text-center">
-                <h1 className="text-2xl font-medium text-primary-300 sm:text-4xl">
-                    Alumini Testmonials
-                </h1>
+        <section className="mt-5 bg-primary-100 px-4 py-[52px] font-plus-jakarta-sans sm:mt-[47px] sm:px-[70px]">
+            <div className="container mx-auto">
+                <div className="mx-auto w-full max-w-[641px] text-center">
+                    <h1 className="text-2xl font-medium text-primary-300 sm:text-4xl">
+                        Alumini Testmonials
+                    </h1>
 
-                <p className="mt-4 text-base font-normal leading-[160%] text-secondary sm:text-lg">
-                    Discover the impact our program has had on past interns, Hear from our
-                    alumni about their experience and how this internship shaped their
-                    careers.
-                </p>
-            </div>
+                    <p className="mt-4 text-base font-normal leading-[160%] text-secondary sm:text-lg">
+                        Discover the impact our program has had on past interns, Hear from
+                        our alumni about their experience and how this internship shaped
+                        their careers.
+                    </p>
+                </div>
 
-            <div className="container mx-auto mt-10 flex flex-wrap justify-around gap-x-5 gap-y-16 sm:mt-[54px]">
-                {testimonials?.map((item, index) => (
-                    <TestimonialCard key={index} item={item} />
-                ))}
+                <div className="mt-10 flex flex-wrap justify-around gap-x-5 gap-y-16 sm:mt-[54px]">
+                    {testimonials?.map((item, index) => (
+                        <TestimonialCard key={index} item={item} />
+                    ))}
+                </div>
             </div>
-        </div>
+        </section>
     );
 }
 

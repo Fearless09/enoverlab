@@ -26,7 +26,7 @@ const codes: {
 
 export default function CodeOfConduct() {
     return (
-        <div className="bg-primary-100 font-plus-jakarta-sans text-secondary">
+        <section className="bg-primary-100 font-plus-jakarta-sans text-secondary">
             <div className="container mx-auto flex flex-col items-center justify-between gap-x-5 gap-y-16 px-4 py-[71px] xl:flex-row xl:items-start">
                 <div className="flex w-full max-w-[489px] flex-col gap-6 text-center sm:gap-[34px] xl:text-left">
                     <h1 className="text-2xl font-semibold leading-relaxed text-primary-300 sm:text-[45px]">
@@ -47,7 +47,7 @@ export default function CodeOfConduct() {
                     {codes?.map((item, index) => <CodeCard key={index} item={item} />)}
                 </div>
             </div>
-        </div>
+        </section>
     );
 }
 

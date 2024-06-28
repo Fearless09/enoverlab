@@ -28,29 +28,31 @@ const threeSteps: {
 
 export default function InternshipThreeSteps() {
     return (
-        <div className="container mx-auto px-4 py-12 font-plus-jakarta-sans sm:mt-[49px]">
-            <div className="mx-auto w-full max-w-[708px] text-center">
-                <h1 className="text-2xl font-semibold leading-snug text-primary-300 sm:text-4xl">
-                    Your Internship Journey in Three Steps
-                </h1>
-                <p className="mt-4 text-base font-normal leading-[160%] text-secondary sm:text-xl">
-                    Kickstart your career with an internship that offers hands-on
-                    experience, and professional growth opportunities.
-                </p>
-            </div>
+        <section className="sm:mt-[49px]">
+            <div className="container mx-auto px-4 py-12 font-plus-jakarta-sans">
+                <div className="mx-auto w-full max-w-[708px] text-center">
+                    <h1 className="text-2xl font-semibold leading-snug text-primary-300 sm:text-4xl">
+                        Your Internship Journey in Three Steps
+                    </h1>
+                    <p className="mt-4 text-base font-normal leading-[160%] text-secondary sm:text-xl">
+                        Kickstart your career with an internship that offers hands-on
+                        experience, and professional growth opportunities.
+                    </p>
+                </div>
 
-            <div className="mt-7 flex flex-wrap justify-around gap-x-4 gap-y-8 sm:mt-14">
-                {threeSteps?.map((item, index) => (
-                    <InternshipStepsCard
-                        key={index}
-                        step={item.step}
-                        otherStyle={item.otherStyle}
-                        body={item.body}
-                        heading={item.heading}
-                    />
-                ))}
+                <div className="mt-7 flex flex-wrap justify-around gap-x-4 gap-y-8 sm:mt-14">
+                    {threeSteps?.map((item, index) => (
+                        <InternshipStepsCard
+                            key={index}
+                            step={item.step}
+                            otherStyle={item.otherStyle}
+                            body={item.body}
+                            heading={item.heading}
+                        />
+                    ))}
+                </div>
             </div>
-        </div>
+        </section>
     );
 }
 

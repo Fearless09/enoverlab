@@ -20,21 +20,23 @@ const purposes: {
 
 export default function PurposeOfInternship() {
     return (
-        <div className="container mx-auto px-4 py-12 text-center font-plus-jakarta-sans">
-            <h1 className="text-2xl font-semibold text-primary-300 sm:text-[40px]">
-                Purpose of the Internship
-            </h1>
+        <section className="font-plus-jakarta-sans">
+            <div className="container mx-auto px-4 py-12 text-center">
+                <h1 className="text-2xl font-semibold text-primary-300 sm:text-[40px]">
+                    Purpose of the Internship
+                </h1>
 
-            <div className="mt-7 flex flex-wrap justify-around gap-x-4 gap-y-5 sm:mt-20">
-                {purposes?.map((item, index) => (
-                    <PurposeCard
-                        key={index}
-                        text={item.text}
-                        otherStyle={item.otherStyle}
-                    />
-                ))}
+                <div className="mt-7 flex flex-wrap justify-around gap-x-4 gap-y-5 sm:mt-20">
+                    {purposes?.map((item, index) => (
+                        <PurposeCard
+                            key={index}
+                            text={item.text}
+                            otherStyle={item.otherStyle}
+                        />
+                    ))}
+                </div>
             </div>
-        </div>
+        </section>
     );
 }
 
