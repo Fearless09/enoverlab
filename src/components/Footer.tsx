@@ -144,7 +144,7 @@ export default function Footer() {
                             <input
                                 type="text"
                                 name=""
-                                placeholder="Fullname"
+                                placeholder="Email Address"
                                 className="h-9 w-[152px] border-0 bg-white px-[18px] font-plus-jakarta-sans text-xs font-light outline-0 ring-0"
                             />
                             <button className="active:scale-98 flex h-9 w-[152px] items-center justify-center bg-primary-200 font-plus-jakarta-sans text-xs font-light text-white hover:bg-primary-300/80">
