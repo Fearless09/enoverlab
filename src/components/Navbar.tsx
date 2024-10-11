@@ -53,9 +53,7 @@ export default function Navbar() {
           ))}
         </span>
 
-        <button
-          className="hidden sm:inline-flex items-center justify-center  px-12 py-3 border border-[#C5C5C5] rounded-[10px] bg-[#0046FF] text-white"
-        >
+        <button className="hidden items-center justify-center rounded-[10px] border border-[#C5C5C5] bg-[#0046FF] px-12 py-3 text-white sm:inline-flex">
           Enroll
         </button>
 

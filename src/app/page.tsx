@@ -11,7 +11,7 @@ import PurposeOfInternship from "@/components/PurposeOfInternship";
 import StartWithEnoverlab from "@/components/StartWithEnoverlab";
 import AluminiTestimonials from "@/components/alumni";
 import MentorsSection from "@/components/Mentor";
-import StudentPortfolio from '@/components/StudentPortfolio'
+import StudentPortfolio from "@/components/StudentPortfolio";
 import ContactForm from "@/components/Contact";
 
 export default function Home() {
@@ -24,13 +24,13 @@ export default function Home() {
       <PurposeOfInternship />
       <CareerField />
       <CodeOfConduct />
-      <AluminiTestimonials  />
+      <AluminiTestimonials />
       <AluminiTestimonial />
       <MentorsSection />
       <StudentPortfolio />
       <ContactForm />
       <FAQ />
-      
+
       <StartWithEnoverlab />
       <Footer />
     </main>
