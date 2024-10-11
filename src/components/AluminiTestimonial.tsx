@@ -25,11 +25,11 @@ const testimonials: {
 
 export default function AluminiTestimonial() {
     return (
-        <section className="mt-5 bg-primary-100 px-4 py-[52px] font-plus-jakarta-sans sm:mt-[47px] sm:px-[70px]">
+        <section className="mt-5 bg-primary-100 px-4 py-[52px] font-plus-jakarta-sans sm:mt-[47px] sm:px-[70px] sm:hidden ">
             <div className="container mx-auto">
                 <div className="mx-auto w-full max-w-[641px] text-center">
                     <h1 className="text-2xl font-medium text-primary-300 sm:text-4xl">
-                        Alumini Testmonials
+                        Our Alumni Speaks
                     </h1>
 
                     <p className="mt-4 text-base font-normal leading-[160%] text-secondary sm:text-lg">

@@ -12,3 +12,16 @@ body {
     font-family: "Plus Jakarta Sans", sans-serif;
     color: #323232;
 }
+
+.header-animation {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.5s forwards; /* Change duration as needed */
+  }
+  
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
