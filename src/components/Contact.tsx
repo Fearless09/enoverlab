@@ -1,4 +1,7 @@
+"use client";
+
 import React from 'react';
+import { motion } from 'framer-motion'; 
 
 export default function ContactForm() {
   return (
@@ -13,7 +16,12 @@ export default function ContactForm() {
         
         <div className="flex flex-col md:flex-row justify-between gap-8 md:gap-16">
           {/* Contact Details Section */}
-          <div className="flex-1 md:max-w-xs flex flex-col items-start space-y-4 p-4">
+          <motion.div
+            className="flex-1 md:max-w-xs flex flex-col items-start space-y-4 p-4"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+          >
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center shrink-0">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -31,12 +39,23 @@ export default function ContactForm() {
               </div>
               <span className="text-gray-600">enverlab@gmail.com</span>
             </div>
-          </div>
+          </motion.div>
           
           {/* Contact Form Section */}
-          <form className="flex-1 flex flex-col md:items-end">
+          <motion.form
+            className="flex-1 flex flex-col md:items-end"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.7 }}
+          >
             <div className="space-y-4">
-              <div className="w-full">
+              {/* Email Input */}
+              <motion.div
+                className="w-full"
+                initial={{ opacity: 0, x: -30 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.4, delay: 0.2 }}
+              >
                 <label htmlFor="email" className="sr-only">Email</label>
                 <input
                   type="email"
@@ -44,9 +63,15 @@ export default function ContactForm() {
                   placeholder="Email:"
                   className="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:border-blue-500 md:w-[400px] lg:w-[575px]"
                 />
-              </div>
-              
-              <div className="w-full">
+              </motion.div>
+
+              {/* Message Textarea */}
+              <motion.div
+                className="w-full"
+                initial={{ opacity: 0, x: -30 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.4, delay: 0.4 }}
+              >
                 <label htmlFor="message" className="sr-only">Message</label>
                 <textarea
                   id="message"
@@ -54,19 +79,24 @@ export default function ContactForm() {
                   placeholder="Message:"
                   className="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:border-blue-500 md:w-[400px] lg:w-[575px]"
                 />
-              </div>
+              </motion.div>
               
-              <div className="w-full text-right">
+              {/* Send Button */}
+              <motion.div
+                className="w-full text-right"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: 0.6 }}
+              >
                 <button
                   type="submit"
                   className="bg-[#0038FF] text-white px-6 py-2 rounded-full hover:bg-blue-600 transition-colors"
                 >
                   Send message
                 </button>
-              </div>
+              </motion.div>
             </div>
-          </form>
-
+          </motion.form>
         </div>
       </div>
     </div>
