@@ -1,4 +1,4 @@
-'use client';
+"use client";
 import React, { useRef, useEffect, useState } from "react";
 import { motion } from "framer-motion"; // Import Framer Motion
 
@@ -20,7 +20,7 @@ const purposes = [
 export default function PurposeOfInternship() {
   return (
     // Ensure the section container has `overflow-x-hidden`
-    <section className="font-plus-jakarta-sans overflow-x-hidden">
+    <section className="overflow-x-hidden font-plus-jakarta-sans">
       <div className="container mx-auto px-4 py-12 text-center">
         <h1 className="text-2xl font-semibold text-primary-300 sm:text-[40px]">
           Purpose of the Internship
@@ -28,7 +28,11 @@ export default function PurposeOfInternship() {
 
         <div className="mt-7 flex flex-wrap justify-around gap-x-4 gap-y-5 sm:mt-20">
           {purposes?.map((item, index) => (
-            <PurposeCard key={index} text={item.text} otherStyle={item.otherStyle} />
+            <PurposeCard
+              key={index}
+              text={item.text}
+              otherStyle={item.otherStyle}
+            />
           ))}
         </div>
       </div>
@@ -59,7 +63,7 @@ function PurposeCard({
       },
       {
         threshold: 0.5, // Trigger when 50% of the component is in view
-      }
+      },
     );
 
     if (cardRef.current) {

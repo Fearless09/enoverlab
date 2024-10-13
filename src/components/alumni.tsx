@@ -1,31 +1,31 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from 'react';
-import { Play } from 'lucide-react';
-import Image from 'next/image';
-import { motion } from 'framer-motion'; // Import framer motion components
+import React, { useEffect, useRef, useState } from "react";
+import { Play } from "lucide-react";
+import Image from "next/image";
+import { motion } from "framer-motion"; // Import framer motion components
 
 const testimonials = [
   {
-    name: 'Happiness Adaobi',
-    role: 'Product Designer',
+    name: "Happiness Adaobi",
+    role: "Product Designer",
   },
   {
-    name: 'Tochi Elebebe',
-    role: 'Lead Product Manager',
+    name: "Tochi Elebebe",
+    role: "Lead Product Manager",
   },
   {
-    name: 'Adeolowo Samuel',
-    role: 'Frontend Developer',
+    name: "Adeolowo Samuel",
+    role: "Frontend Developer",
   },
 ];
 
 export default function AlumniTestimonials() {
   return (
-    <div className="w-full py-16 px-4 md:px-6 lg:px-8 hidden sm:block">
-      <div className="max-w-7xl mx-auto">
+    <div className="hidden w-full px-4 py-16 sm:block md:px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl">
         {/* Header Section */}
-        <div className="mx-auto w-full max-w-[641px] text-center mb-16">
+        <div className="mx-auto mb-16 w-full max-w-[641px] text-center">
           <h1 className="text-2xl font-medium text-primary-300 sm:text-4xl">
             Our Alumni Speaks
           </h1>
@@ -37,17 +37,17 @@ export default function AlumniTestimonials() {
         </div>
 
         {/* Testimonials Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
           {testimonials.map((testimonial, index) => (
             <TestimonialCard key={index} testimonial={testimonial} />
           ))}
         </div>
 
         {/* See All Button */}
-        <div className="flex justify-end mt-8">
-          <button className="flex items-center text-[#666666] hover:text-[#0066FF] transition-colors duration-300">
+        <div className="mt-8 flex justify-end">
+          <button className="flex items-center text-[#666666] transition-colors duration-300 hover:text-[#0066FF]">
             <span className="mr-2">See all</span>
-            <svg className="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
+            <svg className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
               <path
                 fillRule="evenodd"
                 d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
@@ -61,7 +61,11 @@ export default function AlumniTestimonials() {
   );
 }
 
-const TestimonialCard = ({ testimonial }: { testimonial: { name: string; role: string } }) => {
+const TestimonialCard = ({
+  testimonial,
+}: {
+  testimonial: { name: string; role: string };
+}) => {
   const cardRef = useRef<HTMLDivElement | null>(null); // Ref for the testimonial card
   const [isInView, setIsInView] = useState(false); // State to track if the card is in view
 
@@ -73,7 +77,7 @@ const TestimonialCard = ({ testimonial }: { testimonial: { name: string; role: s
       },
       {
         threshold: 0.5, // Trigger when 50% of the element is in view
-      }
+      },
     );
 
     if (cardRef.current) {
@@ -91,7 +95,7 @@ const TestimonialCard = ({ testimonial }: { testimonial: { name: string; role: s
   return (
     <motion.div
       ref={cardRef} // Attach the ref to the component
-      className="relative group overflow-hidden rounded-2xl"
+      className="group relative overflow-hidden rounded-2xl"
       initial={{ opacity: 0, x: -100 }} // Initially off-screen left with opacity 0
       animate={{
         opacity: isInView ? 1 : 0, // Fade in when in view
@@ -100,7 +104,7 @@ const TestimonialCard = ({ testimonial }: { testimonial: { name: string; role: s
       transition={{ duration: 0.5 }}
     >
       {/* Image Container */}
-      <div className="relative w-full h-[280px] lg:h-[350px]">
+      <div className="relative h-[280px] w-full lg:h-[350px]">
         <div className="absolute inset-0 bg-gray-200" />
         <Image
           src="/api/placeholder/400/320"
@@ -112,14 +116,14 @@ const TestimonialCard = ({ testimonial }: { testimonial: { name: string; role: s
         {/* Dark Overlay */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent">
           {/* Play Button */}
-          <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-            <button className="w-12 h-12 bg-white rounded-full flex items-center justify-center">
-              <Play className="w-6 h-6 text-black" />
+          <div className="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+            <button className="flex h-12 w-12 items-center justify-center rounded-full bg-white">
+              <Play className="h-6 w-6 text-black" />
             </button>
           </div>
           {/* Text Overlay */}
           <div className="absolute bottom-0 left-0 right-0 p-6">
-            <h3 className="text-xl font-semibold text-white mb-1">
+            <h3 className="mb-1 text-xl font-semibold text-white">
               {testimonial.name}
             </h3>
             <p className="text-gray-300">{testimonial.role}</p>

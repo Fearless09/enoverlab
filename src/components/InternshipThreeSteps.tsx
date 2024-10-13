@@ -1,4 +1,4 @@
-'use client';
+"use client";
 import React, { useRef, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
@@ -32,11 +32,12 @@ export default function InternshipThreeSteps() {
             Your Internship Journey in Three Steps
           </h1>
           <p className="mt-4 text-base font-normal leading-[160%] text-secondary sm:text-xl">
-            Kickstart your career with an internship that offers hands-on experience and professional growth opportunities.
+            Kickstart your career with an internship that offers hands-on
+            experience and professional growth opportunities.
           </p>
         </div>
 
-        <div className="mt-7 flex flex-wrap justify-around gap-x-4 gap-y-8 sm:mt-14 overflow-x-hidden">
+        <div className="mt-7 flex flex-wrap justify-around gap-x-4 gap-y-8 overflow-x-hidden sm:mt-14">
           {threeSteps?.map((item, index) => (
             <InternshipStepsCard
               key={index}
@@ -79,7 +80,7 @@ function InternshipStepsCard({
       },
       {
         threshold: 0.5, // Trigger when 50% of the component is in view
-      }
+      },
     );
 
     if (cardRef.current) {
