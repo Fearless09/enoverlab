@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import React, { useEffect, useState } from "react";
 import { motion, useAnimation } from "framer-motion"; // Import useAnimation for controlling animations
@@ -16,7 +16,7 @@ const useAnimatedNumber = (endValue: number, duration: number): number => {
       const progress = timestamp - startTime;
       const newValue = Math.min(
         Math.floor((progress / duration) * endValue),
-        endValue
+        endValue,
       );
       setNumber(newValue);
       if (progress < duration) {
@@ -38,7 +38,7 @@ const Header: React.FC = () => {
 
   // Create animation controls
   const controls = useAnimation();
-  
+
   // Effect to handle scroll event
   useEffect(() => {
     // Function to handle scroll
@@ -54,11 +54,11 @@ const Header: React.FC = () => {
     controls.start({ opacity: 1, y: 0 });
 
     // Add scroll event listener
-    window.addEventListener('scroll', handleScroll);
-    
+    window.addEventListener("scroll", handleScroll);
+
     // Cleanup the event listener on unmount
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, [controls]);
 
@@ -89,8 +89,8 @@ const Header: React.FC = () => {
       </header>
 
       {/* Statistics Box Section */}
-      <div className="bg-[#DDE9FF] font-plus-jakarta-sans py-12 px-6 sm:px-12 rounded-lg mt-12 max-w-[1200px] mx-auto">
-        <div className="flex flex-wrap items-center justify-center text-center gap-8 sm:gap-12">
+      <div className="mx-auto mt-12 max-w-[1200px] rounded-lg bg-[#DDE9FF] px-6 py-12 font-plus-jakarta-sans sm:px-12">
+        <div className="flex flex-wrap items-center justify-center gap-8 text-center sm:gap-12">
           {/* Individual Statistics Box with Animation */}
           <motion.div
             className="flex flex-col items-center border-r-2 border-black pr-8"
@@ -98,24 +98,24 @@ const Header: React.FC = () => {
             animate={controls} // Use animation controls
             transition={{ duration: 0.5 }} // Adjust duration as needed
           >
-            <h3 className="text-[#0046FF] text-2xl sm:text-4xl italic font-bold">
+            <h3 className="text-2xl font-bold italic text-[#0046FF] sm:text-4xl">
               {studentsMentored}+
             </h3>
-            <p className="text-[#0046FF] text-sm sm:text-lg">
+            <p className="text-sm text-[#0046FF] sm:text-lg">
               Students Mentored
             </p>
           </motion.div>
-          
+
           <motion.div
             className="flex flex-col items-center border-r-2 border-black pr-8"
             initial={{ opacity: 0, y: 20 }}
             animate={controls} // Use animation controls
             transition={{ duration: 0.5 }} // Adjust duration as needed
           >
-            <h3 className="text-[#0046FF] text-2xl sm:text-4xl italic font-bold">
+            <h3 className="text-2xl font-bold italic text-[#0046FF] sm:text-4xl">
               {internshipCohort}+
             </h3>
-            <p className="text-[#0046FF] text-sm sm:text-lg">
+            <p className="text-sm text-[#0046FF] sm:text-lg">
               Internship Cohort
             </p>
           </motion.div>
@@ -126,10 +126,10 @@ const Header: React.FC = () => {
             animate={controls} // Use animation controls
             transition={{ duration: 0.5 }} // Adjust duration as needed
           >
-            <h3 className="text-[#0046FF] text-2xl sm:text-4xl italic font-bold">
+            <h3 className="text-2xl font-bold italic text-[#0046FF] sm:text-4xl">
               {yearsOfService}+
             </h3>
-            <p className="text-[#0046FF] text-sm sm:text-lg">
+            <p className="text-sm text-[#0046FF] sm:text-lg">
               Years of Service
             </p>
           </motion.div>
@@ -140,12 +140,10 @@ const Header: React.FC = () => {
             animate={controls} // Use animation controls
             transition={{ duration: 0.5 }} // Adjust duration as needed
           >
-            <h3 className="text-[#0046FF] text-2xl sm:text-4xl italic font-bold">
+            <h3 className="text-2xl font-bold italic text-[#0046FF] sm:text-4xl">
               {hiringRate}%
             </h3>
-            <p className="text-[#0046FF] text-sm sm:text-lg">
-              Hiring Rate
-            </p>
+            <p className="text-sm text-[#0046FF] sm:text-lg">Hiring Rate</p>
           </motion.div>
         </div>
       </div>
