@@ -1,5 +1,8 @@
+"use client";
+
 import { PlayIconSVG } from "@/constant/SVGs";
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
+import { motion } from "framer-motion"; // Import Framer Motion
 
 const testimonials: {
   name: string;
@@ -33,7 +36,7 @@ export default function AluminiTestimonial() {
           </h1>
 
           <p className="mt-4 text-base font-normal leading-[160%] text-secondary sm:text-lg">
-            Discover the impact our program has had on past interns, Hear from
+            Discover the impact our program has had on past interns. Hear from
             our alumni about their experience and how this internship shaped
             their careers.
           </p>
@@ -58,8 +61,45 @@ function TestimonialCard({
     videoSrc: string;
   };
 }) {
+  const cardRef = useRef(null);
+  const [isInView, setIsInView] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsInView(true);
+          } else {
+            setIsInView(false);
+          }
+        });
+      },
+      {
+        threshold: 0.5, // Trigger when 50% of the component is in view
+      },
+    );
+
+    if (cardRef.current) {
+      observer.observe(cardRef.current);
+    }
+
+    return () => {
+      if (cardRef.current) {
+        observer.unobserve(cardRef.current);
+      }
+    };
+  }, []);
+
   return (
-    <div className="max-h-[467px] w-[413px] rounded-[15px] bg-primary-300 px-7 py-9 text-white">
+    <motion.div
+      ref={cardRef}
+      className="max-h-[467px] w-[413px] rounded-[15px] bg-primary-300 px-7 py-9 text-white"
+      initial={{ opacity: 0, x: -100 }} // Initial state off-screen to the left
+      animate={{ opacity: isInView ? 1 : 0, x: isInView ? 0 : -100 }} // Animate in from left
+      exit={{ opacity: 0, x: -100 }} // Reverse animation when leaving the view
+      transition={{ duration: 0.5 }}
+    >
       <div className="relative h-[213px] rounded-[15px] bg-white">
         <button className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 hover:opacity-[0.95] active:scale-[0.95]">
           <PlayIconSVG color="#C5C5C5" />
@@ -72,6 +112,6 @@ function TestimonialCard({
       <p className="mt-2 text-base font-normal leading-[160%] sm:text-xl">
         {role}
       </p>
-    </div>
+    </motion.div>
   );
 }

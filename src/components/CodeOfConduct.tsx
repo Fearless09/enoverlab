@@ -1,6 +1,9 @@
-import React, { ReactNode } from "react";
+"use client";
+
+import React, { ReactNode, useState, useEffect, useRef } from "react";
 import RightArrowCTAButton from "./RightArrowCTAButton";
 import { CommunicationSVG, CultureSVG, ReadinessSVG } from "@/constant/SVGs";
+import { motion } from "framer-motion"; // Import Framer Motion
 
 const codes: {
   svg: ReactNode;
@@ -60,8 +63,45 @@ function CodeCard({
     description: string;
   };
 }) {
+  const cardRef = useRef(null);
+  const [isInView, setIsInView] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsInView(true);
+          } else {
+            setIsInView(false);
+          }
+        });
+      },
+      {
+        threshold: 0.5, // Trigger when 50% of the component is in view
+      },
+    );
+
+    if (cardRef.current) {
+      observer.observe(cardRef.current);
+    }
+
+    return () => {
+      if (cardRef.current) {
+        observer.unobserve(cardRef.current);
+      }
+    };
+  }, []);
+
   return (
-    <div className="flex max-h-[175px] w-full items-center justify-center rounded-[10px] border border-primary-200 bg-white p-[37px] xl:last:col-start-2">
+    <motion.div
+      ref={cardRef}
+      className="flex max-h-[175px] w-full items-center justify-center rounded-[10px] border border-primary-200 bg-white p-[37px] xl:last:col-start-2"
+      initial={{ opacity: 0, x: -100 }} // Start off-screen to the left
+      animate={{ opacity: isInView ? 1 : 0, x: isInView ? 0 : -100 }} // Animate in from left
+      exit={{ opacity: 0, x: -100 }} // Reverse animation when leaving the view
+      transition={{ duration: 0.5 }}
+    >
       <div className="flex gap-6">
         <div className="h-[30px] w-[30px]">{svg}</div>
         <div>
@@ -71,6 +111,6 @@ function CodeCard({
           </p>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
