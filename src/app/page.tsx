@@ -13,6 +13,11 @@ import AluminiTestimonials from "@/components/alumni";
 import MentorsSection from "@/components/Mentor";
 import StudentPortfolio from "@/components/StudentPortfolio";
 import ContactForm from "@/components/Contact";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Enoverlab - Homepage",
+};
 
 export default function Home() {
   return (

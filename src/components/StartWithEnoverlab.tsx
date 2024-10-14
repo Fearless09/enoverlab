@@ -21,12 +21,6 @@ export default function StartWithEnoverlab() {
             experience!
           </h1>
 
-          {/* <RightArrowCTAButton
-            buttonStyles="text-white bg-[#1E1E1E] border-[#1E1E1E]"
-            arrowColor="#ffffff"
-            text="Get Started"
-          /> */}
-
           <RightArrowCTAButton className="bg-white text-[#323232]">
             Get Started
           </RightArrowCTAButton>
