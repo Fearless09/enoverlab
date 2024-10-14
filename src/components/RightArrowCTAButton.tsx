@@ -1,24 +1,30 @@
 import { RightArrowSVG } from "@/constant/SVGs";
-import React from "react";
+import { cn } from "@/lib/utils";
+import React, { ComponentProps, FC } from "react";
 
-export default function RightArrowCTAButton({
-  buttonStyles,
-  arrowColor,
-  text,
-  onclick,
-}: {
-  buttonStyles: string;
-  arrowColor?: string;
-  text: string;
-  onclick?: () => void;
-}) {
+
+interface RightArrowCTAButtonProps extends ComponentProps<"button"> {
+  arrow?: boolean;
+}
+
+const RightArrowCTAButton: FC<RightArrowCTAButtonProps> = ({
+  className,
+  children,
+  arrow = true,
+  ...props
+}) => {
   return (
     <button
-      className={`flex h-[51px] w-[208px] items-center justify-center gap-4 rounded-[7px] border hover:opacity-[0.95] active:scale-[0.98] ${buttonStyles}`}
-      onClick={onclick}
+      className={cn(
+        "flex h-[51px] w-[208px] items-center justify-center gap-4 rounded-[7px] hover:opacity-[0.95] active:scale-[0.98]",
+        className,
+      )}
+      {...props}
     >
-      <span className="text-sm sm:text-sm">{text}</span>
-      <RightArrowSVG color={arrowColor} />
+      {children}
+      {arrow && <RightArrowSVG />}
     </button>
   );
-}
+};
+
+export default RightArrowCTAButton;

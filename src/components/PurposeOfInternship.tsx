@@ -19,8 +19,10 @@ const purposes = [
 
 export default function PurposeOfInternship() {
   return (
-    // Ensure the section container has `overflow-x-hidden`
-    <section className="overflow-x-hidden font-plus-jakarta-sans">
+    <section
+      id="Purpose of the Internship"
+      className="overflow-x-hidden font-plus-jakarta-sans"
+    >
       <div className="container mx-auto px-4 py-12 text-center">
         <h1 className="text-2xl font-semibold text-primary-300 sm:text-[40px]">
           Purpose of the Internship

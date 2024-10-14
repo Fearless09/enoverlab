@@ -29,7 +29,10 @@ const codes: {
 
 export default function CodeOfConduct() {
   return (
-    <section className="bg-primary-100 font-plus-jakarta-sans text-secondary">
+    <section
+      id="Our Code of Conduct"
+      className="bg-primary-100 font-plus-jakarta-sans text-secondary"
+    >
       <div className="container mx-auto flex flex-col items-center justify-between gap-x-5 gap-y-16 px-4 py-[71px] xl:flex-row xl:items-start">
         <div className="flex w-full max-w-[489px] flex-col gap-6 text-center sm:gap-[34px] xl:text-left">
           <h1 className="text-2xl font-semibold leading-relaxed text-primary-300 sm:text-[45px]">
@@ -39,11 +42,10 @@ export default function CodeOfConduct() {
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua.
           </p>
-          <RightArrowCTAButton
-            buttonStyles="bg-transparent border-primary-300 text-primary-300 mx-auto xl:mx-0"
-            text="Download Rules"
-            arrowColor="#0046FF"
-          />
+
+          <RightArrowCTAButton className="mx-auto border border-primary-300 bg-transparent text-primary-300 xl:mx-0">
+            Download Rules
+          </RightArrowCTAButton>
         </div>
 
         <div className="grid justify-around gap-8 sm:grid-cols-2 lg:justify-end 2xl:grid-cols-[repeat(2,360px)]">

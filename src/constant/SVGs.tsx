@@ -1,4 +1,5 @@
 import exp from "constants";
+import { ComponentProps, FC } from "react";
 
 export const DropdownSVG = () => (
   <svg
@@ -17,18 +18,19 @@ export const DropdownSVG = () => (
   </svg>
 );
 
-export const RightArrowSVG = ({ color }: { color?: string }) => (
+export const RightArrowSVG: FC<ComponentProps<"svg">> = (props) => (
   <svg
     width={27}
     height={24}
     viewBox="0 0 27 24"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
+    {...props}
   >
     <g clipPath="url(#a)">
       <path
         d="m24.3 12 .637.566.636-.566-.636-.566zm-.637-.566-7.2 6.4 1.274 1.132 7.2-6.4zm1.274 0-7.2-6.4-1.274 1.132 7.2 6.4zM24.3 11.2H-4.95v1.6H24.3z"
-        fill={color || "#0046FF"}
+        fill={"currentColor"}
       />
     </g>
     <defs>

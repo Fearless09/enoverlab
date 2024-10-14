@@ -33,7 +33,10 @@ const careers: {
 
 export default function CareerField() {
   return (
-    <section className="bg-primary-300 font-plus-jakarta-sans">
+    <section
+      id="Our Career Fields"
+      className="bg-primary-300 font-plus-jakarta-sans"
+    >
       <div className="container mx-auto px-4 py-[51px]">
         <div className="mx-auto w-full max-w-[640px] text-center text-white">
           <h1 className="text-2xl font-medium leading-relaxed sm:text-4xl">
@@ -125,12 +128,10 @@ function CareerCard({
       </p>
 
       <Link href={"/register"} target="_blank">
-        <RightArrowCTAButton
-          text="Apply Now"
-          buttonStyles="border-primary-300 bg-white text-primary-300 absolute left-4 bottom-10"
-          arrowColor="#0046FF"
-          onclick={() => {}}
-        />
+     
+        <RightArrowCTAButton className="absolute bottom-10 left-4 border border-primary-300 bg-white text-primary-300">
+          Apply Now
+        </RightArrowCTAButton>
       </Link>
     </motion.div>
   );
