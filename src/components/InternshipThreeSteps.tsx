@@ -25,7 +25,10 @@ const threeSteps = [
 
 export default function InternshipThreeSteps() {
   return (
-    <section className="sm:mt-[49px]">
+    <section
+      id="Your Internship Journey in Three Steps"
+      className="sm:mt-[49px]"
+    >
       <div className="container mx-auto px-4 py-12 font-plus-jakarta-sans">
         <div className="mx-auto w-full max-w-[708px] text-center">
           <h1 className="text-2xl font-semibold leading-snug text-primary-300 sm:text-4xl">

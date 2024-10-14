@@ -22,7 +22,10 @@ const testimonials = [
 
 export default function AlumniTestimonials() {
   return (
-    <div className="hidden w-full px-4 py-16 sm:block md:px-6 lg:px-8">
+    <div
+      id="Our Alumni Speaks"
+      className="hidden w-full px-4 py-16 sm:block md:px-6 lg:px-8"
+    >
       <div className="mx-auto max-w-7xl">
         {/* Header Section */}
         <div className="mx-auto mb-16 w-full max-w-[641px] text-center">

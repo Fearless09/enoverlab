@@ -57,6 +57,7 @@ const AboutInternship: React.FC = () => {
 
   return (
     <motion.div
+      id="About Internship"
       ref={ref} // Attach the ref to the main container
       className="mt-12 flex h-[700px] items-center justify-center bg-blue-100 sm:h-[500px]"
       initial="initial"

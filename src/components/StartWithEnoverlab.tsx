@@ -3,11 +3,12 @@
 import React from "react";
 import { motion } from "framer-motion"; // Importing framer motion components
 import RightArrowCTAButton from "./RightArrowCTAButton";
+import MaxWidth from "@/constant/MaxWidth";
 
 export default function StartWithEnoverlab() {
   return (
     <section className="font-plus-jakarta-sans">
-      <div className="container mx-auto px-4 py-[107px]">
+      <MaxWidth className="py-[107px]">
         <motion.div
           className="mx-auto flex h-[413px] w-full max-w-[1120px] flex-col items-center justify-center gap-12 rounded-[30px] bg-primary-300 px-4 text-center text-white"
           initial={{ scale: 0.8 }}
@@ -20,13 +21,17 @@ export default function StartWithEnoverlab() {
             experience!
           </h1>
 
-          <RightArrowCTAButton
+          {/* <RightArrowCTAButton
             buttonStyles="text-white bg-[#1E1E1E] border-[#1E1E1E]"
             arrowColor="#ffffff"
             text="Get Started"
-          />
+          /> */}
+
+          <RightArrowCTAButton className="bg-white text-[#323232]">
+            Get Started
+          </RightArrowCTAButton>
         </motion.div>
-      </div>
+      </MaxWidth>
     </section>
   );
 }

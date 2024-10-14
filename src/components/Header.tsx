@@ -63,7 +63,10 @@ const Header: React.FC = () => {
   }, [controls]);
 
   return (
-    <div className="font-plus-jakarta-sans">
+    <div
+      id="Give Yourself an Unbeatable Advantage"
+      className="font-plus-jakarta-sans"
+    >
       {/* Header Section with Animation */}
       <header className={`mt-16 sm:mt-[50px]`}>
         <div className="container mx-auto flex h-full w-full items-center justify-center px-4 text-center">
@@ -78,11 +81,9 @@ const Header: React.FC = () => {
             </p>
 
             <Link href={"/register"} target="_blank">
-              <RightArrowCTAButton
-                text="Apply Now"
-                buttonStyles="border-[#C5C5C5] text-white bg-primary-300"
-                arrowColor="#fff"
-              />
+              <RightArrowCTAButton className="broder border-[#C5C5C5] bg-primary-300 text-white">
+                Apply Now
+              </RightArrowCTAButton>
             </Link>
           </div>
         </div>

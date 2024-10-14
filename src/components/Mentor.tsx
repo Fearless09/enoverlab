@@ -4,6 +4,7 @@ import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { FaLinkedin } from "react-icons/fa";
 import { motion } from "framer-motion"; // Import framer motion components
+import MaxWidth from "@/constant/MaxWidth";
 
 const mentors = [
   {
@@ -21,25 +22,23 @@ const mentors = [
 
 export default function MentorsSection() {
   return (
-    <div className="w-full px-4 py-16 md:px-6 lg:px-8">
-      <div className="mx-auto max-w-6xl">
-        {/* Header */}
-        <div className="mb-12 text-center">
-          <h2 className="mb-4 text-3xl font-bold">Meet Your Mentors</h2>
-          <p className="mx-auto max-w-2xl text-[#666666]">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          </p>
-        </div>
-
-        {/* Mentors Grid */}
-        <div className="mx-auto grid max-w-4xl grid-cols-1 gap-8 md:grid-cols-2">
-          {mentors.map((mentor, index) => (
-            <MentorCard key={index} mentor={mentor} />
-          ))}
-        </div>
+    <MaxWidth className="py-16">
+      {/* Header */}
+      <div className="text-center">
+        <h2 className="text-[40px] font-bold">Meet Your Mentors</h2>
+        <p className="mx-auto mt-8 max-w-3xl text-lg text-[#666666]">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        </p>
       </div>
-    </div>
+
+      {/* Mentors Grid */}
+      <div className="mx-auto mt-[100px] grid max-w-3xl grid-cols-1 gap-16 md:grid-cols-2">
+        {mentors.map((mentor, index) => (
+          <MentorCard key={index} mentor={mentor} />
+        ))}
+      </div>
+    </MaxWidth>
   );
 }
 
@@ -75,7 +74,7 @@ const MentorCard = ({
   return (
     <motion.div
       ref={cardRef} // Attach the ref to the component
-      className="flex flex-col items-center"
+      className="text-center"
       initial={{ opacity: 0, y: 50 }} // Initial state: off-screen with opacity 0
       animate={{
         opacity: isInView ? 1 : 0, // Fade in when in view
@@ -84,13 +83,13 @@ const MentorCard = ({
       transition={{ duration: 0.5 }}
     >
       {/* Image Container */}
-      <div className="relative mb-4 h-64 w-64">
+      <div className="relative mb-4 aspect-[547/623] w-full max-w-[547px]">
         <Image
           src={mentor.imageUrl}
           alt={mentor.name}
-          fill
-          className="rounded-lg object-cover"
-          sizes="(max-width: 768px) 100vw, 256px"
+          width={547}
+          height={623}
+          className="object-cover object-center"
         />
       </div>
 
@@ -102,8 +101,8 @@ const MentorCard = ({
       )}
 
       {/* LinkedIn Icon */}
-      <a href="#" className="mt-2">
-        <FaLinkedin className="h-8 w-8 text-[#0077B5] transition-colors duration-300 hover:text-[#00669C]" />
+      <a href="#" className="mx-auto mt-3 flex w-fit">
+        <FaLinkedin className="size-10 text-[#0077B5] transition-colors duration-300 hover:text-[#00669C]" />
       </a>
     </motion.div>
   );
