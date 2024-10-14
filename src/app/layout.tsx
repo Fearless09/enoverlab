@@ -6,7 +6,10 @@ import ContextProvider from "./provider";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Enoverlab - Overview",
+  title: {
+    default: "Enoverlab",
+    template: "Enoverlab - %s",
+  },
   description: "Enoverlab Internship Program",
 };
 
