@@ -2,7 +2,6 @@ import { DropdownSVG, HamburgerSVG } from "@/constant/SVGs";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import RightArrowCTAButton from "./RightArrowCTAButton";
 
 const navLinks: {
   name: string;
@@ -41,7 +40,7 @@ export default function Navbar() {
           className="w-[138px] sm:w-[225px]"
         />
 
-        <span className="hidden items-center gap-6 lg:flex">
+        <span className="hidden items-center gap-4 space-x-5 lg:flex">
           {navLinks?.map((item, index) => (
             <Link
               className="flex items-center gap-1.5 font-plus-jakarta-sans text-lg font-normal text-secondary"
@@ -54,11 +53,11 @@ export default function Navbar() {
           ))}
         </span>
 
-        <RightArrowCTAButton
-          text="Contact Us"
-          buttonStyles="border-primary-300 text-primary-300 !hidden sm:!flex"
-          arrowColor="#0046FF"
-        />
+        <button
+          className="hidden sm:inline-flex items-center justify-center  px-12 py-3 border border-[#C5C5C5] rounded-[10px] bg-[#0046FF] text-white"
+        >
+          Enroll
+        </button>
 
         {/* Hamburger */}
         <button className="inline-flex sm:hidden">

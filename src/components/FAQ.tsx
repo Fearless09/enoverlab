@@ -79,7 +79,7 @@ function Question({
                 <span className="w-full max-w-[763px]">
                     {no}. {ques}
                 </span>
-                <span className="flex h-[40px] w-[40px] items-center justify-center rounded-full bg-[#0D1821]">
+                <span className="flex h-[40px] w-[40px] items-center justify-center rounded-full bg-primary-300">
                     <FAQDropdownSVG styles={isAns ? "rotate-180" : ""} />
                 </span>
             </button>

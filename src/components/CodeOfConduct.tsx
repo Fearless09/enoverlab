@@ -1,28 +1,31 @@
-import React, { ReactNode } from "react";
+"use client";
+
+import React, { ReactNode, useState, useEffect, useRef } from "react";
 import RightArrowCTAButton from "./RightArrowCTAButton";
 import { CommunicationSVG, CultureSVG, ReadinessSVG } from "@/constant/SVGs";
+import { motion } from "framer-motion"; // Import Framer Motion
 
 const codes: {
     svg: ReactNode;
     name: string;
     description: string;
 }[] = [
-        {
-            svg: <CultureSVG />,
-            name: "Culture",
-            description: "Respect everyone's different backgrounds and experiences.",
-        },
-        {
-            svg: <CommunicationSVG />,
-            name: "Communication",
-            description: "Take part in team meetings and listen to others' ideas.",
-        },
-        {
-            svg: <ReadinessSVG />,
-            name: "Readiness",
-            description: "Be creative and resourceful in solving problems.",
-        },
-    ];
+    {
+        svg: <CultureSVG />,
+        name: "Culture",
+        description: "Respect everyone's different backgrounds and experiences.",
+    },
+    {
+        svg: <CommunicationSVG />,
+        name: "Communication",
+        description: "Take part in team meetings and listen to others' ideas.",
+    },
+    {
+        svg: <ReadinessSVG />,
+        name: "Readiness",
+        description: "Be creative and resourceful in solving problems.",
+    },
+];
 
 export default function CodeOfConduct() {
     return (
@@ -44,7 +47,9 @@ export default function CodeOfConduct() {
                 </div>
 
                 <div className="grid justify-around gap-8 sm:grid-cols-2 lg:justify-end 2xl:grid-cols-[repeat(2,360px)]">
-                    {codes?.map((item, index) => <CodeCard key={index} item={item} />)}
+                    {codes?.map((item, index) => (
+                        <CodeCard key={index} item={item} />
+                    ))}
                 </div>
             </div>
         </section>
@@ -60,8 +65,45 @@ function CodeCard({
         description: string;
     };
 }) {
+    const cardRef = useRef(null);
+    const [hasAnimated, setHasAnimated] = useState(false); // Track if animation has played
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting && !hasAnimated) {
+                        setHasAnimated(true); // Trigger animation once
+                    }
+                });
+            },
+            {
+                threshold: 0.5, // Trigger when 50% of the component is in view
+            }
+        );
+
+        if (cardRef.current) {
+            observer.observe(cardRef.current);
+        }
+
+        return () => {
+            if (cardRef.current) {
+                observer.unobserve(cardRef.current);
+            }
+        };
+    }, [hasAnimated]);
+
     return (
-        <div className="flex max-h-[175px] w-full items-center justify-center rounded-[10px] border border-primary-200 bg-white p-[37px] xl:last:col-start-2">
+        <motion.div
+            ref={cardRef}
+            className="flex max-h-[175px] w-full items-center justify-center rounded-[10px] border border-primary-200 bg-white p-[37px] xl:last:col-start-2"
+            initial={{ opacity: 0, x: -100 }} // Start off-screen to the left
+            animate={{
+                opacity: hasAnimated ? 1 : 0, // Animate in once
+                x: hasAnimated ? 0 : -100, // Animate in once
+            }}
+            transition={{ duration: 0.5 }}
+        >
             <div className="flex gap-6">
                 <div className="h-[30px] w-[30px]">{svg}</div>
                 <div>
@@ -71,6 +113,6 @@ function CodeCard({
                     </p>
                 </div>
             </div>
-        </div>
+        </motion.div>
     );
 }

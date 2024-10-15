@@ -1,21 +1,19 @@
-"use client"
+'use client';
 
-import Image from 'next/image'
-import Link from 'next/link'
-import React from 'react'
-import FormCTAButton from '../register/components/FormCTAButton'
+import Image from 'next/image';
+import Link from 'next/link';
+import React from 'react';
+import FormCTAButton from '../register/components/FormCTAButton';
 
-export default function page() {
+export default function Page() {
     return (
         <div className='w-full min-h-screen bg-white overflow-hidden px-5 pt-10 sm:pt-[87px] flex justify-center items-center flex-col gap-10 font-plus-jakarta-sans'>
-            <Link
-                href={"/"}
-            >
+            <Link href={"/"}>
                 <Image
                     src={"/enoverlab_logo.png"}
                     width={225}
-                    height={0}
-                    alt=''
+                    height={150} // Provide a valid height value
+                    alt='Enoverlab Logo' // Add a descriptive alt text
                 />
             </Link>
 
