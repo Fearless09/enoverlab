@@ -67,42 +67,42 @@ function InternshipStepsCard({
   heading: string;
   body: string;
 }) {
-  const cardRef = useRef(null);
-  const [isInView, setIsInView] = useState(false);
+  const cardRef = useRef<HTMLDivElement | null>(null);
+  const [hasAnimated, setHasAnimated] = useState(false);
 
   useEffect(() => {
+    const ref = cardRef.current; //name it ref 
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setIsInView(true);
-          } else {
-            setIsInView(false);
+          if (entry.isIntersecting && !hasAnimated) {
+            setHasAnimated(true);
           }
         });
       },
       {
-        threshold: 0.5, // Trigger when 50% of the component is in view
-      },
+        threshold: 0.5, // Trigger when 50% of the card is visible
+      }
     );
 
-    if (cardRef.current) {
-      observer.observe(cardRef.current);
+    if (ref) {
+      observer.observe(ref);
     }
 
     return () => {
-      if (cardRef.current) {
-        observer.unobserve(cardRef.current);
+      if (ref) {
+        observer.unobserve(ref);
       }
     };
-  }, []);
+  }, [hasAnimated]);
 
   return (
     <motion.div
       ref={cardRef}
       className={`flex min-h-[300px] w-full items-center justify-center rounded-[10px] px-[32px] py-[72px] sm:min-h-[393px] sm:w-[calc(33.33%-32px)] sm:min-w-[401px] ${otherStyle}`}
-      initial={{ opacity: 0, x: isInView ? -100 : 100 }} // Start off-screen (left or right)
-      animate={{ opacity: isInView ? 1 : 0, x: isInView ? 0 : 100 }} // Animate to visible when in view
+      initial={{ opacity: 0, x: hasAnimated? -100 : 100 }} // Start off-screen (left or right)
+      animate={{ opacity: hasAnimated? 1 : 0, x: hasAnimated? 0 : 100 }} // Animate to visible when in view
       transition={{ duration: 0.5 }}
     >
       <div className="-mt-14 w-full sm:w-[340px]">

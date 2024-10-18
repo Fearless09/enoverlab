@@ -74,16 +74,14 @@ function CareerCard({
   description: string;
 }) {
   const cardRef = useRef(null);
-  const [isInView, setIsInView] = useState(false);
+  const [hasAnimated, setHasAnimated] = useState(false); // Track if animation has already occurred
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setIsInView(true);
-          } else {
-            setIsInView(false);
+          if (entry.isIntersecting && !hasAnimated) {
+            setHasAnimated(true);
           }
         });
       },
@@ -96,20 +94,21 @@ function CareerCard({
       observer.observe(cardRef.current);
     }
 
+    const ref = cardRef.current;
+
     return () => {
-      if (cardRef.current) {
-        observer.unobserve(cardRef.current);
+      if (ref) {
+        observer.unobserve(ref);
       }
     };
-  }, []);
+  }, [hasAnimated]); // Only run the animation once
 
   return (
     <motion.div
       ref={cardRef}
       className="relative h-[520px] w-[402px] rounded-[15px] bg-white px-4 py-[22px] text-secondary"
       initial={{ opacity: 0, x: -100 }} // Start off-screen to the left
-      animate={{ opacity: isInView ? 1 : 0, x: isInView ? 0 : -100 }} // Animate in from left
-      exit={{ opacity: 0, x: -100 }} // Reverse animation when leaving the view
+      animate={{ opacity: hasAnimated ? 1 : 0, x: hasAnimated ? 0 : -100 }} // Animate only once
       transition={{ duration: 0.5 }}
     >
       <Image
@@ -128,7 +127,6 @@ function CareerCard({
       </p>
 
       <Link href={"/register"} target="_blank">
-     
         <RightArrowCTAButton className="absolute bottom-10 left-4 border border-primary-300 bg-white text-primary-300">
           Apply Now
         </RightArrowCTAButton>

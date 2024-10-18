@@ -1,6 +1,6 @@
 "use client";
 import React, { useRef, useEffect, useState } from "react";
-import { motion } from "framer-motion"; // Import Framer Motion
+import { motion } from "framer-motion";
 
 const purposes = [
   {
@@ -49,42 +49,42 @@ function PurposeCard({
   text: string;
   otherStyle: string;
 }) {
-  const cardRef = useRef(null);
-  const [isInView, setIsInView] = useState(false);
+  const cardRef = useRef<HTMLDivElement | null>(null);
+  const [hasAnimated, setHasAnimated] = useState(false);
 
   useEffect(() => {
+    const ref = cardRef.current; //name it ref 
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setIsInView(true);
-          } else {
-            setIsInView(false);
+          if (entry.isIntersecting && !hasAnimated) {
+            setHasAnimated(true);
           }
         });
       },
       {
-        threshold: 0.5, // Trigger when 50% of the component is in view
-      },
+        threshold: 0.5, // Trigger when 50% of the card is visible
+      }
     );
 
-    if (cardRef.current) {
-      observer.observe(cardRef.current);
+    if (ref) {
+      observer.observe(ref);
     }
 
     return () => {
-      if (cardRef.current) {
-        observer.unobserve(cardRef.current);
+      if (ref) {
+        observer.unobserve(ref);
       }
     };
-  }, []);
+  }, [hasAnimated]);
 
   return (
     <motion.div
       ref={cardRef}
       className={`flex h-[201px] w-full items-center justify-center rounded-[10px] px-8 sm:w-[calc(33.33%-32px)] sm:min-w-[401px] ${otherStyle}`}
-      initial={{ opacity: 0, x: -100 }} // Start off-screen to the left (-100)
-      animate={{ opacity: isInView ? 1 : 0, x: isInView ? 0 : -100 }} // Slide in from left to right
+      initial={{ opacity: 0, x: -100 }}
+      animate={{ opacity: hasAnimated ? 1 : 0, x: hasAnimated ? 0 : -100 }}
       transition={{ duration: 0.5 }}
     >
       <span className="w-full text-base sm:max-w-[305px] sm:text-xl">
