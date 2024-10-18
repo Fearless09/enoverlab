@@ -3,7 +3,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Play } from "lucide-react";
 import Image from "next/image";
-import { motion } from "framer-motion"; // Import framer motion components
+import { motion } from "framer-motion";
 
 const testimonials = [
   {
@@ -27,7 +27,6 @@ export default function AlumniTestimonials() {
       className="hidden w-full px-4 py-16 sm:block md:px-6 lg:px-8"
     >
       <div className="mx-auto max-w-7xl">
-        {/* Header Section */}
         <div className="mx-auto mb-16 w-full max-w-[641px] text-center">
           <h1 className="text-2xl font-medium text-primary-300 sm:text-4xl">
             Our Alumni Speaks
@@ -39,14 +38,12 @@ export default function AlumniTestimonials() {
           </p>
         </div>
 
-        {/* Testimonials Grid */}
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
           {testimonials.map((testimonial, index) => (
             <TestimonialCard key={index} testimonial={testimonial} />
           ))}
         </div>
 
-        {/* See All Button */}
         <div className="mt-8 flex justify-end">
           <button className="flex items-center text-[#666666] transition-colors duration-300 hover:text-[#0066FF]">
             <span className="mr-2">See all</span>
@@ -69,17 +66,18 @@ const TestimonialCard = ({
 }: {
   testimonial: { name: string; role: string };
 }) => {
-  const cardRef = useRef<HTMLDivElement | null>(null); // Ref for the testimonial card
-  const [isInView, setIsInView] = useState(false); // State to track if the card is in view
+  const cardRef = useRef<HTMLDivElement | null>(null);
+  const [hasAnimated, setHasAnimated] = useState(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        // Set visibility to true if the element is in the viewport
-        setIsInView(entry.isIntersecting);
+        if (entry.isIntersecting && !hasAnimated) {
+          setHasAnimated(true);
+        }
       },
       {
-        threshold: 0.5, // Trigger when 50% of the element is in view
+        threshold: 0.5,
       },
     );
 
@@ -87,26 +85,26 @@ const TestimonialCard = ({
       observer.observe(cardRef.current);
     }
 
-    // Cleanup observer on component unmount
+    const haywhy = cardRef.current
+
     return () => {
-      if (cardRef.current) {
-        observer.unobserve(cardRef.current);
+      if (haywhy) {
+        observer.unobserve(haywhy);
       }
     };
-  }, []);
+  }, [hasAnimated]);
 
   return (
     <motion.div
-      ref={cardRef} // Attach the ref to the component
+      ref={cardRef}
       className="group relative overflow-hidden rounded-2xl"
-      initial={{ opacity: 0, x: -100 }} // Initially off-screen left with opacity 0
+      initial={{ opacity: 0, x: -100 }}
       animate={{
-        opacity: isInView ? 1 : 0, // Fade in when in view
-        x: isInView ? 0 : -100, // Slide in from left
+        opacity: hasAnimated ? 1 : 0,
+        x: hasAnimated ? 0 : -100,
       }}
       transition={{ duration: 0.5 }}
     >
-      {/* Image Container */}
       <div className="relative h-[280px] w-full lg:h-[350px]">
         <div className="absolute inset-0 bg-gray-200" />
         <Image
@@ -116,15 +114,12 @@ const TestimonialCard = ({
           className="object-cover"
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
-        {/* Dark Overlay */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent">
-          {/* Play Button */}
           <div className="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100">
             <button className="flex h-12 w-12 items-center justify-center rounded-full bg-white">
               <Play className="h-6 w-6 text-black" />
             </button>
           </div>
-          {/* Text Overlay */}
           <div className="absolute bottom-0 left-0 right-0 p-6">
             <h3 className="mb-1 text-xl font-semibold text-white">
               {testimonial.name}

@@ -2,7 +2,7 @@
 
 import { PlayIconSVG } from "@/constant/SVGs";
 import React, { useEffect, useRef, useState } from "react";
-import { motion } from "framer-motion"; // Import Framer Motion
+import { motion } from "framer-motion";
 
 const testimonials: {
   name: string;
@@ -65,28 +65,28 @@ function TestimonialCard({
   const [isInView, setIsInView] = useState(false);
 
   useEffect(() => {
+    const haywhy = cardRef.current;
+    
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             setIsInView(true);
-          } else {
-            setIsInView(false);
           }
         });
       },
       {
-        threshold: 0.5, // Trigger when 50% of the component is in view
+        threshold: 0.5,
       },
     );
 
-    if (cardRef.current) {
-      observer.observe(cardRef.current);
+    if (haywhy) {
+      observer.observe(haywhy);
     }
 
     return () => {
-      if (cardRef.current) {
-        observer.unobserve(cardRef.current);
+      if (haywhy) {
+        observer.unobserve(haywhy);
       }
     };
   }, []);
@@ -95,9 +95,8 @@ function TestimonialCard({
     <motion.div
       ref={cardRef}
       className="max-h-[467px] w-[413px] rounded-[15px] bg-primary-300 px-7 py-9 text-white"
-      initial={{ opacity: 0, x: -100 }} // Initial state off-screen to the left
-      animate={{ opacity: isInView ? 1 : 0, x: isInView ? 0 : -100 }} // Animate in from left
-      exit={{ opacity: 0, x: -100 }} // Reverse animation when leaving the view
+      initial={{ opacity: 0, x: -100 }}
+      animate={{ opacity: isInView ? 1 : 0, x: isInView ? 0 : -100 }}
       transition={{ duration: 0.5 }}
     >
       <div className="relative h-[213px] rounded-[15px] bg-white">

@@ -11,7 +11,7 @@ import PurposeOfInternship from "@/components/PurposeOfInternship";
 import StartWithEnoverlab from "@/components/StartWithEnoverlab";
 import AluminiTestimonials from "@/components/alumni";
 import MentorsSection from "@/components/Mentor";
-import StudentPortfolio from "@/components/StudentPortfolio";
+// import StudentPortfolio from "@/components/StudentPortfolio";
 import ContactForm from "@/components/Contact";
 import { Metadata } from "next";
 
@@ -32,7 +32,7 @@ export default function Home() {
       <AluminiTestimonials />
       <AluminiTestimonial />
       <MentorsSection />
-      <StudentPortfolio />
+      {/* <StudentPortfolio />MR Nathaniel said this should be removed for some reasons sir  */}
       <ContactForm />
       <FAQ />
 
