@@ -4,6 +4,7 @@ import React, { ReactNode, useState, useEffect, useRef } from "react";
 import RightArrowCTAButton from "./RightArrowCTAButton";
 import { CommunicationSVG, CultureSVG, ReadinessSVG } from "@/constant/SVGs";
 import { motion } from "framer-motion"; // Import Framer Motion
+import CodeOfConductModal from "@/constant/codeOfConductModal"; // Importing the modal component
 
 const codes: {
   svg: ReactNode;
@@ -28,6 +29,11 @@ const codes: {
 ];
 
 export default function CodeOfConduct() {
+  const [isOpen, setIsOpen] = useState(false); // Modal state to control visibility
+
+  const openModal = () => setIsOpen(true); // Function to open modal
+  const closeModal = () => setIsOpen(false); // Function to close modal
+
   return (
     <section
       id="Our Code of Conduct"
@@ -43,15 +49,24 @@ export default function CodeOfConduct() {
             eiusmod tempor incididunt ut labore et dolore magna aliqua.
           </p>
 
-          <RightArrowCTAButton className="mx-auto border border-primary-300 bg-transparent text-primary-300 xl:mx-0">
+          {/* Keeping the "Download Rules" button with arrow as it is */}
+          <RightArrowCTAButton
+            className="mx-auto border border-primary-300 bg-transparent text-primary-300 xl:mx-0"
+            onClick={openModal} // Opens the modal on click
+          >
             Download Rules
           </RightArrowCTAButton>
         </div>
 
         <div className="grid justify-around gap-8 sm:grid-cols-2 lg:justify-end 2xl:grid-cols-[repeat(2,360px)]">
-          {codes?.map((item, index) => <CodeCard key={index} item={item} />)}
+          {codes?.map((item, index) => (
+            <CodeCard key={index} item={item} />
+          ))}
         </div>
       </div>
+
+      {/* Modal for full code of conduct */}
+      <CodeOfConductModal open={isOpen} handleClose={closeModal} />
     </section>
   );
 }
@@ -69,7 +84,7 @@ function CodeCard({
   const [hasAnimated, setHasAnimated] = useState(false);
 
   useEffect(() => {
-    const ref = cardRef.current; //name it ref can be pass directly 
+    const ref = cardRef.current;
 
     const observer = new IntersectionObserver(
       (entries) => {
@@ -80,7 +95,7 @@ function CodeCard({
         });
       },
       {
-        threshold: 0.5, // Trigger when 50% of the card is visible
+        threshold: 0.5,
       }
     );
 
