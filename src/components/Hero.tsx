@@ -2,11 +2,12 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
+import MaxWidth from "@/constant/MaxWidth";
+import useAnimateObserver from "@/hooks/useAnimateObserver";
 
 const AboutInternship: React.FC = () => {
-  const [isVisible, setIsVisible] = useState(false);
   const [textVisible, setTextVisible] = useState(false);
-  const ref = useRef<HTMLDivElement | null>(null);
+  const { ref, hasAnimated } = useAnimateObserver();
 
   // Animation variants
   const boxVariants = {
@@ -20,55 +21,29 @@ const AboutInternship: React.FC = () => {
   };
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true); // Set to true when the component is visible
-          observer.disconnect(); // Stop observing once visible
-        } else {
-          setIsVisible(false); // Set to false when the component is not visible
-        }
-      },
-      {
-        threshold: 0.5,
-      },
-    );
-
-    if (ref.current) {
-      observer.observe(ref.current);
-    }
-
-    return () => {
-      if (ref.current) {
-        observer.unobserve(ref.current);
-      }
-    };
-  }, []);
-
-  useEffect(() => {
-    if (isVisible) {
+    if (hasAnimated) {
       // After the box is visible, show the text
       const timer = setTimeout(() => setTextVisible(true), 300); // Delay for text animation
       return () => clearTimeout(timer);
     } else {
       setTextVisible(false); // Reset text visibility when not visible
     }
-  }, [isVisible]);
+  }, [hasAnimated]);
 
   return (
     <motion.div
       id="About Internship"
       ref={ref} // Attach the ref to the main container
-      className="mt-12 flex h-[700px] items-center justify-center bg-blue-100 sm:h-[500px]"
+      className="mt-12 flex items-center justify-center bg-[#E0E9FE] px-4 py-4 font-plus-jakarta-sans md:py-20"
       initial="initial"
-      animate={isVisible ? "animate" : "initial"} // Animate box visibility
+      animate={hasAnimated ? "animate" : "initial"} // Animate box visibility
       exit="initial" // No exit animation for the box
       variants={boxVariants}
       transition={{ duration: 0.5 }} // Animation duration for the box
     >
-      <div className="w-[95%] max-w-3xl rounded-lg bg-white p-8 shadow-md sm:w-4/5 md:w-3/4 lg:w-2/3 xl:w-1/2">
+      <MaxWidth className="rounded bg-white pb-4 pt-8 shadow-md md:px-8 md:pb-[45px] md:pt-[70px] ipad:px-20">
         <motion.h2
-          className="mb-4 text-center text-2xl font-bold text-blue-600"
+          className="mb-3 text-center text-2xl font-semibold text-[#0046FF] md:mb-8 md:text-4xl"
           initial="initial"
           animate={textVisible ? "animate" : "initial"} // Animate text visibility
           variants={textVariants}
@@ -77,7 +52,7 @@ const AboutInternship: React.FC = () => {
           About Internship
         </motion.h2>
         <motion.p
-          className="text-center leading-relaxed text-gray-700"
+          className="text-justify text-base font-light !leading-[180%] text-[#323232] md:text-lg"
           initial="initial"
           animate={textVisible ? "animate" : "initial"} // Animate text visibility
           variants={textVariants}
@@ -94,7 +69,7 @@ const AboutInternship: React.FC = () => {
           experiment, and refine your craft, gaining the experience you need to
           thrive in your field. Ready to turn your knowledge into impact?
         </motion.p>
-      </div>
+      </MaxWidth>
     </motion.div>
   );
 };

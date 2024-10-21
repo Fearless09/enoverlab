@@ -1,127 +1,125 @@
 "use client";
 
-import React from "react";
+import React, { ComponentProps, FC, ReactNode } from "react";
 import { motion } from "framer-motion";
+import MaxWidth from "@/constant/MaxWidth";
+import Link from "next/link";
+import { Gmail, Telephone } from "@/constant/SVGs";
+import { cva } from "class-variance-authority";
+import { cn } from "@/lib/utils";
+import { RightArrowCTAButtonVariant } from "./RightArrowCTAButton";
+
+const InputVariant = cva("w-full rounded-[30px] border-0 px-6 py-5 outline-0");
 
 export default function ContactForm() {
   return (
-    <div className="mt-10 w-full bg-[#F0F7FF] p-8">
-      <div className="mx-auto max-w-7xl">
-        <h2 className="mb-2 text-center text-2xl font-medium text-[#00234F] sm:text-4xl">
+    <div className="mt10 w-full bg-[#DBF5FF] py-20 font-plus-jakarta-sans">
+      <MaxWidth>
+        <h2 className="mb-7 text-center text-2xl font-medium text-[#002A42] sm:text-3xl md:text-4xl">
           Contact our friendly team
         </h2>
-        <p className="mb-8 text-center text-gray-600">
+        <p className="mb-10 text-center text-base font-light text-black md:text-lg">
           Let us know how we can help! We are available Mon - Fri from 8am to
           5pm.
         </p>
 
-        <div className="flex flex-col justify-between gap-8 md:flex-row md:gap-16">
+        <div className="flex flex-col gap-8 md:flex-row md:justify-between md:gap-16">
           {/* Contact Details Section */}
           <motion.div
-            className="flex flex-1 flex-col items-start space-y-4 p-4 md:max-w-xs"
+            className="flex w-max flex-col gap-8 md:gap-12"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <div className="flex items-center gap-3">
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-blue-100">
-                <svg
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M21.0001 15.46L15.7301 14.85L13.2101 17.37C10.3801 15.93 8.0601 13.62 6.6201 10.78L9.1501 8.25L8.5401 3H3.0301C2.4501 13.18 10.8201 21.55 21.0001 20.97V15.46Z"
-                    fill="#0038FF"
-                  />
-                </svg>
-              </div>
-              <span className="text-gray-600">+234 803456789</span>
-            </div>
-
-            <div className="flex items-center gap-3">
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-blue-100">
-                <svg
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M20 4H4C2.9 4 2.01 4.9 2.01 6L2 18C2 19.1 2.9 20 4 20H20C21.1 20 22 19.1 22 18V6C22 4.9 21.1 4 20 4ZM20 8L12 13L4 8V6L12 11L20 6V8Z"
-                    fill="#0038FF"
-                  />
-                </svg>
-              </div>
-              <span className="text-gray-600">enverlab@gmail.com</span>
-            </div>
+            <ContactLink
+              href="tel:+2348034567890"
+              name="+234 8034567890"
+              icon={<Telephone />}
+            />
+            <ContactLink
+              href="mailto:enoverlab@gmail.com"
+              name="enoverlab@gmail.com"
+              icon={<Gmail />}
+            />
           </motion.div>
 
           {/* Contact Form Section */}
           <motion.form
-            className="flex flex-1 flex-col md:items-end"
+            className="w-full flex-1 md:max-w-[560px]"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.7 }}
           >
-            <div className="space-y-4">
-              {/* Email Input */}
-              <motion.div
-                className="w-full"
-                initial={{ opacity: 0, x: -30 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.4, delay: 0.2 }}
-              >
-                <label htmlFor="email" className="sr-only">
-                  Email
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  placeholder="Email:"
-                  className="w-full rounded-lg border border-gray-300 p-3 focus:border-blue-500 focus:outline-none md:w-[400px] lg:w-[575px]"
-                />
-              </motion.div>
+            {/* Email Input */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.4, delay: 0.2 }}
+            >
+              <label htmlFor="email" className="sr-only">
+                Email
+              </label>
+              <input
+                type="email"
+                id="email"
+                placeholder="Email:"
+                className={cn(InputVariant())}
+              />
+            </motion.div>
 
-              {/* Message Textarea */}
-              <motion.div
-                className="w-full"
-                initial={{ opacity: 0, x: -30 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.4, delay: 0.4 }}
-              >
-                <label htmlFor="message" className="sr-only">
-                  Message
-                </label>
-                <textarea
-                  id="message"
-                  rows={4}
-                  placeholder="Message:"
-                  className="w-full rounded-lg border border-gray-300 p-3 focus:border-blue-500 focus:outline-none md:w-[400px] lg:w-[575px]"
-                />
-              </motion.div>
+            {/* Message Textarea */}
+            <motion.div
+              className="mt-5 w-full"
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.4, delay: 0.4 }}
+            >
+              <label htmlFor="message" className="sr-only">
+                Message
+              </label>
+              <textarea
+                id="message"
+                rows={4}
+                placeholder="Message:"
+                className={cn(InputVariant({ className: "min-h-[175px]" }))}
+              />
+            </motion.div>
 
-              {/* Send Button */}
-              <motion.div
-                className="w-full text-right"
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: 0.6 }}
+            {/* Send Button */}
+            <motion.div
+              className="mt-7"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: 0.6 }}
+            >
+              <button
+                type="submit"
+                className={cn(
+                  RightArrowCTAButtonVariant({
+                    className:
+                      "ms-auto rounded-full border border-[#0046FF] bg-transparent text-[#0046FF]",
+                  }),
+                )}
               >
-                <button
-                  type="submit"
-                  className="rounded-full bg-[#0038FF] px-6 py-2 text-white transition-colors hover:bg-blue-600"
-                >
-                  Send message
-                </button>
-              </motion.div>
-            </div>
+                Send message
+              </button>
+            </motion.div>
           </motion.form>
         </div>
-      </div>
+      </MaxWidth>
     </div>
   );
 }
+
+const ContactLink: FC<
+  ComponentProps<"a"> & { name: string; icon: ReactNode }
+> = ({ name, icon, href = "", ...props }) => {
+  return (
+    <Link className="flex items-center gap-3" {...{ props, href }}>
+      <div className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-[#FCFCFC] p-2.5">
+        {icon}
+      </div>
+      <span className="text-[#002A42]">{name}</span>
+    </Link>
+  );
+};

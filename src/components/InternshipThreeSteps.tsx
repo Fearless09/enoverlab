@@ -1,25 +1,28 @@
 "use client";
 import React, { useRef, useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import MaxWidth from "@/constant/MaxWidth";
+import { cn } from "@/lib/utils";
+import {
+  CurvedArrowLeft,
+  CurvedArrowRight,
+  ForwardArrow,
+} from "@/constant/SVGs";
+import useAnimateObserver from "@/hooks/useAnimateObserver";
 
 const threeSteps = [
   {
-    step: "Step 1",
     heading: "Onboarding & Learning",
-    body: "Get acquainted with your project and understand your objectives.",
-    otherStyle: "bg-primary-100 text-secondary",
+    subtext: "Get acquainted with your project and understand your objectives.",
   },
   {
-    step: "Step 2",
     heading: "Practical Experience",
-    body: "Apply your training to real-world projects.",
-    otherStyle: "bg-primary-300 text-white",
+    subtext: "Apply your training to real-world projects.",
   },
   {
-    step: "Step 3",
     heading: "Reflect & Improve",
-    body: "Summarize your experience, insights, and growth to boost your career prospects.",
-    otherStyle: "bg-primary-100 text-secondary",
+    subtext:
+      "Summarize your experience, insights, and growth to boost your career prospects.",
   },
 ];
 
@@ -27,91 +30,76 @@ export default function InternshipThreeSteps() {
   return (
     <section
       id="Your Internship Journey in Three Steps"
-      className="sm:mt-[49px]"
+      className="font-plus-jakarta-sans sm:mt-[49px]"
     >
-      <div className="container mx-auto px-4 py-12 font-plus-jakarta-sans">
+      <MaxWidth className="py-12">
         <div className="mx-auto w-full max-w-[708px] text-center">
-          <h1 className="text-2xl font-semibold leading-snug text-primary-300 sm:text-4xl">
-            Your Internship Journey in Three Steps
+          <h1 className="text-2xl font-semibold leading-snug text-[#000A23] md:text-4xl">
+            Your Internship Journey in Three Steps...
           </h1>
-          <p className="mt-4 text-base font-normal leading-[160%] text-secondary sm:text-xl">
+          <p className="mt-5 text-base leading-[160%] text-secondary sm:text-xl">
             Kickstart your career with an internship that offers hands-on
-            experience and professional growth opportunities.
+            experience, and professional growth opportunities.
           </p>
         </div>
 
-        <div className="mt-7 flex flex-wrap justify-around gap-x-4 gap-y-8 overflow-x-hidden sm:mt-14">
+        <div className="mt-8 flex flex-col gap-x-4 gap-y-8 overflow-x-hidden sm:mt-14 md:grid md:grid-cols-[1fr,40px,1fr,40px,1fr] lg:grid-cols-[1fr,65px,1fr,65px,1fr]">
           {threeSteps?.map((item, index) => (
-            <InternshipStepsCard
-              key={index}
-              step={item.step}
-              otherStyle={item.otherStyle}
-              body={item.body}
-              heading={item.heading}
-            />
+            <React.Fragment key={index}>
+              <InternshipStepsCard
+                item={item}
+                index={index}
+                className={index === 1 ? "ms-auto bg-[#0046FF] text-white" : ""}
+              />
+              {index < 2 && (
+                <>
+                  <div className="flex items-center justify-center max-md:hidden">
+                    <ForwardArrow />
+                  </div>
+                </>
+              )}
+            </React.Fragment>
           ))}
         </div>
-      </div>
+      </MaxWidth>
     </section>
   );
 }
 
-function InternshipStepsCard({
-  otherStyle,
-  step,
-  heading,
-  body,
+const InternshipStepsCard = ({
+  className,
+  item: { subtext, heading },
+  index,
 }: {
-  otherStyle: string;
-  step: string;
-  heading: string;
-  body: string;
-}) {
-  const cardRef = useRef<HTMLDivElement | null>(null);
-  const [hasAnimated, setHasAnimated] = useState(false);
-
-  useEffect(() => {
-    const ref = cardRef.current; //name it ref 
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting && !hasAnimated) {
-            setHasAnimated(true);
-          }
-        });
-      },
-      {
-        threshold: 0.5, // Trigger when 50% of the card is visible
-      }
-    );
-
-    if (ref) {
-      observer.observe(ref);
-    }
-
-    return () => {
-      if (ref) {
-        observer.unobserve(ref);
-      }
-    };
-  }, [hasAnimated]);
+  className: string;
+  item: { subtext: string; heading: string };
+  index: number;
+}) => {
+  const { ref, hasAnimated } = useAnimateObserver();
 
   return (
-    <motion.div
-      ref={cardRef}
-      className={`flex min-h-[300px] w-full items-center justify-center rounded-[10px] px-[32px] py-[72px] sm:min-h-[393px] sm:w-[calc(33.33%-32px)] sm:min-w-[401px] ${otherStyle}`}
-      initial={{ opacity: 0, x: hasAnimated? -100 : 100 }} // Start off-screen (left or right)
-      animate={{ opacity: hasAnimated? 1 : 0, x: hasAnimated? 0 : 100 }} // Animate to visible when in view
-      transition={{ duration: 0.5 }}
-    >
-      <div className="-mt-14 w-full sm:w-[340px]">
-        <h1 className="text-2xl font-medium sm:text-4xl">{step}</h1>
-        <p className="mt-10 text-base leading-[160%] sm:text-base">
-          <span className="font-medium">{heading}:</span>{" "}
-          <span className="font-light xl:text-xl">{body}</span>
+    <div className="relative">
+      <motion.div
+        ref={ref}
+        className={cn(
+          "relative z-[2] flex h-full justify-center rounded-[10px] bg-[#DBF5FF] p-7 pt-[50px] text-[#323232] max-md:w-4/5",
+          className,
+        )}
+        initial={{ opacity: 0, x: hasAnimated ? -100 : 100 }} // Start off-screen (left or right)
+        animate={{ opacity: hasAnimated ? 1 : 0, x: hasAnimated ? 0 : 100 }} // Animate to visible when in view
+        transition={{ duration: 0.5 }}
+      >
+        <p className="w-full max-w-[250px]">
+          {heading}: <span className="opacity-80">{subtext}</span>
         </p>
-      </div>
-    </motion.div>
+      </motion.div>
+
+      {index === 0 && (
+        <CurvedArrowRight className="absolute -bottom-8 left-[80%] z-[1] -translate-x-8 md:hidden" />
+      )}
+      {index === 1 && (
+        <CurvedArrowLeft className="absolute -bottom-8 right-[80%] z-[1] translate-x-0.5 md:hidden" />
+      )}
+    </div>
   );
-}
+};
