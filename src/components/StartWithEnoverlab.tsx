@@ -8,7 +8,7 @@ import MaxWidth from "@/constant/MaxWidth";
 export default function StartWithEnoverlab() {
   return (
     <section className="font-plus-jakarta-sans">
-      <MaxWidth className="py-[107px]">
+      <MaxWidth className="py-[20px]"> */
         <motion.div
           className="mx-auto flex h-[413px] w-full max-w-[1120px] flex-col items-center justify-center gap-12 rounded-[30px] bg-primary-300 px-4 text-center text-white"
           initial={{ scale: 0.8 }}
