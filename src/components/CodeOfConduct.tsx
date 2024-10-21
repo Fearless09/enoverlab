@@ -31,9 +31,6 @@ const codes: {
 export default function CodeOfConduct() {
   const [isOpen, setIsOpen] = useState(false); // Modal state to control visibility
 
-  const openModal = () => setIsOpen(true); // Function to open modal
-  const closeModal = () => setIsOpen(false); // Function to close modal
-
   return (
     <section
       id="Our Code of Conduct"
@@ -52,21 +49,19 @@ export default function CodeOfConduct() {
           {/* Keeping the "Download Rules" button with arrow as it is */}
           <RightArrowCTAButton
             className="mx-auto border border-primary-300 bg-transparent text-primary-300 xl:mx-0"
-            onClick={openModal} // Opens the modal on click
+            onClick={() => setIsOpen(true)} // Opens the modal on click
           >
             Download Rules
           </RightArrowCTAButton>
         </div>
 
         <div className="grid justify-around gap-8 sm:grid-cols-2 lg:justify-end 2xl:grid-cols-[repeat(2,360px)]">
-          {codes?.map((item, index) => (
-            <CodeCard key={index} item={item} />
-          ))}
+          {codes?.map((item, index) => <CodeCard key={index} item={item} />)}
         </div>
       </div>
 
       {/* Modal for full code of conduct */}
-      <CodeOfConductModal open={isOpen} handleClose={closeModal} />
+      <CodeOfConductModal open={isOpen} handleClose={() => setIsOpen(false)} />
     </section>
   );
 }
@@ -96,7 +91,7 @@ function CodeCard({
       },
       {
         threshold: 0.5,
-      }
+      },
     );
 
     if (ref) {
