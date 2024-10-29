@@ -98,6 +98,7 @@ const CodeOfConductModal: React.FC<CodeOfConductModalProps> = ({
             <div className="flex items-center gap-1">
               {Array.from({ length: 3 }).map((_, index) => (
                 <span
+                  key={index}
                   className="animate-custom-bounce h-3 w-3 rounded-full bg-blue-600"
                   style={{ animationDelay: `${index * 200}ms` }}
                 />
