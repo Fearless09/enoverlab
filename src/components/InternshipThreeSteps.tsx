@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef, useEffect, useState, memo } from "react";
 import { motion } from "framer-motion";
 import MaxWidth from "@/constant/MaxWidth";
 import { cn } from "@/lib/utils";
@@ -60,43 +60,45 @@ export default function InternshipThreeSteps() {
   );
 }
 
-const InternshipStepsCard = ({
-  item: { subtext, heading },
-  index,
-}: {
-  item: { subtext: string; heading: string };
-  index: number;
-}) => {
-  const { ref, hasAnimated } = useAnimateObserver();
+const InternshipStepsCard = memo(
+  ({
+    item: { subtext, heading },
+    index,
+  }: {
+    item: { subtext: string; heading: string };
+    index: number;
+  }) => {
+    const { ref, hasAnimated } = useAnimateObserver();
 
-  return (
-    <div className="relative">
-      <motion.div
-        ref={ref}
-        className="relative z-[2] text-[#323232] max-md:pb-7 max-md:pt-[40px]"
-        initial={{ opacity: 0, x: hasAnimated ? -100 : 100 }} // Start off-screen (left or right)
-        animate={{ opacity: hasAnimated ? 1 : 0, x: hasAnimated ? 0 : 100 }} // Animate to visible when in view
-        transition={{ duration: 0.5 }}
-      >
-        <p
-          className={cn(
-            "flex w-full max-w-[250px] flex-col gap-1.5 text-base font-medium md:mx-auto md:text-lg",
-            {
-              "ms-auto": index === 1,
-            },
-          )}
+    return (
+      <div className="relative">
+        <motion.div
+          ref={ref}
+          className="relative z-[2] text-[#323232] max-md:pb-7 max-md:pt-[40px]"
+          initial={{ opacity: 0, x: hasAnimated ? -100 : 100 }} // Start off-screen (left or right)
+          animate={{ opacity: hasAnimated ? 1 : 0, x: hasAnimated ? 0 : 100 }} // Animate to visible when in view
+          transition={{ duration: 0.5 }}
         >
-          <span className="text-[#0046FF]">{heading}:</span>
-          <span className="font-light">{subtext}</span>
-        </p>
-      </motion.div>
+          <p
+            className={cn(
+              "flex w-full max-w-[250px] flex-col gap-1.5 text-base font-medium md:mx-auto md:text-lg",
+              {
+                "ms-auto": index === 1,
+              },
+            )}
+          >
+            <span className="text-[#0046FF]">{heading}:</span>
+            <span className="font-light">{subtext}</span>
+          </p>
+        </motion.div>
 
-      {index === 0 && (
-        <CurvedArrowRight className="-translatex-8 absolute -bottom-8 right-0 z-[1] md:hidden" />
-      )}
-      {index === 1 && (
-        <CurvedArrowLeft className="absolute -bottom-8 left-0 z-[1] translate-x-0.5 md:hidden" />
-      )}
-    </div>
-  );
-};
+        {index === 0 && (
+          <CurvedArrowRight className="-translatex-8 absolute -bottom-8 right-0 z-[1] md:hidden" />
+        )}
+        {index === 1 && (
+          <CurvedArrowLeft className="absolute -bottom-8 left-0 z-[1] translate-x-0.5 md:hidden" />
+        )}
+      </div>
+    );
+  },
+);

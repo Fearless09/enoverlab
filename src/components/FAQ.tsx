@@ -2,7 +2,7 @@
 
 import { FAQDropdownSVG } from "@/constant/SVGs";
 import useCloseDialog from "@/hooks/useCloseDialog";
-import React, { useEffect, useState } from "react";
+import React, { memo, useEffect, useState } from "react";
 
 type QuestionType = {
   ques: string;
@@ -58,39 +58,35 @@ export default function FAQ() {
   );
 }
 
-function Question({
-  no,
-  item: { ques, ans },
-}: {
-  item: QuestionType;
-  no: number;
-}) {
-  const [isAns, setIsAns] = useState<boolean>(false);
-  const { ref } = useCloseDialog(() => setIsAns(false));
+const Question = memo(
+  ({ no, item: { ques, ans } }: { item: QuestionType; no: number }) => {
+    const [isAns, setIsAns] = useState<boolean>(false);
+    const { ref } = useCloseDialog(() => setIsAns(false));
 
-  useEffect(() => {
-    if (no === 1) setIsAns(true);
-  }, []);
+    useEffect(() => {
+      if (no === 1) setIsAns(true);
+    }, []);
 
-  return (
-    <div ref={ref} className="border-b border-b-black py-4">
-      <button
-        className="flex w-full items-center justify-between gap-3 text-left text-base font-medium !leading-[160%] text-[#323232] sm:text-lg sm:font-semibold md:text-2xl"
-        onClick={() => setIsAns(!isAns)}
-      >
-        <span className="w-full max-w-[763px]">
-          {no}. {ques}
-        </span>
-        <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-primary-300 md:size-10">
-          <FAQDropdownSVG styles={isAns ? "rotate-180" : ""} />
-        </span>
-      </button>
+    return (
+      <div ref={ref} className="border-b border-b-black py-4">
+        <button
+          className="flex w-full items-center justify-between gap-3 text-left text-base font-medium !leading-[160%] text-[#323232] sm:text-lg sm:font-semibold md:text-2xl"
+          onClick={() => setIsAns(!isAns)}
+        >
+          <span className="w-full max-w-[763px]">
+            {no}. {ques}
+          </span>
+          <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-primary-300 md:size-10">
+            <FAQDropdownSVG styles={isAns ? "rotate-180" : ""} />
+          </span>
+        </button>
 
-      {isAns && (
-        <p className="mt-6 w-[90%] max-w-[735px] ps-3 text-sm !leading-[160%] text-[#323232] sm:text-base md:text-xl">
-          {ans}
-        </p>
-      )}
-    </div>
-  );
-}
+        {isAns && (
+          <p className="mt-6 w-[90%] max-w-[735px] ps-3 text-sm !leading-[160%] text-[#323232] sm:text-base md:text-xl">
+            {ans}
+          </p>
+        )}
+      </div>
+    );
+  },
+);

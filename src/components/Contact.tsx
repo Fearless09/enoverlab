@@ -1,6 +1,6 @@
 "use client";
 
-import React, { ComponentProps, FC, ReactNode } from "react";
+import React, { ComponentProps, FC, memo, ReactNode } from "react";
 import { motion } from "framer-motion";
 import MaxWidth from "@/constant/MaxWidth";
 import Link from "next/link";
@@ -111,15 +111,14 @@ export default function ContactForm() {
   );
 }
 
-const ContactLink: FC<
-  ComponentProps<"a"> & { name: string; icon: ReactNode }
-> = ({ name, icon, href = "", ...props }) => {
-  return (
-    <Link className="flex items-center gap-3" {...{ props, href }}>
-      <div className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-[#FCFCFC] p-2.5">
-        {icon}
-      </div>
-      <span className="text-[#002A42]">{name}</span>
-    </Link>
-  );
-};
+const ContactLink: FC<ComponentProps<"a"> & { name: string; icon: ReactNode }> =
+  memo(({ name, icon, href = "", ...props }) => {
+    return (
+      <Link className="flex items-center gap-3" {...{ props, href }}>
+        <div className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-[#FCFCFC] p-2.5">
+          {icon}
+        </div>
+        <span className="text-[#002A42]">{name}</span>
+      </Link>
+    );
+  });

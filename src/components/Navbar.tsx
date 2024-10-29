@@ -58,9 +58,13 @@ export default function Navbar() {
             ))}
           </span>
 
-          <button className="hidden items-center justify-center rounded-[10px] border border-[#C5C5C5] bg-[#0046FF] px-7 py-2.5 text-sm text-white hover:bg-opacity-95 active:scale-98 sm:inline-flex md:text-base">
+          <Link
+            href="/register"
+            target="_blank"
+            className="hidden items-center justify-center rounded-[10px] border border-[#C5C5C5] bg-[#0046FF] px-7 py-2.5 text-sm text-white hover:bg-opacity-95 active:scale-98 sm:inline-flex md:text-base"
+          >
             Enroll
-          </button>
+          </Link>
 
           {/* Hamburger */}
           <button className="inline-flex sm:hidden">

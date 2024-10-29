@@ -1,12 +1,12 @@
 "use client";
 
-import React, { ReactNode, useState, useEffect, useRef } from "react";
+import React, { memo, ReactNode, useState } from "react";
 import RightArrowCTAButton from "./RightArrowCTAButton";
 import { CommunicationSVG, CultureSVG, ReadinessSVG } from "@/constant/SVGs";
-import { motion } from "framer-motion"; // Import Framer Motion
+import { motion } from "framer-motion";
 import MaxWidth from "@/constant/MaxWidth";
 import useAnimateObserver from "@/hooks/useAnimateObserver";
-import CodeOfConductModal from "@/constant/codeOfConductModal"; // Importing the modal component
+import CodeOfConductModal from "@/constant/codeOfConductModal";
 
 const codes: {
   svg: ReactNode;
@@ -31,7 +31,7 @@ const codes: {
 ];
 
 export default function CodeOfConduct() {
-  const [isOpen, setIsOpen] = useState(false); // Modal state to control visibility
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <section
@@ -48,10 +48,9 @@ export default function CodeOfConduct() {
             to ensure a positive experience for everyone.
           </p>
 
-          {/* Keeping the "Download Rules" button with arrow as it is */}
           <RightArrowCTAButton
             className="mx-auto border border-primary-300 bg-transparent text-primary-300 xl:mx-0"
-            onClick={() => setIsOpen(true)} // Opens the modal on click
+            onClick={() => setIsOpen(true)}
           >
             Download Rules
           </RightArrowCTAButton>
@@ -68,32 +67,34 @@ export default function CodeOfConduct() {
   );
 }
 
-function CodeCard({
-  item: { svg, name, description },
-}: {
-  item: {
-    svg: ReactNode;
-    name: string;
-    description: string;
-  };
-}) {
-  const { hasAnimated, ref } = useAnimateObserver();
+const CodeCard = memo(
+  ({
+    item: { svg, name, description },
+  }: {
+    item: {
+      svg: ReactNode;
+      name: string;
+      description: string;
+    };
+  }) => {
+    const { hasAnimated, ref } = useAnimateObserver();
 
-  return (
-    <motion.div
-      ref={ref}
-      className="flex w-full gap-5 rounded-[10px] border border-primary-200 bg-white p-[25px] sm:min-h-[171px] sm:w-[calc(50%-32px)] sm:justify-center [&>svg]:size-[28px] [&>svg]:shrink-0"
-      initial={{ opacity: 0, x: -100 }} // Start off-screen to the left
-      animate={{ opacity: hasAnimated ? 1 : 0, x: hasAnimated ? 0 : -100 }} // Animate in from left
-      transition={{ duration: 0.5 }}
-    >
-      {svg}
-      <div>
-        <h4 className="text-lg font-medium md:text-2xl">{name}</h4>
-        <p className="mt-2.5 text-sm font-light !leading-[160%] md:text-base">
-          {description}
-        </p>
-      </div>
-    </motion.div>
-  );
-}
+    return (
+      <motion.div
+        ref={ref}
+        className="flex w-full gap-5 rounded-[10px] border border-primary-200 bg-white p-[25px] sm:min-h-[171px] sm:w-[calc(50%-32px)] sm:justify-center [&>svg]:size-[28px] [&>svg]:shrink-0"
+        initial={{ opacity: 0, x: -100 }} // Start off-screen to the left
+        animate={{ opacity: hasAnimated ? 1 : 0, x: hasAnimated ? 0 : -100 }} // Animate in from left
+        transition={{ duration: 0.5 }}
+      >
+        {svg}
+        <div>
+          <h4 className="text-lg font-medium md:text-2xl">{name}</h4>
+          <p className="mt-2.5 text-sm font-light !leading-[160%] md:text-base">
+            {description}
+          </p>
+        </div>
+      </motion.div>
+    );
+  },
+);

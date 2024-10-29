@@ -2,8 +2,11 @@
 
 import React from "react";
 import { motion } from "framer-motion"; // Importing framer motion components
-import RightArrowCTAButton from "./RightArrowCTAButton";
+import { RightArrowCTAButtonVariant } from "./RightArrowCTAButton";
 import MaxWidth from "@/constant/MaxWidth";
+import Link from "next/link";
+import { cn } from "@/lib/utils";
+import { RightArrowSVG } from "@/constant/SVGs";
 
 export default function StartWithEnoverlab() {
   return (
@@ -21,9 +24,18 @@ export default function StartWithEnoverlab() {
             experience!
           </h1>
 
-          <RightArrowCTAButton className="bg-white text-[#323232]">
+          <Link
+            href="/register"
+            target="_blank"
+            className={cn(
+              RightArrowCTAButtonVariant({
+                className: "bg-white text-[#323232]",
+              }),
+            )}
+          >
             Get Started
-          </RightArrowCTAButton>
+            <RightArrowSVG className="w-5 md:w-7" />
+          </Link>
         </motion.div>
       </MaxWidth>
     </section>

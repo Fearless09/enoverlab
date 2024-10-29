@@ -1,5 +1,5 @@
 import useCloseDialog from "@/hooks/useCloseDialog";
-import { useState } from "react";
+import { memo, useState } from "react";
 import { PiSealCheck } from "react-icons/pi";
 
 interface CodeOfConductModalProps {
@@ -126,4 +126,4 @@ const CodeOfConductModal: React.FC<CodeOfConductModalProps> = ({
   );
 };
 
-export default CodeOfConductModal;
+export default memo(CodeOfConductModal);

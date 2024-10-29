@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import React from "react";
+import React, { memo } from "react";
 import { RightArrowCTAButtonVariant } from "./RightArrowCTAButton";
 import Link from "next/link";
 import { motion } from "framer-motion"; // Import Framer Motion
@@ -68,51 +68,53 @@ export default function CareerField() {
   );
 }
 
-function CareerCard({
-  img,
-  name,
-  description,
-}: {
-  img: string;
-  name: string;
-  description: string;
-}) {
-  const { ref, hasAnimated } = useAnimateObserver();
-  return (
-    <motion.div
-      ref={ref}
-      className="h-520px] relative rounded-[15px] bg-white px-3 pb-36 pt-4 text-secondary"
-      initial={{ opacity: 0, x: -100 }} // Start off-screen to the left
-      animate={{ opacity: hasAnimated ? 1 : 0, x: hasAnimated ? 0 : -100 }} // Animate only once
-      transition={{ duration: 0.5 }}
-    >
-      <Image
-        src={img}
-        width={370}
-        height={196}
-        alt={name}
-        className="aspect-[370/196] w-full rounded-lg object-cover object-center"
-      />
-
-      <h1 className="mt-7 text-xl md:text-[24px]">{name}</h1>
-
-      <p className="mt-5 text-sm font-light !leading-[160%] md:text-[15px]">
-        {description}
-      </p>
-
-      <Link
-        href={"/register"}
-        className={cn(
-          RightArrowCTAButtonVariant({
-            className:
-              "absolute bottom-7 left-4 border border-primary-300 bg-white text-primary-300",
-          }),
-        )}
-        target="_blank"
+const CareerCard = memo(
+  ({
+    img,
+    name,
+    description,
+  }: {
+    img: string;
+    name: string;
+    description: string;
+  }) => {
+    const { ref, hasAnimated } = useAnimateObserver();
+    return (
+      <motion.div
+        ref={ref}
+        className="h-520px] relative rounded-[15px] bg-white px-3 pb-36 pt-4 text-secondary"
+        initial={{ opacity: 0, x: -100 }} // Start off-screen to the left
+        animate={{ opacity: hasAnimated ? 1 : 0, x: hasAnimated ? 0 : -100 }} // Animate only once
+        transition={{ duration: 0.5 }}
       >
-        Apply Now
-        <RightArrowSVG className="w-5 md:w-7" />
-      </Link>
-    </motion.div>
-  );
-}
+        <Image
+          src={img}
+          width={370}
+          height={196}
+          alt={name}
+          className="aspect-[370/196] w-full rounded-lg object-cover object-center"
+        />
+
+        <h1 className="mt-7 text-xl md:text-[24px]">{name}</h1>
+
+        <p className="mt-5 text-sm font-light !leading-[160%] md:text-[15px]">
+          {description}
+        </p>
+
+        <Link
+          href={"/register"}
+          className={cn(
+            RightArrowCTAButtonVariant({
+              className:
+                "absolute bottom-7 left-4 border border-primary-300 bg-white text-primary-300",
+            }),
+          )}
+          target="_blank"
+        >
+          Apply Now
+          <RightArrowSVG className="w-5 md:w-7" />
+        </Link>
+      </motion.div>
+    );
+  },
+);
