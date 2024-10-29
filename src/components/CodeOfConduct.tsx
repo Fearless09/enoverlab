@@ -6,6 +6,7 @@ import { CommunicationSVG, CultureSVG, ReadinessSVG } from "@/constant/SVGs";
 import { motion } from "framer-motion"; // Import Framer Motion
 import MaxWidth from "@/constant/MaxWidth";
 import useAnimateObserver from "@/hooks/useAnimateObserver";
+import CodeOfConductModal from "@/constant/codeOfConductModal"; // Importing the modal component
 
 const codes: {
   svg: ReactNode;
@@ -30,6 +31,8 @@ const codes: {
 ];
 
 export default function CodeOfConduct() {
+  const [isOpen, setIsOpen] = useState(false); // Modal state to control visibility
+
   return (
     <section
       id="Our Code of Conduct"
@@ -45,7 +48,11 @@ export default function CodeOfConduct() {
             to ensure a positive experience for everyone.
           </p>
 
-          <RightArrowCTAButton className="mx-auto border border-primary-300 bg-transparent text-primary-300 xl:mx-0">
+          {/* Keeping the "Download Rules" button with arrow as it is */}
+          <RightArrowCTAButton
+            className="mx-auto border border-primary-300 bg-transparent text-primary-300 xl:mx-0"
+            onClick={() => setIsOpen(true)} // Opens the modal on click
+          >
             Download Rules
           </RightArrowCTAButton>
         </div>
@@ -54,6 +61,9 @@ export default function CodeOfConduct() {
           {codes?.map((item, index) => <CodeCard key={index} item={item} />)}
         </div>
       </MaxWidth>
+
+      {/* Modal for full code of conduct */}
+      <CodeOfConductModal open={isOpen} handleClose={() => setIsOpen(false)} />
     </section>
   );
 }
