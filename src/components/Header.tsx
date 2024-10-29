@@ -65,54 +65,52 @@ const Header: React.FC = () => {
 
 export default Header;
 
-const MotionDiv = memo(
-  ({
-    value,
-    suffix,
-    text,
-  }: {
-    value: number;
-    suffix: string;
-    text: string;
-  }) => {
-    const controls = useAnimation();
+const MotionDiv = memo(function MotionDiv({
+  value,
+  suffix,
+  text,
+}: {
+  value: number;
+  suffix: string;
+  text: string;
+}) {
+  const controls = useAnimation();
 
-    useEffect(() => {
-      const handleScroll = () => {
-        if (window.scrollY > 50) {
-          controls.start({ opacity: 1, y: 0 });
-        } else {
-          controls.start({ opacity: 1, y: 0 });
-        }
-      };
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        controls.start({ opacity: 1, y: 0 });
+      } else {
+        controls.start({ opacity: 1, y: 0 });
+      }
+    };
 
-      controls.start({ opacity: 1, y: 0 });
+    controls.start({ opacity: 1, y: 0 });
 
-      window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll);
 
-      return () => {
-        window.removeEventListener("scroll", handleScroll);
-      };
-    }, [controls]);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [controls]);
 
-    return (
-      <motion.div
-        className="flex flex-col items-center"
-        initial={{ opacity: 0, y: 20 }}
-        animate={controls}
-        transition={{ duration: 0.5 }}
-      >
-        <h3 className="text-xl font-bold italic text-[#0046FF] md:text-3xl ipad:text-4xl">
-          {value}
-          {suffix}
-        </h3>
-        <p className="mt-2.5 text-xs font-light text-[#0046FF] md:text-sm">
-          {text}
-        </p>
-      </motion.div>
-    );
-  },
-);
+  return (
+    <motion.div
+      className="flex flex-col items-center"
+      initial={{ opacity: 0, y: 20 }}
+      animate={controls}
+      transition={{ duration: 0.5 }}
+    >
+      <h3 className="text-xl font-bold italic text-[#0046FF] md:text-3xl ipad:text-4xl">
+        {value}
+        {suffix}
+      </h3>
+      <p className="mt-2.5 text-xs font-light text-[#0046FF] md:text-sm">
+        {text}
+      </p>
+    </motion.div>
+  );
+});
 
 function Divider() {
   return (

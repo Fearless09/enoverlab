@@ -41,38 +41,34 @@ export default function PurposeOfInternship() {
   );
 }
 
-const PurposeCard = memo(
-  ({
-    poi,
-  }: {
-    poi: {
-      title: string;
-      img: string;
-    };
-  }) => {
-    const { ref, hasAnimated } = useAnimateObserver();
+const PurposeCard = memo(function PurposeCard({
+  poi,
+}: {
+  poi: {
+    title: string;
+    img: string;
+  };
+}) {
+  const { ref, hasAnimated } = useAnimateObserver();
 
-    return (
-      <motion.div
-        ref={ref}
-        className="flex w-full max-w-[330px] flex-1 gap-4"
-        initial={{ opacity: 0, x: -100 }}
-        animate={{ opacity: hasAnimated ? 1 : 0, x: hasAnimated ? 0 : -100 }}
-        transition={{ duration: 0.5 }}
-      >
-        <span className="relative flex h-[67px] w-[72px] shrink-0 items-center justify-center rounded-2xl border-2 border-[#0046FF]/25 bg-white ipad:h-[88px] ipad:w-24 ipad:rounded-3xl">
-          <Image
-            alt={poi.title}
-            src={poi.img}
-            width={64}
-            height={64}
-            className="size-12 object-cover object-center ipad:size-16"
-          />
-        </span>
-        <p className="-mt-1 text-base text-[#0046FF] ipad:text-lg">
-          {poi.title}
-        </p>
-      </motion.div>
-    );
-  },
-);
+  return (
+    <motion.div
+      ref={ref}
+      className="flex w-full max-w-[330px] flex-1 gap-4"
+      initial={{ opacity: 0, x: -100 }}
+      animate={{ opacity: hasAnimated ? 1 : 0, x: hasAnimated ? 0 : -100 }}
+      transition={{ duration: 0.5 }}
+    >
+      <span className="relative flex h-[67px] w-[72px] shrink-0 items-center justify-center rounded-2xl border-2 border-[#0046FF]/25 bg-white ipad:h-[88px] ipad:w-24 ipad:rounded-3xl">
+        <Image
+          alt={poi.title}
+          src={poi.img}
+          width={64}
+          height={64}
+          className="size-12 object-cover object-center ipad:size-16"
+        />
+      </span>
+      <p className="-mt-1 text-base text-[#0046FF] ipad:text-lg">{poi.title}</p>
+    </motion.div>
+  );
+});

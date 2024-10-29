@@ -67,34 +67,32 @@ export default function CodeOfConduct() {
   );
 }
 
-const CodeCard = memo(
-  ({
-    item: { svg, name, description },
-  }: {
-    item: {
-      svg: ReactNode;
-      name: string;
-      description: string;
-    };
-  }) => {
-    const { hasAnimated, ref } = useAnimateObserver();
+const CodeCard = memo(function CodeCard({
+  item: { svg, name, description },
+}: {
+  item: {
+    svg: ReactNode;
+    name: string;
+    description: string;
+  };
+}) {
+  const { hasAnimated, ref } = useAnimateObserver();
 
-    return (
-      <motion.div
-        ref={ref}
-        className="flex w-full gap-5 rounded-[10px] border border-primary-200 bg-white p-[25px] sm:min-h-[171px] sm:w-[calc(50%-32px)] sm:justify-center [&>svg]:size-[28px] [&>svg]:shrink-0"
-        initial={{ opacity: 0, x: -100 }} // Start off-screen to the left
-        animate={{ opacity: hasAnimated ? 1 : 0, x: hasAnimated ? 0 : -100 }} // Animate in from left
-        transition={{ duration: 0.5 }}
-      >
-        {svg}
-        <div>
-          <h4 className="text-lg font-medium md:text-2xl">{name}</h4>
-          <p className="mt-2.5 text-sm font-light !leading-[160%] md:text-base">
-            {description}
-          </p>
-        </div>
-      </motion.div>
-    );
-  },
-);
+  return (
+    <motion.div
+      ref={ref}
+      className="flex w-full gap-5 rounded-[10px] border border-primary-200 bg-white p-[25px] sm:min-h-[171px] sm:w-[calc(50%-32px)] sm:justify-center [&>svg]:size-[28px] [&>svg]:shrink-0"
+      initial={{ opacity: 0, x: -100 }} // Start off-screen to the left
+      animate={{ opacity: hasAnimated ? 1 : 0, x: hasAnimated ? 0 : -100 }} // Animate in from left
+      transition={{ duration: 0.5 }}
+    >
+      {svg}
+      <div>
+        <h4 className="text-lg font-medium md:text-2xl">{name}</h4>
+        <p className="mt-2.5 text-sm font-light !leading-[160%] md:text-base">
+          {description}
+        </p>
+      </div>
+    </motion.div>
+  );
+});

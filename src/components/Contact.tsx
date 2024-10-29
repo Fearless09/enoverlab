@@ -112,7 +112,7 @@ export default function ContactForm() {
 }
 
 const ContactLink: FC<ComponentProps<"a"> & { name: string; icon: ReactNode }> =
-  memo(({ name, icon, href = "", ...props }) => {
+  memo(function ContactLink({ name, icon, href = "", ...props }) {
     return (
       <Link className="flex items-center gap-3" {...{ props, href }}>
         <div className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-[#FCFCFC] p-2.5">
