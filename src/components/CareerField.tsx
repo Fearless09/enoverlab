@@ -1,12 +1,14 @@
 "use client";
 
 import Image from "next/image";
-import React, { useState, useEffect, useRef } from "react";
-import RightArrowCTAButton from "./RightArrowCTAButton";
+import React from "react";
+import { RightArrowCTAButtonVariant } from "./RightArrowCTAButton";
 import Link from "next/link";
 import { motion } from "framer-motion"; // Import Framer Motion
 import MaxWidth from "@/constant/MaxWidth";
 import useAnimateObserver from "@/hooks/useAnimateObserver";
+import { cn } from "@/lib/utils";
+import { RightArrowSVG } from "@/constant/SVGs";
 
 const careers: {
   name: string;
@@ -16,19 +18,19 @@ const careers: {
   {
     name: "Product Designer",
     description:
-      "A Product Designer focuses on crafting the user experience and collaborating with other teams to transform design concepts into functional products",
+      "A Product Designer crafts user experiences and collaborates with teams to turn concepts into functional products.",
     img: "/product_design.png",
   },
   {
     name: "Product Manager",
     description:
-      "A Product Manager oversees a product's development and success, defining its vision, strategy, and plan while coordinating with teams to meet customer needs and achieve business goals.",
+      "A Product Manager defines the vision, strategy, and plan, coordinating with teams to meet customer needs and achieve business goals.",
     img: "/product_manager.png",
   },
   {
     name: "Frontend Dev",
     description:
-      "A Front end  developer works with designers and back-end developers to bring the product to life. Uses languages like HTML, CSS, React, JavaScript etc to build the product.",
+      "A Front-end Developer works with designers and back-end developers to build products using HTML, CSS, React, JavaScript, and more.",
     img: "/frontend_dev.png",
   },
 ];
@@ -37,11 +39,11 @@ export default function CareerField() {
   return (
     <section
       id="Our Career Fields"
-      className="bg-primary-300 font-plus-jakarta-sans"
+      className="mt-14 bg-primary-300 font-plus-jakarta-sans"
     >
       <MaxWidth className="py-[50px]">
         <div className="mx-auto w-full max-w-[640px] text-center">
-          <h1 className="text-2xl font-medium !leading-relaxed text-white sm:text-3xl ipad:text-4xl">
+          <h1 className="text-[clamp(1.5rem,_0.6582rem+2.449vw,_2.25rem)] font-medium !leading-relaxed text-white">
             Our Career Fields
           </h1>
 
@@ -92,16 +94,24 @@ function CareerCard({
         className="aspect-[370/196] w-full rounded-lg object-cover object-center"
       />
 
-      <h1 className="mt-7 text-xl md:text-[28px]">{name}</h1>
+      <h1 className="mt-7 text-xl md:text-[24px]">{name}</h1>
 
       <p className="mt-5 text-sm font-light !leading-[160%] md:text-[15px]">
         {description}
       </p>
 
-      <Link href={"/register"} target="_blank">
-        <RightArrowCTAButton className="absolute bottom-7 left-4 border border-primary-300 bg-white text-primary-300">
-          Apply Now
-        </RightArrowCTAButton>
+      <Link
+        href={"/register"}
+        className={cn(
+          RightArrowCTAButtonVariant({
+            className:
+              "absolute bottom-7 left-4 border border-primary-300 bg-white text-primary-300",
+          }),
+        )}
+        target="_blank"
+      >
+        Apply Now
+        <RightArrowSVG className="w-5 md:w-7" />
       </Link>
     </motion.div>
   );

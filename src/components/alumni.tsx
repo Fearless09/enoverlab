@@ -1,9 +1,12 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
-import { Play } from "lucide-react";
+import { Pause, Play } from "lucide-react";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import MaxWidth from "@/constant/MaxWidth";
+import useCloseDialog from "@/hooks/useCloseDialog";
+import RightArrowCTAButton from "./RightArrowCTAButton";
 
 const testimonials = [
   {
@@ -22,42 +25,25 @@ const testimonials = [
 
 export default function AlumniTestimonials() {
   return (
-    <div
-      id="Our Alumni Speaks"
-      className="hidden w-full px-4 py-16 sm:block md:px-6 lg:px-8"
-    >
-      <div className="mx-auto max-w-7xl">
-        <div className="mx-auto mb-16 w-full max-w-[641px] text-center">
-          <h1 className="text-2xl font-medium text-primary-300 sm:text-4xl">
-            Our Alumni Speaks
-          </h1>
-          <p className="mt-4 text-base font-normal leading-[160%] text-secondary sm:text-lg">
-            Discover the impact our program has had on past interns. Hear from
-            our alumni about their experience and how this internship shaped
-            their careers.
-          </p>
-        </div>
+    <MaxWidth id="Our Alumni Speaks" className="py-16 font-plus-jakarta-sans">
+      <h1 className="text-center text-[clamp(1.5rem,_0.3776rem+3.2653vw,_2.5rem)] font-medium text-primary-300">
+        Our Alumni Speaks
+      </h1>
+      <p className="mx-auto mt-4 w-full max-w-[750px] text-center text-[clamp(1rem,_0.4388rem+1.6327vw,_1.5rem)] font-light !leading-[160%] text-secondary">
+        Discover the impact our program has had , we thrive for excellence and
+        that is exactly what we provide.
+      </p>
 
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {testimonials.map((testimonial, index) => (
-            <TestimonialCard key={index} testimonial={testimonial} />
-          ))}
-        </div>
-
-        <div className="mt-8 flex justify-end">
-          <button className="flex items-center text-[#666666] transition-colors duration-300 hover:text-[#0066FF]">
-            <span className="mr-2">See all</span>
-            <svg className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-              <path
-                fillRule="evenodd"
-                d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                clipRule="evenodd"
-              />
-            </svg>
-          </button>
-        </div>
+      <div className="mt-16 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        {testimonials.map((testimonial, index) => (
+          <TestimonialCard key={index} testimonial={testimonial} />
+        ))}
       </div>
-    </div>
+
+      <RightArrowCTAButton className="ms-auto mt-8 !h-auto !w-auto rounded-full border border-[#7097FF] px-5 py-2.5">
+        See all
+      </RightArrowCTAButton>
+    </MaxWidth>
   );
 }
 
@@ -67,7 +53,11 @@ const TestimonialCard = ({
   testimonial: { name: string; role: string };
 }) => {
   const cardRef = useRef<HTMLDivElement | null>(null);
+
+  const [playing, setPlaying] = useState<boolean>(false);
   const [hasAnimated, setHasAnimated] = useState(false);
+
+  const { ref } = useCloseDialog(() => setPlaying(false));
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -85,7 +75,7 @@ const TestimonialCard = ({
       observer.observe(cardRef.current);
     }
 
-    const haywhy = cardRef.current
+    const haywhy = cardRef.current;
 
     return () => {
       if (haywhy) {
@@ -95,39 +85,35 @@ const TestimonialCard = ({
   }, [hasAnimated]);
 
   return (
-    <motion.div
-      ref={cardRef}
-      className="group relative overflow-hidden rounded-2xl"
-      initial={{ opacity: 0, x: -100 }}
-      animate={{
-        opacity: hasAnimated ? 1 : 0,
-        x: hasAnimated ? 0 : -100,
-      }}
-      transition={{ duration: 0.5 }}
-    >
-      <div className="relative h-[280px] w-full lg:h-[350px]">
-        <div className="absolute inset-0 bg-gray-200" />
-        <Image
-          src="/api/placeholder/400/320"
-          alt={`${testimonial.name}'s testimonial`}
-          fill
-          className="object-cover"
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent">
-          <div className="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-            <button className="flex h-12 w-12 items-center justify-center rounded-full bg-white">
-              <Play className="h-6 w-6 text-black" />
-            </button>
-          </div>
-          <div className="absolute bottom-0 left-0 right-0 p-6">
-            <h3 className="mb-1 text-xl font-semibold text-white">
+    <div ref={ref}>
+      <motion.div
+        ref={cardRef}
+        className="relative aspect-[390/500] max-h-[420px] w-full overflow-hidden rounded-[20px] bg-[#D9D9D9] sm:max-h-[500px]"
+        initial={{ opacity: 0, x: -100 }}
+        animate={{
+          opacity: hasAnimated ? 1 : 0,
+          x: hasAnimated ? 0 : -100,
+        }}
+        transition={{ duration: 0.5 }}
+      >
+        <div className="absolute inset-x-0 bottom-12 flex h-10 items-center justify-between pe-7 ps-5">
+          <div className="text-black">
+            <h4 className="text-[clamp(1.125rem,_0.7041rem+1.2245vw,_1.5rem)] font-medium">
               {testimonial.name}
-            </h3>
-            <p className="text-gray-300">{testimonial.role}</p>
+            </h4>
+            <p className="mt-2.5 text-[clamp(0.875rem,_0.5944rem+0.8163vw,_1.125rem)] font-light">
+              {testimonial.role}
+            </p>
           </div>
+
+          <button
+            className="flex size-[50px] shrink-0 items-center justify-center rounded-full border-[3px] border-white text-white hover:opacity-95 active:scale-98 md:size-[60px] md:border-4 [&&>svg]:size-8"
+            onClick={() => setPlaying(!playing)}
+          >
+            {playing ? <Pause /> : <Play />}
+          </button>
         </div>
-      </div>
-    </motion.div>
+      </motion.div>
+    </div>
   );
 };

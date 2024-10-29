@@ -2,10 +2,13 @@
 
 import React, { useEffect } from "react";
 import { motion, useAnimation } from "framer-motion";
-import RightArrowCTAButton from "./RightArrowCTAButton";
+import RightArrowCTAButton, {
+  RightArrowCTAButtonVariant,
+} from "./RightArrowCTAButton";
 import Link from "next/link";
 import MaxWidth from "@/constant/MaxWidth";
 import useAnimatedNumber from "@/hooks/useAnimatedNumber";
+import { cn } from "@/lib/utils";
 
 const Header: React.FC = () => {
   const studentsMentored = useAnimatedNumber(1500, 3000);
@@ -17,27 +20,31 @@ const Header: React.FC = () => {
     <MaxWidth className="font-plus-jakarta-sans">
       <header
         id="Give Yourself an Unbeatable Advantage"
-        className="mt-16 flex flex-col items-center gap-y-6 text-center sm:mt-[50px]"
+        className="mt-16 flex flex-col items-center text-center sm:mt-[50px]"
       >
         <h1 className="text-2xl font-medium !leading-snug text-primary-300 md:text-3xl ipad:text-[60px]">
           Give Yourself an Unbeatable <br /> Advantage...
         </h1>
-        <p className="w-full max-w-[500px] text-base font-normal leading-[160%] text-secondary md:text-xl">
+        <p className="mt-8 w-full max-w-[500px] text-base font-normal leading-[160%] text-secondary md:text-xl">
           Take a next step that guarantees you real-world{" "}
           <br className="max-sm:hidden" /> work experience in your chosen
           career.
         </p>
-        <Link href={"/register"} target="_blank">
-          <RightArrowCTAButton
-            arrow={false}
-            className="broder border-[#C5C5C5] bg-primary-300 text-white"
-          >
-            Apply Now
-          </RightArrowCTAButton>
+        <Link
+          href={"/register"}
+          className={cn(
+            RightArrowCTAButtonVariant({
+              className:
+                "broder mt-5 w-auto border-[#C5C5C5] bg-primary-300 px-8 py-3 text-white md:w-auto",
+            }),
+          )}
+          target="_blank"
+        >
+          Apply Now
         </Link>
       </header>
 
-      <div className="mx-auto mt-12 flex max-w-[1140px] flex-wrap items-center justify-center gap-x-5 gap-y-8 rounded-lg bg-[#DDE9FF] px-3 py-5 text-center font-plus-jakarta-sans sm:gap-x-8 md:px-6 ipad:gap-x-12">
+      <div className="mx-auto mt-14 flex max-w-[1140px] flex-wrap items-center justify-center gap-x-5 gap-y-8 rounded-lg bg-[#DDE9FF] px-3 py-5 text-center font-plus-jakarta-sans sm:gap-x-8 md:px-6 ipad:gap-x-12">
         <MotionDiv
           value={studentsMentored}
           suffix="+"
@@ -96,7 +103,7 @@ function MotionDiv({
       animate={controls}
       transition={{ duration: 0.5 }}
     >
-      <h3 className="text-2xl font-bold italic text-[#0046FF] md:text-4xl">
+      <h3 className="text-xl font-bold italic text-[#0046FF] md:text-3xl ipad:text-4xl">
         {value}
         {suffix}
       </h3>

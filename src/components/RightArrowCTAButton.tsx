@@ -4,7 +4,7 @@ import { cva, VariantProps } from "class-variance-authority";
 import React, { ComponentProps, FC } from "react";
 
 export const RightArrowCTAButtonVariant = cva(
-  "flex h-10 w-[150px] items-center justify-center gap-3 rounded-[7px] text-sm hover:opacity-[0.95] active:scale-[0.98] md:h-[51px] md:w-[208px] md:gap-4 md:text-base",
+  "flex h-10 w-[150px] items-center justify-center gap-3 rounded-[7px] text-sm hover:bg-opacity-95 active:scale-[0.98] md:h-[51px] md:w-[208px] md:gap-4 md:text-base",
 );
 
 interface RightArrowCTAButtonProps

@@ -37,7 +37,7 @@ export default function CodeOfConduct() {
     >
       <MaxWidth className="flex flex-col items-center justify-between gap-x-10 gap-y-16 xl:flex-row xl:items-start">
         <div className="flex w-full max-w-[470px] flex-col gap-6 text-center sm:gap-[34px] xl:text-left">
-          <h1 className="text-2xl font-semibold leading-relaxed text-primary-300 sm:text-3xl md:text-[45px]">
+          <h1 className="text-[clamp(1.5rem,_0.3776rem+3.2653vw,_2.5rem)] font-semibold leading-relaxed text-primary-300">
             Our Code of Conduct
           </h1>
           <p className="text-base font-light !leading-[160%] md:text-lg">
@@ -72,7 +72,7 @@ function CodeCard({
   return (
     <motion.div
       ref={ref}
-      className="flex sm:min-h-[180px] w-full sm:justify-center gap-5 rounded-[10px] border border-primary-200 bg-white p-[30px] sm:w-[calc(50%-32px)] [&>svg]:size-[28px] [&>svg]:shrink-0"
+      className="flex w-full gap-5 rounded-[10px] border border-primary-200 bg-white p-[25px] sm:min-h-[171px] sm:w-[calc(50%-32px)] sm:justify-center [&>svg]:size-[28px] [&>svg]:shrink-0"
       initial={{ opacity: 0, x: -100 }} // Start off-screen to the left
       animate={{ opacity: hasAnimated ? 1 : 0, x: hasAnimated ? 0 : -100 }} // Animate in from left
       transition={{ duration: 0.5 }}

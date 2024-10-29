@@ -1,4 +1,3 @@
-import AluminiTestimonial from "@/components/AluminiTestimonial";
 import CareerField from "@/components/CareerField";
 import CodeOfConduct from "@/components/CodeOfConduct";
 import FAQ from "@/components/FAQ";
@@ -8,8 +7,6 @@ import InternshipThreeSteps from "@/components/InternshipThreeSteps";
 import PurposeOfInternship from "@/components/PurposeOfInternship";
 import StartWithEnoverlab from "@/components/StartWithEnoverlab";
 import AluminiTestimonials from "@/components/alumni";
-import MentorsSection from "@/components/Mentor";
-// import StudentPortfolio from "@/components/StudentPortfolio";
 import ContactForm from "@/components/Contact";
 import { Metadata } from "next";
 
@@ -27,9 +24,6 @@ export default function Home() {
       <CareerField />
       <CodeOfConduct />
       <AluminiTestimonials />
-      <AluminiTestimonial />
-      {/* <MentorsSection /> */}
-      {/* <StudentPortfolio />MR Nathaniel said this should be removed for some reasons sir  */}
       <ContactForm />
       <FAQ />
       <StartWithEnoverlab />

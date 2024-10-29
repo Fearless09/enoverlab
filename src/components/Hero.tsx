@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import MaxWidth from "@/constant/MaxWidth";
 import useAnimateObserver from "@/hooks/useAnimateObserver";
@@ -34,16 +34,16 @@ const AboutInternship: React.FC = () => {
     <motion.div
       id="About Internship"
       ref={ref} // Attach the ref to the main container
-      className="mt-12 flex items-center justify-center bg-[#E0E9FE] px-4 py-4 font-plus-jakarta-sans md:py-20"
       initial="initial"
+      className="mt-14 bg-[#E0E9FE]"
       animate={hasAnimated ? "animate" : "initial"} // Animate box visibility
       exit="initial" // No exit animation for the box
       variants={boxVariants}
       transition={{ duration: 0.5 }} // Animation duration for the box
     >
-      <MaxWidth className="rounded bg-white pb-4 pt-8 shadow-md md:px-8 md:pb-[45px] md:pt-[70px] ipad:px-20">
+      <MaxWidth className="max-w-[850px] py-6 text-center font-plus-jakarta-sans md:py-[60px]">
         <motion.h2
-          className="mb-3 text-center text-2xl font-semibold text-[#0046FF] md:mb-8 md:text-4xl"
+          className="mb-3.5 text-[calc(clamp(1.625rem,_-0.3393rem+5.7143vw,_3.375rem))] font-semibold text-[#0046FF] md:mb-6"
           initial="initial"
           animate={textVisible ? "animate" : "initial"} // Animate text visibility
           variants={textVariants}
@@ -52,22 +52,16 @@ const AboutInternship: React.FC = () => {
           About Internship
         </motion.h2>
         <motion.p
-          className="text-justify text-base font-light !leading-[180%] text-[#323232] md:text-lg"
+          className="text-[calc(clamp(1rem,_0.4388rem+1.6327vw,_1.5rem))] font-light !leading-[170%] text-[#323232]"
           initial="initial"
           animate={textVisible ? "animate" : "initial"} // Animate text visibility
           variants={textVariants}
           transition={{ duration: 0.5, delay: 0.3 }} // Delay text animation
         >
-          Congratulations! You have just completed your training in product
-          management, UI/UX design, or front-end/back-end development, and now
-          it is time to put those skills into practice. Welcome to Enoverlab, a
-          platform built to help you apply everything you have learned in
-          real-world scenarios. Whether you are a product manager fine-tuning
-          strategies, a designer crafting user experiences, or a
-          front-end/back-end developer coding up the future, Enoverlab is the
-          place where theory meets execution. Here, you will collaborate,
-          experiment, and refine your craft, gaining the experience you need to
-          thrive in your field. Ready to turn your knowledge into impact?
+          Welcome to Enoverlab Internships, where you can apply your training in
+          product management, UI/UX design, or development in real-world
+          scenarios. Collaborate, refine your skills, and gain the experience
+          needed to excel. Ready to make an impact?
         </motion.p>
       </MaxWidth>
     </motion.div>

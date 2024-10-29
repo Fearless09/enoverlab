@@ -31,7 +31,10 @@ const navLinks: {
 export default function Navbar() {
   return (
     <>
-      <nav id="navbar" className="z-50 bg-white/70 pb-3 pt-5 backdrop-blur-md md:fixed md:inset-x-0 md:top-0">
+      <nav
+        id="navbar"
+        className="z-50 bg-white/70 pb-3 pt-5 backdrop-blur-md md:fixed md:inset-x-0 md:top-0"
+      >
         <MaxWidth className="flex items-center justify-between">
           <Image
             src={"/enoverlab_logo.png"}
@@ -55,7 +58,7 @@ export default function Navbar() {
             ))}
           </span>
 
-          <button className="hidden items-center justify-center rounded-[10px] border border-[#C5C5C5] bg-[#0046FF] px-12 py-3 text-white sm:inline-flex">
+          <button className="hidden items-center justify-center rounded-[10px] border border-[#C5C5C5] bg-[#0046FF] px-7 py-2.5 text-sm text-white hover:bg-opacity-95 active:scale-98 sm:inline-flex md:text-base">
             Enroll
           </button>
 
