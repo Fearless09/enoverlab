@@ -1,50 +1,26 @@
-"use client";
-
-import { UseGlobalContext } from "@/app/provider";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-const sideBarImage: {
-  src: string;
-  styles: string;
-}[] = [
-  {
-    src: "/step_1.png",
-    styles: "",
-  },
-  {
-    src: "/step_2.png",
-    styles: "",
-  },
-  {
-    src: "/step_3.png",
-    styles: "",
-  },
-];
-
 export default function SideBar() {
-  const { steps } = UseGlobalContext();
-
   return (
-    <div className="relative hidden w-full max-w-[350px] flex-col bg-primary-300 px-10 pt-11 md:flex lg:max-w-[619px] lg:px-[72px]">
+    <div className="sticky top-0 hidden h-screen w-full flex-col gap-10 bg-primary-300 px-8 pt-10 md:flex lg:px-[72px]">
       <Link href={"#"}>
         <Image
           src={"/enoverlab_logo_white.png"}
-          width={225}
+          width={150}
           height={0}
           alt="Enoverlab"
-          className=""
         />
       </Link>
 
-      <div className="flex flex-1 items-center">
+      <div className="flex flex-1 items-center overflow-hidden rounded-bl-[50px] rounded-tr-[50px]">
         <Image
-          src={sideBarImage[steps - 1].src}
+          src={"/svg/step_2.png"}
           width={390}
           height={0}
           alt="Trainees"
-          className={`${sideBarImage[steps - 1].styles} z-[1] mx-auto`}
+          className="z-[1] mx-auto rounded-bl-[50px] rounded-tr-[50px] object-cover object-center"
         />
       </div>
 

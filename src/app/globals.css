@@ -26,17 +26,5 @@ body {
   }
 }
 
-.animate-custom-bounce {
-  animation: custom-bounce 0.8s infinite;
-}
 
-
-@keyframes custom-bounce {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-8px);
-  }
-}
 

@@ -12,13 +12,15 @@
     "@tailwindcss/container-queries": "^0.1.1",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
+    "formik": "^2.4.6",
     "framer-motion": "^11.11.7",
     "lucide-react": "^0.451.0",
     "next": "^14.2.15",
     "react": "^18.3.1",
     "react-dom": "^18",
     "react-icons": "^5.3.0",
-    "tailwind-merge": "^2.5.4"
+    "tailwind-merge": "^2.5.4",
+    "yup": "^1.4.0"
   },
   "devDependencies": {
     "@shadcn/ui": "^0.0.4",

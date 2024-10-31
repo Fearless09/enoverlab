@@ -1,13 +1,14 @@
 import exp from "constants";
 import { ComponentProps, FC } from "react";
 
-export const DropdownSVG = () => (
+export const DropdownSVG: FC<ComponentProps<"svg">> = (props) => (
   <svg
     width={14}
     height={8}
     viewBox="0 0 14 8"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
+    {...props}
   >
     <path
       fillRule="evenodd"
@@ -145,13 +146,14 @@ export const FAQDropdownSVG = ({ styles }: { styles?: string }) => (
   </svg>
 );
 
-export const FacebookSVG = () => (
+export const FacebookSVG: FC<ComponentProps<"svg">> = (props) => (
   <svg
     width={24}
     height={24}
     viewBox="0 0 24 24"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
+    {...props}
   >
     <path
       d="M3.468 2.4h17.076A1.05 1.05 0 0 1 21.6 3.456v17.088c0 .576-.468 1.056-1.056 1.056h-4.896v-7.44h2.496l.372-2.892h-2.868V9.42c0-.84.24-1.416 1.44-1.416h1.536V5.412c-.264-.036-1.176-.108-2.232-.108-2.22 0-3.732 1.344-3.732 3.828v2.136h-2.508v2.892h2.508v7.44H3.468A1.07 1.07 0 0 1 2.4 20.544V3.456c0-.588.48-1.056 1.068-1.056"
@@ -160,13 +162,14 @@ export const FacebookSVG = () => (
   </svg>
 );
 
-export const LinkedInSVG = () => (
+export const LinkedInSVG: FC<ComponentProps<"svg">> = (props) => (
   <svg
     width={24}
     height={24}
     viewBox="0 0 24 24"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
+    {...props}
   >
     <path
       d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zm-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93zM6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37z"
@@ -175,13 +178,14 @@ export const LinkedInSVG = () => (
   </svg>
 );
 
-export const YoutubeSVG = () => (
+export const YoutubeSVG: FC<ComponentProps<"svg">> = (props) => (
   <svg
     width={24}
     height={24}
     viewBox="0 0 24 24"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
+    {...props}
   >
     <path
       d="M17.812 5.017H6.145C3.855 5.017 2 6.852 2 9.117v5.767c0 2.264 1.856 4.1 4.145 4.1h11.667c2.29 0 4.145-1.836 4.145-4.1V9.116c0-2.264-1.856-4.1-4.145-4.1zm-2.803 7.263-5.457 2.575a.22.22 0 0 1-.314-.196V9.35a.22.22 0 0 1 .318-.193l5.458 2.735a.216.216 0 0 1-.005.388"
@@ -190,13 +194,14 @@ export const YoutubeSVG = () => (
   </svg>
 );
 
-export const InstagramSVG = () => (
+export const InstagramSVG: FC<ComponentProps<"svg">> = (props) => (
   <svg
     width={24}
     height={24}
     viewBox="0 0 24 24"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
+    {...props}
   >
     <path
       d="M12 8.75a3.25 3.25 0 1 0 0 6.5 3.25 3.25 0 0 0 0-6.5"
@@ -211,13 +216,14 @@ export const InstagramSVG = () => (
   </svg>
 );
 
-export const WhatsAppSVG = () => (
+export const WhatsAppSVG: FC<ComponentProps<"svg">> = (props) => (
   <svg
     width={24}
     height={24}
     viewBox="0 0 24 24"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
+    {...props}
   >
     <path
       d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01m-7.01 15.24c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.26 8.26 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24 2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 0 1 2.41 5.83c.02 4.54-3.68 8.23-8.22 8.23m4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.78.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43s.17-.25.25-.41c.08-.17.04-.31-.02-.43s-.56-1.34-.76-1.84c-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07s.89 2.4 1.01 2.56c.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18s-.22-.16-.47-.28"

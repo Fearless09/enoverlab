@@ -1,35 +1,49 @@
-"use client";
-
-import Image from "next/image";
-import Link from "next/link";
 import React from "react";
-import FormCTAButton from "../register/components/FormCTAButton";
+import { Check } from "lucide-react";
+import FormButton from "../register/components/FormButton";
+import { FacebookSVG, InstagramSVG, LinkedInSVG } from "@/constant/SVGs";
+import Link from "next/link";
+
+type SocialLinksType = {
+  icon: React.ReactNode;
+};
+
+const socialLinks: SocialLinksType[] = [
+  {
+    icon: <FacebookSVG />,
+  },
+  {
+    icon: <LinkedInSVG />,
+  },
+  {
+    icon: <InstagramSVG />,
+  },
+];
 
 export default function Page() {
   return (
-    <div className="flex min-h-screen w-full flex-col items-center justify-center gap-10 overflow-hidden bg-white px-5 pt-10 font-plus-jakarta-sans sm:pt-[87px]">
-      <Link href={"/"}>
-        <Image
-          src={"/enoverlab_logo.png"}
-          width={225}
-          height={150} // Provide a valid height value
-          alt="Enoverlab Logo" // Add a descriptive alt text
-        />
-      </Link>
+    <div className="flex h-fit min-h-screen w-full items-center justify-center overflow-hidden bg-white px-5 pt-10 font-plus-jakarta-sans sm:pt-20">
+      <div className="max-h[411px] flex w-full max-w-[500px] flex-col items-center justify-center text-center">
+        <span className="flex size-16 items-center justify-center rounded-full bg-[#D9D9D9] text-primary-300">
+          <Check className="size-8" />
+        </span>
+        <h1 className="mt-7 text-xl font-semibold text-primary-300 sm:text-[32px]">
+          Thank You
+        </h1>
+        <p className="mt-4 text-base font-light">
+          Your application has been submitted for review. We will get back to
+          you on the next steps!
+        </p>
+        <FormButton className="mx-auto mt-11 h-auto w-fit max-w-full rounded-[25px] border-2 border-primary-300/50 bg-white px-7 py-5 text-primary-300">
+          Join Our Community Whatsapp Group
+        </FormButton>
 
-      <div className="flex w-full flex-1 items-center justify-center">
-        <div className="flex max-h-[411px] w-full max-w-[660px] flex-col items-center justify-center rounded-[12px] border border-primary-300 bg-primary-100 px-5 py-20 text-center">
-          <h1 className="text-xl font-semibold text-primary-300 sm:text-[32px]">
-            Welcome
-          </h1>
-          <h3 className="mt-2 text-base font-semibold text-primary-300 sm:text-2xl">
-            To the Opensource Internship
-          </h3>
-          <FormCTAButton
-            text="Join Internship Team 70"
-            style="max-w-[440px] mt-4"
-            onclick={() => {}}
-          />
+        <div className="mt-5 flex items-center justify-center gap-2.5">
+          {socialLinks?.map((item, index) => (
+            <Link className="" key={index} href={"#"}>
+              {item.icon}
+            </Link>
+          ))}
         </div>
       </div>
     </div>

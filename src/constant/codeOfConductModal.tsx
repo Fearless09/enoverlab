@@ -1,6 +1,7 @@
 import useCloseDialog from "@/hooks/useCloseDialog";
 import { memo, useState } from "react";
 import { PiSealCheck } from "react-icons/pi";
+import CustomBounceAnimation from "./CustomBounceAnimation";
 
 interface CodeOfConductModalProps {
   open: boolean;
@@ -96,13 +97,7 @@ const CodeOfConductModal: React.FC<CodeOfConductModalProps> = ({
         <div className="mt-7 flex items-center justify-center">
           {loading ? (
             <div className="flex items-center gap-1">
-              {Array.from({ length: 3 }).map((_, index) => (
-                <span
-                  key={index}
-                  className="animate-custom-bounce h-3 w-3 rounded-full bg-blue-600"
-                  style={{ animationDelay: `${index * 200}ms` }}
-                />
-              ))}
+              <CustomBounceAnimation />
             </div>
           ) : (
             <button
