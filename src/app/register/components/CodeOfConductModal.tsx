@@ -132,7 +132,7 @@ const CodeOfConductModal = ({
 
           <div className="mt-9 text-xl font-light">
             <p className="!leading-[35px]">
-              Interns are expected to fully adhere to the company's code of
+              Interns are expected to fully adhere to the company&apos;s code of
               conduct and professional standards.
             </p>
 
