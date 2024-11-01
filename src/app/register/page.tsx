@@ -20,13 +20,13 @@ const formShema = Yup.object().shape({
 });
 
 export default function Pgae() {
-  const [steps, setSteps] = useState<1 | 2 | 3>(3);
+  const [steps, setSteps] = useState<1 | 2 | 3>(1);
 
   const form: FormikProps<Step1FormType> = useFormik({
     initialValues: {
-      name: "John Doe",
-      number: "345",
-      email: "dsds@dw.cd",
+      name: "",
+      number: "",
+      email: "",
       internship_role: "Frontend Developer",
       experience_level: "Beginner",
       question: "",

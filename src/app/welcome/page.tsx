@@ -1,8 +1,11 @@
-import React from "react";
+"use client";
+
+import React, { ReactNode, useEffect, useState } from "react";
 import { Check } from "lucide-react";
 import FormButton from "../register/components/FormButton";
 import { FacebookSVG, InstagramSVG, LinkedInSVG } from "@/constant/SVGs";
 import Link from "next/link";
+import Confetti from "react-confetti";
 
 type SocialLinksType = {
   icon: React.ReactNode;
@@ -21,9 +24,22 @@ const socialLinks: SocialLinksType[] = [
 ];
 
 export default function Page() {
+  const [confetti, setConfetti] = useState<boolean>(true);
+
+  useEffect(() => {
+    setTimeout(() => setConfetti(false), 7000);
+  }, []);
+
   return (
-    <div className="flex h-fit min-h-screen w-full items-center justify-center overflow-hidden bg-white px-5 pt-10 font-plus-jakarta-sans sm:pt-20">
-      <div className="max-h[411px] flex w-full max-w-[500px] flex-col items-center justify-center text-center">
+    <div className="flex h-fit min-h-screen w-full items-center justify-center overflow-hidden bg-white px-5 font-plus-jakarta-sans">
+      {confetti && (
+        <Confetti
+          width={window.innerWidth}
+          tweenDuration={1000}
+          height={window.innerHeight}
+        />
+      )}
+      <div className="max-h[411px] relative flex w-full max-w-[500px] flex-col items-center justify-center overflow-hidden py-10 text-center sm:py-20">
         <span className="flex size-16 items-center justify-center rounded-full bg-[#D9D9D9] text-primary-300">
           <Check className="size-8" />
         </span>

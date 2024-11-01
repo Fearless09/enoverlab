@@ -1,9 +1,16 @@
 "use client";
 import { cn } from "@/lib/utils";
-import React, { ComponentProps, FC, memo, useTransition } from "react";
+import React, {
+  ComponentProps,
+  FC,
+  memo,
+  useState,
+  useTransition,
+} from "react";
 import FormButton from "./FormButton";
 import { useRouter } from "next/navigation";
 import CustomBounceAnimation from "@/constant/CustomBounceAnimation";
+import ShakeAnimation from "./vibratenshake.module.css";
 
 const Step3 = ({
   userDetails,
@@ -12,27 +19,33 @@ const Step3 = ({
   userDetails: Step1FormType;
   onEdit: () => void;
 }) => {
+  const [error, setError] = useState("");
   const [isTransition, startTransition] = useTransition();
   const router = useRouter();
 
   const onNext = () =>
     startTransition(async () => {
-      const res = await fetch("/api/spreadsheet", {
-        method: "POST",
-        body: JSON.stringify(userDetails),
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-      });
-      if (!res.ok) {
-        console.log("Response Error", res.statusText);
-        return;
-      }
-      const data = await res.json();
+      try {
+        const res = await fetch("/api/spreadsheet", {
+          method: "POST",
+          body: JSON.stringify(userDetails),
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+        });
+        if (!res.ok) {
+          console.log("Response Error", res.statusText);
+          setError(res.statusText);
+          return;
+        }
 
-      console.log(data);
-      // router.replace("/welcome");
+        router.replace("/welcome");
+      } catch (error) {
+        setError(
+          error instanceof Error ? error.message : "Something went wrong",
+        );
+      }
     });
 
   return (
@@ -72,6 +85,11 @@ const Step3 = ({
           value={userDetails.hear_about_us}
         />
       </div>
+      {error && (
+        <p className={cn("mt-4 text-sm text-red-500", ShakeAnimation.shake)}>
+          {error}
+        </p>
+      )}
       <hr className="my-14 border-black/20" />
       <FormButton
         className="mx-auto max-w-[400px]"
