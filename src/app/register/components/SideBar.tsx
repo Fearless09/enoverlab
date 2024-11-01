@@ -21,6 +21,7 @@ export default function SideBar() {
           height={0}
           alt="Trainees"
           className="z-[1] mx-auto rounded-bl-[50px] rounded-tr-[50px] object-cover object-center"
+          priority
         />
       </div>
 
@@ -30,6 +31,7 @@ export default function SideBar() {
         height={0}
         alt=""
         className="absolute -top-5 left-0 z-0"
+        priority
       />
       <Image
         src={"/side_b_line.png"}

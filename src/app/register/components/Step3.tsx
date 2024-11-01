@@ -1,6 +1,12 @@
 "use client";
 import { cn } from "@/lib/utils";
-import React, { ComponentProps, FC, memo, useTransition, useState } from "react";
+import React, {
+  ComponentProps,
+  FC,
+  memo,
+  useTransition,
+  useState,
+} from "react";
 import FormButton from "./FormButton";
 import { useRouter } from "next/navigation";
 import CustomBounceAnimation from "@/constant/CustomBounceAnimation";
@@ -19,10 +25,11 @@ const Step3 = ({
   const onNext = async () => {
     startTransition(async () => {
       try {
-        const response = await fetch('/register/api', {
-          method: 'POST',
+        const response = await fetch("/register/api", {
+          method: "POST",
           headers: {
-            'Content-Type': 'application/json',
+            "Content-Type": "application/json",
+            Accept: "application/json",
           },
           body: JSON.stringify({
             name: userDetails.name,
@@ -37,13 +44,13 @@ const Step3 = ({
 
         if (!response.ok) {
           const errorData = await response.json();
-          throw new Error(errorData.error || 'Failed to submit details.');
+          throw new Error(errorData.error || "Failed to submit details.");
         }
 
+        console.log("Res", response);
         // Redirect to the welcome page after successful submission
-        router.replace("/welcome");
+        // router.replace("/welcome");
       } catch (error) {
-
         if (error instanceof Error) {
           setSubmitError(error.message);
         } else {
@@ -70,19 +77,35 @@ const Step3 = ({
         <FlexItem name="First Name and Last Name?" value={userDetails.name} />
         <FlexItem name="Phone number" value={userDetails.number} />
         <FlexItem name="Email Address" value={userDetails.email} />
-        <FlexItem name="What is your internship Role?" value={userDetails.internship_role} />
-        <FlexItem name="What is your experience level?" value={userDetails.experience_level} />
-        <FlexItem name="What is your expectation onboarding with a team?" value="To become a team player" />
-        <FlexItem name="How did you hear about us?" value={userDetails.hear_about_us} />
+        <FlexItem
+          name="What is your internship Role?"
+          value={userDetails.internship_role}
+        />
+        <FlexItem
+          name="What is your experience level?"
+          value={userDetails.experience_level}
+        />
+        <FlexItem
+          name="What is your expectation onboarding with a team?"
+          value="To become a team player"
+        />
+        <FlexItem
+          name="How did you hear about us?"
+          value={userDetails.hear_about_us}
+        />
       </div>
-      {submitError && <p className="text-red-500 mt-4">{submitError}</p>}
+      {submitError && <p className="mt-4 text-red-500">{submitError}</p>}
       <hr className="my-14 border-black/20" />
       <FormButton
         className="mx-auto max-w-[400px]"
         disabled={isTransition}
         onClick={onNext}
       >
-        {isTransition ? <CustomBounceAnimation className="bg-white" /> : "Submit"}
+        {isTransition ? (
+          <CustomBounceAnimation className="bg-white" />
+        ) : (
+          "Submit"
+        )}
       </FormButton>
     </div>
   );
