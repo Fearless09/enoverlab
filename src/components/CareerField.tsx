@@ -1,10 +1,14 @@
 "use client";
 
 import Image from "next/image";
-import React, { useState, useEffect, useRef } from "react";
-import RightArrowCTAButton from "./RightArrowCTAButton";
+import React, { memo } from "react";
+import { RightArrowCTAButtonVariant } from "./RightArrowCTAButton";
 import Link from "next/link";
 import { motion } from "framer-motion"; // Import Framer Motion
+import MaxWidth from "@/constant/MaxWidth";
+import useAnimateObserver from "@/hooks/useAnimateObserver";
+import { cn } from "@/lib/utils";
+import { RightArrowSVG } from "@/constant/SVGs";
 
 const careers: {
   name: string;
@@ -14,19 +18,19 @@ const careers: {
   {
     name: "Product Designer",
     description:
-      "Understanding what users need and want, signing wireframes for the product, working with developers to understand the design so they can build it correctly.",
+      "A Product Designer crafts user experiences and collaborates with teams to turn concepts into functional products.",
     img: "/product_design.png",
   },
   {
     name: "Product Manager",
     description:
-      "Working with different teams to make sure everyone is on the same page, ensuring the project stays on schedule and within budget.",
+      "A Product Manager defines the vision, strategy, and plan, coordinating with teams to meet customer needs and achieve business goals.",
     img: "/product_manager.png",
   },
   {
     name: "Frontend Dev",
     description:
-      "Works with designers and back-end developers to bring the product to life. Uses languages like HTML, CSS, React, JavaScript, etc., to build the product.",
+      "A Front-end Developer works with designers and back-end developers to build products using HTML, CSS, React, JavaScript, and more.",
     img: "/frontend_dev.png",
   },
 ];
@@ -35,21 +39,21 @@ export default function CareerField() {
   return (
     <section
       id="Our Career Fields"
-      className="bg-primary-300 font-plus-jakarta-sans"
+      className="mt-14 bg-primary-300 font-plus-jakarta-sans"
     >
-      <div className="container mx-auto px-4 py-[51px]">
-        <div className="mx-auto w-full max-w-[640px] text-center text-white">
-          <h1 className="text-2xl font-medium leading-relaxed sm:text-4xl">
+      <MaxWidth className="py-[50px]">
+        <div className="mx-auto w-full max-w-[640px] text-center">
+          <h1 className="text-[clamp(1.5rem,_0.6582rem+2.449vw,_2.25rem)] font-medium !leading-relaxed text-white">
             Our Career Fields
           </h1>
 
-          <p className="mt-3 text-base font-normal leading-[160%] text-white/70 sm:mt-2 sm:text-lg">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          <p className="mt-3 text-base !leading-[160%] text-[#FEFEFE]/70 sm:mt-2 md:text-lg">
+            From front-end development to product management and design, Explore
+            the diverse fields where our interns thrive.
           </p>
         </div>
 
-        <div className="mt-10 flex flex-wrap justify-around gap-x-4 gap-y-12 sm:mt-[61px]">
+        <div className="mt-10 grid grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2 md:mt-[60px] ipad:grid-cols-3">
           {careers?.map((item, index) => (
             <CareerCard
               key={index}
@@ -59,12 +63,12 @@ export default function CareerField() {
             />
           ))}
         </div>
-      </div>
+      </MaxWidth>
     </section>
   );
 }
 
-function CareerCard({
+const CareerCard = memo(function CareerCard({
   img,
   name,
   description,
@@ -73,40 +77,11 @@ function CareerCard({
   name: string;
   description: string;
 }) {
-  const cardRef = useRef(null);
-  const [hasAnimated, setHasAnimated] = useState(false); // Track if animation has already occurred
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting && !hasAnimated) {
-            setHasAnimated(true);
-          }
-        });
-      },
-      {
-        threshold: 0.5, // Trigger when 50% of the component is in view
-      },
-    );
-
-    if (cardRef.current) {
-      observer.observe(cardRef.current);
-    }
-
-    const ref = cardRef.current;
-
-    return () => {
-      if (ref) {
-        observer.unobserve(ref);
-      }
-    };
-  }, [hasAnimated]); // Only run the animation once
-
+  const { ref, hasAnimated } = useAnimateObserver();
   return (
     <motion.div
-      ref={cardRef}
-      className="relative h-[520px] w-[402px] rounded-[15px] bg-white px-4 py-[22px] text-secondary"
+      ref={ref}
+      className="h-520px] relative rounded-[15px] bg-white px-3 pb-36 pt-4 text-secondary"
       initial={{ opacity: 0, x: -100 }} // Start off-screen to the left
       animate={{ opacity: hasAnimated ? 1 : 0, x: hasAnimated ? 0 : -100 }} // Animate only once
       transition={{ duration: 0.5 }}
@@ -116,21 +91,28 @@ function CareerCard({
         width={370}
         height={196}
         alt={name}
-        objectFit="contain"
-        className=""
+        className="aspect-[370/196] w-full rounded-lg object-cover object-center"
       />
 
-      <h1 className="mt-[34px] text-xl font-normal sm:text-[32px]">{name}</h1>
+      <h1 className="mt-7 text-xl md:text-[24px]">{name}</h1>
 
-      <p className="mt-[26px] text-[15px] font-light leading-[160%]">
+      <p className="mt-5 text-sm font-light !leading-[160%] md:text-[15px]">
         {description}
       </p>
 
-      <Link href={"/register"} target="_blank">
-        <RightArrowCTAButton className="absolute bottom-10 left-4 border border-primary-300 bg-white text-primary-300">
-          Apply Now
-        </RightArrowCTAButton>
+      <Link
+        href={"/register"}
+        className={cn(
+          RightArrowCTAButtonVariant({
+            className:
+              "absolute bottom-7 left-4 border border-primary-300 bg-white text-primary-300",
+          }),
+        )}
+        target="_blank"
+      >
+        Apply Now
+        <RightArrowSVG className="w-5 md:w-7" />
       </Link>
     </motion.div>
   );
-}
+});

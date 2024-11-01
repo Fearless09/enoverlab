@@ -2,7 +2,6 @@
 
 import { UseGlobalContext } from "@/app/provider";
 import React, { useState } from "react";
-import FormCTAButton from "./FormCTAButton";
 
 const internshipArr: {
   internship: string;
@@ -46,12 +45,6 @@ export default function Step2() {
             />
           ))}
         </div>
-
-        <FormCTAButton
-          text="Continue"
-          style="mt-[59px]"
-          onclick={() => setSteps(3)}
-        />
       </form>
     </>
   );

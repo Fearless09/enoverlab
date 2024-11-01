@@ -1,32 +1,12 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, memo } from "react";
 import { motion, useAnimation } from "framer-motion";
-import RightArrowCTAButton from "./RightArrowCTAButton";
+import { RightArrowCTAButtonVariant } from "./RightArrowCTAButton";
 import Link from "next/link";
-
-const useAnimatedNumber = (endValue: number, duration: number): number => {
-  const [number, setNumber] = useState<number>(0);
-
-  useEffect(() => {
-    let startTime: number;
-    const updateNumber = (timestamp: number) => {
-      if (!startTime) startTime = timestamp;
-      const progress = timestamp - startTime;
-      const newValue = Math.min(
-        Math.floor((progress / duration) * endValue),
-        endValue,
-      );
-      setNumber(newValue);
-      if (progress < duration) {
-        requestAnimationFrame(updateNumber);
-      }
-    };
-    requestAnimationFrame(updateNumber);
-  }, [endValue, duration]);
-
-  return number;
-};
+import MaxWidth from "@/constant/MaxWidth";
+import useAnimatedNumber from "@/hooks/useAnimatedNumber";
+import { cn } from "@/lib/utils";
 
 const Header: React.FC = () => {
   const studentsMentored = useAnimatedNumber(1500, 3000);
@@ -34,6 +14,66 @@ const Header: React.FC = () => {
   const yearsOfService = useAnimatedNumber(3, 3000);
   const hiringRate = useAnimatedNumber(50, 3000);
 
+  return (
+    <MaxWidth className="font-plus-jakarta-sans">
+      <header
+        id="Give Yourself an Unbeatable Advantage"
+        className="mt-16 flex flex-col items-center text-center sm:mt-[50px]"
+      >
+        <h1 className="text-2xl font-medium !leading-snug text-primary-300 md:text-3xl ipad:text-[60px]">
+          Give Yourself an Unbeatable <br /> Advantage...
+        </h1>
+        <p className="mt-8 w-full max-w-[500px] text-base font-normal leading-[160%] text-secondary md:text-xl">
+          Take a next step that guarantees you real-world{" "}
+          <br className="max-sm:hidden" /> work experience in your chosen
+          career.
+        </p>
+        <Link
+          href={"/register"}
+          className={cn(
+            RightArrowCTAButtonVariant({
+              className:
+                "broder mt-5 w-auto border-[#C5C5C5] bg-primary-300 px-8 py-3 text-white md:w-auto",
+            }),
+          )}
+          target="_blank"
+        >
+          Apply Now
+        </Link>
+      </header>
+
+      <div className="mx-auto mt-14 flex max-w-[1140px] flex-wrap items-center justify-center gap-x-5 gap-y-8 rounded-lg bg-[#DDE9FF] px-3 py-5 text-center font-plus-jakarta-sans sm:gap-x-8 md:px-6 ipad:gap-x-12">
+        <MotionDiv
+          value={studentsMentored}
+          suffix="+"
+          text="Students Mentored"
+        />
+        <Divider />
+        <MotionDiv
+          value={internshipCohort}
+          suffix="+"
+          text="Internship Cohort"
+        />
+        <Divider />
+        <MotionDiv value={yearsOfService} suffix="+" text="Years of Service" />
+        <Divider />
+        <MotionDiv value={hiringRate} suffix="%" text="Hiring Rate" />
+      </div>
+    </MaxWidth>
+  );
+};
+
+export default Header;
+
+const MotionDiv = memo(function MotionDiv({
+  value,
+  suffix,
+  text,
+}: {
+  value: number;
+  suffix: string;
+  text: string;
+}) {
   const controls = useAnimation();
 
   useEffect(() => {
@@ -55,84 +95,28 @@ const Header: React.FC = () => {
   }, [controls]);
 
   return (
-    <div id="Give Yourself an Unbeatable Advantage" className="font-plus-jakarta-sans">
-      <header className={`mt-16 sm:mt-[50px]`}>
-        <div className="container mx-auto flex h-full w-full items-center justify-center px-4 text-center">
-          <div className="flex flex-col items-center gap-y-6">
-            <h1 className="w-full max-w-[813px] text-2xl font-medium !leading-snug text-primary-300 sm:text-3xl md:text-[60px]">
-              Give Yourself an Unbeatable Advantage
-            </h1>
-            <p className="w-full max-w-[542px] text-base font-normal leading-[160%] text-secondary sm:text-xl">
-              Take a next step that guarantees you real-world work experience in your chosen career.
-            </p>
-            <Link href={"/register"} target="_blank">
-              <RightArrowCTAButton className="broder border-[#C5C5C5] bg-primary-300 text-white">
-                Apply Now
-              </RightArrowCTAButton>
-            </Link>
-          </div>
-        </div>
-      </header>
-
-      <div className="mx-auto mt-12 max-w-[860px] rounded-lg bg-[#DDE9FF] px-6 py-12 font-plus-jakarta-sans sm:px-12">
-        <div className="flex flex-wrap items-center justify-center gap-8 text-center sm:gap-12">
-          <motion.div
-            className="flex flex-col items-center border-r-2 border-black pr-3"
-            initial={{ opacity: 0, y: 20 }}
-            animate={controls}
-            transition={{ duration: 0.5 }}
-          >
-            <h3 className="text-2xl font-bold italic text-[#0046FF] sm:text-4xl">
-              {studentsMentored}+
-            </h3>
-            <p className="text-sm text-[#0046FF] sm:text-lg">
-              Students Mentored
-            </p>
-          </motion.div>
-
-          <motion.div
-            className="flex flex-col items-center border-r-2 border-black pr-3"
-            initial={{ opacity: 0, y: 20 }}
-            animate={controls}
-            transition={{ duration: 0.5 }}
-          >
-            <h3 className="text-2xl font-bold italic text-[#0046FF] sm:text-4xl">
-              {internshipCohort}+
-            </h3>
-            <p className="text-sm text-[#0046FF] sm:text-lg">
-              Internship Cohort
-            </p>
-          </motion.div>
-
-          <motion.div
-            className="flex flex-col items-center border-r-2 border-black pr-3"
-            initial={{ opacity: 0, y: 20 }}
-            animate={controls}
-            transition={{ duration: 0.5 }}
-          >
-            <h3 className="text-2xl font-bold italic text-[#0046FF] sm:text-4xl">
-              {yearsOfService}+
-            </h3>
-            <p className="text-sm text-[#0046FF] sm:text-lg">
-              Years of Service
-            </p>
-          </motion.div>
-
-          <motion.div
-            className="flex flex-col items-center"
-            initial={{ opacity: 0, y: 20 }}
-            animate={controls}
-            transition={{ duration: 0.5 }}
-          >
-            <h3 className="text-2xl font-bold italic text-[#0046FF] sm:text-4xl">
-              {hiringRate}%
-            </h3>
-            <p className="text-sm text-[#0046FF] sm:text-lg">Hiring Rate</p>
-          </motion.div>
-        </div>
-      </div>
-    </div>
+    <motion.div
+      className="flex flex-col items-center"
+      initial={{ opacity: 0, y: 20 }}
+      animate={controls}
+      transition={{ duration: 0.5 }}
+    >
+      <h3 className="text-xl font-bold italic text-[#0046FF] md:text-3xl ipad:text-4xl">
+        {value}
+        {suffix}
+      </h3>
+      <p className="mt-2.5 text-xs font-light text-[#0046FF] md:text-sm">
+        {text}
+      </p>
+    </motion.div>
   );
-};
+});
 
-export default Header;
+function Divider() {
+  return (
+    <span
+      id="divider"
+      className="h-[70px] w-0.5 rounded-full bg-[#000E32] max-sm:hidden"
+    />
+  );
+}

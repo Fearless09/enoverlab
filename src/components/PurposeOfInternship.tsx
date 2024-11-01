@@ -1,19 +1,24 @@
 "use client";
-import React, { useRef, useEffect, useState } from "react";
+import React, { memo } from "react";
 import { motion } from "framer-motion";
+import MaxWidth from "@/constant/MaxWidth";
+import useAnimateObserver from "@/hooks/useAnimateObserver";
+import Image from "next/image";
 
-const purposes = [
+const POIs = [
   {
-    text: "Connect with professionals and open doors to opportunities and growth.",
-    otherStyle: "bg-primary-300 text-white",
+    title:
+      "Network with professionals to unlock opportunities and foster growth.",
+    img: "/svg/networking.svg",
   },
   {
-    text: "Build a portfolio, showcasing your achievements, and skills for future opportunities",
-    otherStyle: "bg-primary-100 text-primary-300",
+    title:
+      "Build a portfolio showcasing your achievements and skills for future opportunities.",
+    img: "/svg/build.svg",
   },
   {
-    text: "Apply theoretical knowledge and understand industry standards",
-    otherStyle: "bg-primary-200 text-white",
+    title: "Utilize theoretical knowledge to understand industry standards.",
+    img: "/svg/book.svg",
   },
 ];
 
@@ -21,75 +26,49 @@ export default function PurposeOfInternship() {
   return (
     <section
       id="Purpose of the Internship"
-      className="overflow-x-hidden font-plus-jakarta-sans"
+      className="mt-10 overflow-x-hidden bg-[#E0E9FE] py-10 font-plus-jakarta-sans md:mt-20 md:pb-20"
     >
-      <div className="container mx-auto px-4 py-12 text-center">
-        <h1 className="text-2xl font-semibold text-primary-300 sm:text-[40px]">
+      <MaxWidth className="md:pb-12">
+        <h1 className="text-center text-[clamp(1.5rem,_0.3776rem+3.2653vw,_2.5rem)] font-semibold text-black">
           Purpose of the Internship
         </h1>
 
-        <div className="mt-7 flex flex-wrap justify-around gap-x-4 gap-y-5 sm:mt-20">
-          {purposes?.map((item, index) => (
-            <PurposeCard
-              key={index}
-              text={item.text}
-              otherStyle={item.otherStyle}
-            />
-          ))}
+        <div className="mt-10 flex flex-col items-center justify-between gap-x-4 gap-y-16 md:mt-20 md:flex-row md:items-start">
+          {POIs?.map((poi, index) => <PurposeCard key={index} poi={poi} />)}
         </div>
-      </div>
+      </MaxWidth>
     </section>
   );
 }
 
-function PurposeCard({
-  text,
-  otherStyle,
+const PurposeCard = memo(function PurposeCard({
+  poi,
 }: {
-  text: string;
-  otherStyle: string;
+  poi: {
+    title: string;
+    img: string;
+  };
 }) {
-  const cardRef = useRef<HTMLDivElement | null>(null);
-  const [hasAnimated, setHasAnimated] = useState(false);
-
-  useEffect(() => {
-    const ref = cardRef.current; //name it ref 
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting && !hasAnimated) {
-            setHasAnimated(true);
-          }
-        });
-      },
-      {
-        threshold: 0.5, // Trigger when 50% of the card is visible
-      }
-    );
-
-    if (ref) {
-      observer.observe(ref);
-    }
-
-    return () => {
-      if (ref) {
-        observer.unobserve(ref);
-      }
-    };
-  }, [hasAnimated]);
+  const { ref, hasAnimated } = useAnimateObserver();
 
   return (
     <motion.div
-      ref={cardRef}
-      className={`flex h-[201px] w-full items-center justify-center rounded-[10px] px-8 sm:w-[calc(33.33%-32px)] sm:min-w-[401px] ${otherStyle}`}
+      ref={ref}
+      className="flex w-full max-w-[330px] flex-1 gap-4"
       initial={{ opacity: 0, x: -100 }}
       animate={{ opacity: hasAnimated ? 1 : 0, x: hasAnimated ? 0 : -100 }}
       transition={{ duration: 0.5 }}
     >
-      <span className="w-full text-base sm:max-w-[305px] sm:text-xl">
-        {text}
+      <span className="relative flex h-[67px] w-[72px] shrink-0 items-center justify-center rounded-2xl border-2 border-[#0046FF]/25 bg-white ipad:h-[88px] ipad:w-24 ipad:rounded-3xl">
+        <Image
+          alt={poi.title}
+          src={poi.img}
+          width={64}
+          height={64}
+          className="size-12 object-cover object-center ipad:size-16"
+        />
       </span>
+      <p className="-mt-1 text-base text-[#0046FF] ipad:text-lg">{poi.title}</p>
     </motion.div>
   );
-}
+});

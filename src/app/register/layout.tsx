@@ -6,9 +6,9 @@ metadata.title = "Enoverlab - Internship Registration";
 
 export default function Layout({ children }: { children?: React.ReactNode }) {
   return (
-    <div className="flex h-screen w-full overflow-hidden font-plus-jakarta-sans">
+    <div className="grid grid-cols-1 font-plus-jakarta-sans md:grid-cols-[0.6fr,1fr]">
       <SideBar />
-      <div className="w-full overflow-auto px-5 py-11">{children}</div>
+      <div className="flex-1 overflow-auto px-5 py-11">{children}</div>
     </div>
   );
 }
