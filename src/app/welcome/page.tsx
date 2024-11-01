@@ -24,19 +24,33 @@ const socialLinks: SocialLinksType[] = [
 ];
 
 export default function Page() {
-  const [confetti, setConfetti] = useState<boolean>(true);
+  const [confettiConfig, setConfettiConfig] = useState({
+    display: true,
+    width: 0,
+    height: 0,
+  });
 
   useEffect(() => {
-    setTimeout(() => setConfetti(false), 7000);
+    if (typeof window) {
+      setConfettiConfig((prev) => ({
+        ...prev,
+        width: window.innerWidth,
+        height: window.innerHeight,
+      }));
+    }
+    setTimeout(
+      () => setConfettiConfig((prev) => ({ ...prev, display: false })),
+      7000,
+    );
   }, []);
 
   return (
     <div className="flex h-fit min-h-screen w-full items-center justify-center overflow-hidden bg-white px-5 font-plus-jakarta-sans">
-      {confetti && (
+      {confettiConfig.display && (
         <Confetti
-          width={window.innerWidth}
+          width={confettiConfig.width}
           tweenDuration={1000}
-          height={window.innerHeight}
+          height={confettiConfig.height}
         />
       )}
       <div className="max-h[411px] relative flex w-full max-w-[500px] flex-col items-center justify-center overflow-hidden py-10 text-center sm:py-20">
