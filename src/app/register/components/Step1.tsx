@@ -113,6 +113,8 @@ export default function Step1({ form }: { form: FormikProps<Step1FormType> }) {
           label="A question on a user's cohort?"
           value={question}
           onChange={handleChange}
+          error={touched.question && errors.question ? true : false}
+          required
         />
 
         <FormSelect

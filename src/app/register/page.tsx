@@ -3,7 +3,6 @@
 import React, { useState } from "react";
 import Step1 from "./components/Step1";
 import Steps from "./components/Steps";
-import Step2 from "./components/Step2";
 import Step3 from "./components/Step3";
 import { useFormik, FormikProps } from "formik";
 import * as Yup from "yup";
@@ -15,7 +14,7 @@ const formShema = Yup.object().shape({
   number: Yup.string().required("Required"),
   internship_role: Yup.string().required("Required"),
   experience_level: Yup.string().required("Required"),
-  question: Yup.string(),
+  question: Yup.string().required("Required"),
   hear_about_us: Yup.string(),
 });
 

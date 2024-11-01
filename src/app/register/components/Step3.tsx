@@ -45,6 +45,8 @@ const Step3 = ({
         setError(
           error instanceof Error ? error.message : "Something went wrong",
         );
+      } finally {
+        setTimeout(() => setError(""), 10000);
       }
     });
 

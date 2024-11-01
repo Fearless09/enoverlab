@@ -26,7 +26,7 @@ export default function ContactForm() {
         <div className="flex flex-col gap-8 md:flex-row md:justify-between md:gap-16">
           {/* Contact Details Section */}
           <motion.div
-            className="flex w-max flex-col gap-8 md:gap-12"
+            className="flex w-max flex-col gap-8 md:gap-10"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
@@ -39,6 +39,11 @@ export default function ContactForm() {
             <ContactLink
               href="mailto:enoverlab@gmail.com"
               name="enoverlab@gmail.com"
+              icon={<Gmail />}
+            />
+            <ContactLink
+              href="mailto:programs@enoverlab.com"
+              name="programs@enoverlab.com"
               icon={<Gmail />}
             />
           </motion.div>
