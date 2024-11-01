@@ -39,10 +39,10 @@ const FormSelect: FC<FormSelectProps> = ({
         </select>
 
         <button
-          className="absolute right-[6px] top-1/2 z-10 h-[40px] -translate-y-1/2 bg-white pe-3"
+          className="absolute right-1 top-1/2 z-10 h-[40px] -translate-y-1/2 bg-white pe-3"
           type="button"
         >
-          <DropdownSVG className="size-4" />
+          <DropdownSVG className="size-3" />
         </button>
       </div>
     </label>
