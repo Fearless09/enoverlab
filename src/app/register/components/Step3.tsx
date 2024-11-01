@@ -15,9 +15,25 @@ const Step3 = ({
   const [isTransition, startTransition] = useTransition();
   const router = useRouter();
 
-  const onNext = () => {
-    startTransition(() => router.replace("/welcome"));
-  };
+  const onNext = () =>
+    startTransition(async () => {
+      const res = await fetch("/api/spreadsheet", {
+        method: "POST",
+        body: JSON.stringify(userDetails),
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      });
+      if (!res.ok) {
+        console.log("Response Error", res.statusText);
+        return;
+      }
+      const data = await res.json();
+
+      console.log(data);
+      // router.replace("/welcome");
+    });
 
   return (
     <div className="mx-auto mt-16 w-full max-w-[650px]">
