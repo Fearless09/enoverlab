@@ -19,7 +19,7 @@ const Step3 = ({
   const onNext = async () => {
     startTransition(async () => {
       try {
-        const response = await fetch('/register/api/submit', {
+        const response = await fetch('/register/api', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
