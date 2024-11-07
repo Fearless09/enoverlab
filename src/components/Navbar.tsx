@@ -4,13 +4,13 @@ import { DropdownSVG, HamburgerSVG } from "@/constant/SVGs";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
-import { IoMdArrowDropdown } from "react-icons/io"; // Importing the icon
+import { IoMdArrowDropdown } from "react-icons/io"; // Importing the icon for the smaller screen dropdown 
 
 const navLinks = [
   { name: "Programs", href: "/" },
   { name: "Internship", href: "/", dropdown: true },
   { name: "Blog", href: "/" },
-  { name: "Free Resources", href: "/", dropdown: true }, //Add the dropdown to resources
+  { name: "Free Resources", href: "/", dropdown: true }, // add a dropdown to resources
 ];
 
 export default function Navbar() {
@@ -37,7 +37,7 @@ export default function Navbar() {
           />
 
           {/* Desktop Navigation Links */}
-          <span className="hidden items-center gap-10 lg:flex ml-auto">
+          <span className="hidden items-center gap-10 lg:flex lg:justify-center lg:w-full">
             {navLinks.map((item, index) => (
               <Link
                 className="flex items-center gap-1.5 font-plus-jakarta-sans text-lg font-normal text-secondary"
@@ -83,7 +83,7 @@ export default function Navbar() {
                 className="text-black flex items-center gap-1.5 font-plus-jakarta-sans text-lg font-normal"
               >
                 <span>{item.name}</span>
-                {item.dropdown && <IoMdArrowDropdown />} {/*make use the dropdown icon here */}
+                {item.dropdown && <IoMdArrowDropdown />} {/* Make use the dropdown icon here */}
               </Link>
             ))}
             <Link
