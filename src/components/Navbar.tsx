@@ -4,13 +4,13 @@ import { DropdownSVG, HamburgerSVG } from "@/constant/SVGs";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
-import { IoMdArrowDropdown } from "react-icons/io"; // Importing the icon for the smaller screen dropdown 
+import { IoMdArrowDropdown } from "react-icons/io"; // Importing the icon
 
 const navLinks = [
   { name: "Programs", href: "/" },
   { name: "Internship", href: "/", dropdown: true },
   { name: "Blog", href: "/" },
-  { name: "Free Resources", href: "/", dropdown: true }, // add a dropdown to resources
+  { name: "Free Resources", href: "/", dropdown: true },
 ];
 
 export default function Navbar() {
@@ -68,34 +68,34 @@ export default function Navbar() {
 
       {/* Sidebar for Mobile View */}
       {isSidebarOpen && (
-        <div className="fixed inset-0 z-50 bg-blue-400 p-5 text-white sm:hidden">
-          {/* Close Button */}
-          <button className="mb-4 text-2xl font-bold text-black" onClick={toggleSidebar}>
-            X
-          </button>
-          
-          {/* Sidebar Navigation Links */}
-          <nav className="flex flex-col gap-4">
-            {navLinks.map((item, index) => (
-              <Link
-                href={item.href}
-                key={index}
-                className="text-black flex items-center gap-1.5 font-plus-jakarta-sans text-lg font-normal"
-              >
-                <span>{item.name}</span>
-                {item.dropdown && <IoMdArrowDropdown />} {/* Make use the dropdown icon here */}
-              </Link>
-            ))}
+      <div className="fixed inset-y-0 right-0 z-50 bg-blue-400 p-5 text-white sm:hidden w-[250px] backdrop:blur-xl">
+        {/* Close Button */}
+        <button className="mb-4 text-2xl font-bold text-black" onClick={toggleSidebar}>
+          X
+        </button>
+        
+        {/* Sidebar Navigation Links */}
+        <nav className="flex flex-col gap-4">
+          {navLinks.map((item, index) => (
             <Link
-              href="/register"
-              target="_blank"
-              className="mt-4 flex w-full items-center justify-center rounded-lg bg-blue-600 px-4 py-2 text-center text-white"
+              href={item.href}
+              key={index}
+              className="text-black flex items-center gap-1.5 font-plus-jakarta-sans text-lg font-normal"
             >
-              Enroll Now
+              <span>{item.name}</span>
+              {item.dropdown && <IoMdArrowDropdown />} {/* Use the dropdown icon here */}
             </Link>
-          </nav>
-        </div>
-      )}
+          ))}
+          <Link
+            href="/register"
+            target="_blank"
+            className="mt-4 flex w-full items-center justify-center rounded-lg bg-blue-600 px-4 py-2 text-center text-white"
+          >
+            Enroll Now
+          </Link>
+        </nav>
+      </div>
+    )}
 
       {/* Spacer to prevent layout shift */}
       <div className="h-[82px] w-full max-md:hidden"></div>
