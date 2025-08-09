@@ -34,7 +34,8 @@ export default function Partnership() {
         <div className="flex justify-end  bg-[#DAEDFF] items-center px-6 py-2 gap-3 rounded-[30px]">
           <div className="flex flex-col justify-evenly py-2 gap-3 rounded-[30px]">
             <div>
-              <h3 className="font-Poppins align-top text-left font-bold text-[24px] text-[#222222]">
+            <h3 className="font-Poppins align-top text-left font-bold text-[24px] text-[#222222]
+              ">
                 Partnership for training <br>government workers</br>
               </h3>
               <h3 className="font-Poppins align-top text-left font-semibold text-[20px] text-[#404040]">
