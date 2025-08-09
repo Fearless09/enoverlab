@@ -8,7 +8,7 @@ export default function HompageLayout({
   children: React.ReactNode;
 }) {
   return (
-    <section className="flex h-full min-h-dvh flex-col">
+    <section className="flex px-[120px] h-full min-h-dvh flex-col bg-[#F3F3FF]">
       <Navbar />
       <main className="flex-1">{children}</main>
       <Footer />
